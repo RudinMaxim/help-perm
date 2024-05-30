@@ -1,0 +1,23 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+
+  .header__logo_side{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .nav{
+    ul {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      font-size: 1.15rem;
+    }
+  }
+}

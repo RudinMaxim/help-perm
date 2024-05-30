@@ -1,0 +1,1 @@
+export const MAIN_PHONE_NUMBER = '+79229228004';
