@@ -10,16 +10,15 @@
 
   @media (hover) {
     &:hover {
-
+      color: var(--secondary-color);
     }
   }
   &:active {
-    color: var(--accent-color-dark);
+    color: var(--secondary-color);
   }
 
   &:focus {
     border-radius: 0.25rem;
     border: 1px solid var(--primary-color);
-
   }
 }

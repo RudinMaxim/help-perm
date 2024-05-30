@@ -2,22 +2,98 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 0;
+  padding: 1.5rem 1rem;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 0.25rem;
+  position: sticky;
+  max-width: 100%;
+  top: 0;
+  z-index: 100;
 
-  .header__logo_side{
+  .header__logo_side {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 1rem;
+    gap: 2rem;
+    padding-left: 2rem;
   }
 
-  .nav{
+  .nav {
     ul {
       display: flex;
       align-items: center;
-      justify-content: center;
+      gap: 2rem;
+      font-size: 1.2rem;
+      font-weight: 500;
+      padding-right: 2rem;
+
+      li {
+        position: relative;
+
+        a {
+          display: inline-block;
+          padding: 0.5rem;
+          border-radius: 4px;
+          transition: background-color 0.3s ease, color 0.3s ease;
+
+          &:focus {
+            border-radius: 0.25rem;
+            border: 1px solid var(--primary-color);
+          }
+          @media (hover) {
+            &:hover {
+              color: var(--primary-color);
+            }
+          }
+          &:active {
+            color: var(--primary-color);
+          }
+        }
+
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: -5px;
+          left: 0;
+          width: 100%;
+          height: 2px;
+          background-color: transparent;
+          transition: background-color 0.3s ease;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    padding: 1rem 0;
+
+    .header__logo_side {
+      padding-left: 0;
+      margin-bottom: 1rem;
+    }
+
+    .nav ul {
+      padding-right: 0;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 0.5rem 0;
+
+    .header__logo_side {
       gap: 1rem;
-      font-size: 1.15rem;
+      padding-left: 1rem;
+    }
+
+    .nav ul {
+      gap: 1rem;
+      font-size: 1rem;
+      padding-right: 1rem;
     }
   }
 }

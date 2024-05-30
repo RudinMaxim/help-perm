@@ -1,4 +1,4 @@
-import { Container, Header } from '@/components';
+import { Container, Footer, Header } from '@/components';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { Toaster } from 'sonner';
@@ -19,11 +19,12 @@ export default function RootLayout({
   return (
     <html lang="ru">
       <body className={inter.className}>
+        <Header />
         <Container>
-          <Header />
           {children}
           <Toaster position="top-right" expand={false} richColors />
         </Container>
+        <Footer/>
       </body>
     </html>
   );
