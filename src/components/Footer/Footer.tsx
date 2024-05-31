@@ -3,8 +3,9 @@ import { Logo } from '..';
 import styles from './Footer.module.scss';
 
 export function Footer() {
-	return <footer className={styles.footer}>
-	<div className={styles.container}>
+  return (
+    <footer className={styles.footer}>
+      {/* <div className={styles.container}>
 	  <div className={styles.logoWrapper}>
           <Logo />
 	  </div>
@@ -27,9 +28,10 @@ export function Footer() {
 		  </a>
 		</div>
 	  </div>
-	</div>
-	<div className={styles.copyright}>
-	  <p>&copy; {new Date().getFullYear()} Max Rudin. Все права защищены.</p>
-	</div>
-  </footer>;
+	</div> */}
+      <div className={styles.copyright}>
+        <p>&copy; {new Date().getFullYear()} Max Rudin. Все права защищены.</p>
+      </div>
+    </footer>
+  );
 }
