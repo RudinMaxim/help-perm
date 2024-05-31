@@ -1,4 +1,3 @@
-import { IconType } from 'react-icons';
 import styles from '../Home.module.scss';
 import { Step } from '@/constants/steps';
 

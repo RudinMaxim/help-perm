@@ -20,11 +20,10 @@ export default function RootLayout({
     <html lang="ru">
       <body className={inter.className}>
         <Header />
-        <Container>
-          {children}
-          <Toaster position="top-right" expand={false} richColors />
-        </Container>
-        <Footer/>
+        {children}
+        <Toaster position="top-right" expand={false} richColors />
+
+        <Footer />
       </body>
     </html>
   );

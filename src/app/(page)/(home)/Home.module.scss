@@ -40,11 +40,33 @@
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: opacity 0.3s ease;
 
     &:hover {
-      background-color: #ddd;
+      opacity: 0.8;
     }
+  }
+  &__button_second {
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    background-color: var(--primary-color);
+    color: var(--bg-color);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  .hero__list__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
   }
 }
 
@@ -66,9 +88,9 @@
   &__step {
     max-width: 300px;
     margin: 1rem;
-    padding: 1rem;
+    padding: 1rem 2rem;
     border: 1px solid #ddd;
-    border-radius: 4px;
+    border-radius: var(--border-radius-black);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
   }
@@ -97,11 +119,9 @@
   &__step-description {
     font-size: 1.1rem;
     line-height: 1.5;
-
-    text-align: justify;
   }
 }
-// OurServices.module.scss
+
 .ourServices {
   padding: 4rem 1rem;
   text-align: center;
@@ -120,10 +140,11 @@
   .service {
     max-width: 300px;
     margin: 1rem;
-    padding: 1rem;
+    padding: 1rem 2rem;
     border: 1px solid #ddd;
-    border-radius: 4px;
+    border-radius: var(--border-radius-black);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
   }
 
   .serviceIcon {
@@ -131,7 +152,7 @@
     justify-content: center;
     margin-bottom: 1rem;
     font-size: 2rem;
-    color: #333;
+    color: var(--primary-color);
   }
 
   .serviceTitle {
@@ -148,6 +169,8 @@
 .contactUs {
   padding: 4rem 1rem;
   text-align: center;
+  background-color: var(--primary-color);
+  color: var(--bg-color);
 
   .title {
     font-size: 2.5rem;

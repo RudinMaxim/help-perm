@@ -1,7 +1,6 @@
 'use client';
 import React from 'react';
 import styles from '../Home.module.scss';
-import { FaWhatsapp } from 'react-icons/fa';
 import { useWhatsAppMessage } from '@/hook/useWhatsAppMessage';
 
 interface ContactUsProps {

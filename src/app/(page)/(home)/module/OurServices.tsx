@@ -8,11 +8,12 @@ export interface Service {
 
 interface OurServicesProps {
   services: Service[];
+  title: string;
 }
-export function OurServices({ services }: OurServicesProps) {
+export function OurServices({ services, title }: OurServicesProps) {
   return (
     <div className={styles.ourServices}>
-      <h2 className={styles.title}>Чем поможем</h2>
+      <h2 className={styles.title}>{title}</h2>
       <div className={styles.services}>
         {services.map((service, index) => (
           <div key={index} className={styles.service}>

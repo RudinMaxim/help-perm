@@ -1,48 +1,56 @@
+// Footer.module.scss
 .footer {
-  background-color: #fff;
-  color: #333;
+  background-color: #333;
+  color: #fff;
+  padding: 2rem 1rem;
 }
 
 .container {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
-// .logoWrapper {
-//   display: flex;
-//   align-items: center;
-// }
+.logoWrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
 
-// .logo {
-//   max-width: 50px;
-//   margin-right: 1rem;
-// }
+.logo {
+  max-width: 50px;
+  margin-right: 1rem;
+}
 
-// .companyName {
-//   font-size: 1.5rem;
-// }
+.companyName {
+  font-size: 1.5rem;
+}
 
-// .socialLinks {
-//   text-align: right;
-// }
+.contactInfo {
+  margin-bottom: 1rem;
+}
 
-// .icons {
-//   display: flex;
-//   justify-content: flex-end;
-// }
+.socialLinks {
+  text-align: right;
+}
 
-// .icons a {
-//   color: #fff;
-//   font-size: 1.5rem;
-//   margin-left: 1rem;
-//   transition: color 0.3s ease;
+.icons {
+  display: flex;
+  justify-content: flex-end;
+}
 
-//   &:hover {
-//     color: #ccc;
-//   }
-// }
+.icons a {
+  color: #fff;
+  font-size: 1.5rem;
+  margin-left: 1rem;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: #ccc;
+  }
+}
 
 .copyright {
   text-align: center;

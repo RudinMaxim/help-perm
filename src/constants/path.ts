@@ -4,7 +4,7 @@ export const PATH_URL = {
     name: 'О нас',
   },
   contactus: {
-    url: '/contactus',
-    name: 'Связаться',
+    url: '/contact',
+    name: 'Контакты',
   },
 };
