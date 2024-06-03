@@ -1,5 +1,5 @@
-import styles from '../Home.module.scss';
 import { Step } from '@/constants/steps';
+import styles from '../Home.module.scss';
 
 interface HowWeWorkProps {
   title: string;
@@ -12,7 +12,7 @@ export function HowWeWork({ title, steps }: HowWeWorkProps) {
       <h2 className={styles['how-we-work__title']}>{title}</h2>
       <div className={styles['how-we-work__steps']}>
         {steps.map((step, index) => (
-          <div key={index} className={styles['how-we-work__step']}>
+          <div key={`HowWeWork__${index}`} className={styles['how-we-work__step']}>
             <h3 className={styles['how-we-work__step-title']}>
               <span className={styles['how-we-work__step-icon']}>
                 {index + 1}

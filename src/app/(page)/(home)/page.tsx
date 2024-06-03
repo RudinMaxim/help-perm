@@ -1,10 +1,11 @@
+import { Container, MotivationalBanner } from '@/components';
 import { services } from '@/constants/services';
+import { steps } from '@/constants/steps';
 import { ContactUs, Hero, OurServices } from './module';
 import { HowWeWork } from './module/HowWeWork';
-import { steps } from '@/constants/steps';
-import { Container, MotivationalBanner } from '@/components';
 
 export default function Home() {
+
   return (
     <main>
       <Container>

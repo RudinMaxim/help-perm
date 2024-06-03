@@ -1,5 +1,6 @@
 .hero {
-  background-image: url('/austin-schmid-hRdVSYpffas-unsplash.jpg');
+  background-image: url('/austin-schmid-hRdVSYpffas-unsplash.webp');
+  background-color: var(--text-color);
   background-size: cover;
   background-position: center;
   min-height: 900px;
@@ -69,6 +70,39 @@
     flex-wrap: wrap;
   }
 }
+@media (max-width: 767px) {
+  .hero {
+    &__title {
+      font-size: 2rem;
+    }
+
+    &__subtitle {
+      font-size: 1.2rem;
+    }
+
+    &__description {
+      font-size: 1rem;
+    }
+  }
+
+  .how-we-work {
+    &__step {
+      max-width: 100%;
+    }
+  }
+
+  .ourServices {
+    .service {
+      max-width: 100%;
+    }
+  }
+
+  .contactUs {
+    .form {
+      max-width: 100%;
+    }
+  }
+}
 
 .how-we-work {
   padding: 4rem 1rem;
@@ -86,7 +120,7 @@
   }
 
   &__step {
-    max-width: 300px;
+    max-width: 100%;
     margin: 1rem;
     padding: 1rem 2rem;
     border: 1px solid #ddd;
@@ -138,7 +172,7 @@
   }
 
   .service {
-    max-width: 300px;
+    max-width: 100%;
     margin: 1rem;
     padding: 1rem 2rem;
     border: 1px solid #ddd;
@@ -158,6 +192,7 @@
   .serviceTitle {
     font-size: 1.5rem;
     margin-bottom: 1rem;
+    overflow: hidden;
   }
 
   .serviceDescription {
@@ -235,6 +270,62 @@
 
     svg {
       margin-right: 0.5rem;
+    }
+  }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  .hero {
+    &__title {
+      font-size: 2.5rem;
+    }
+
+    &__subtitle {
+      font-size: 1.3rem;
+    }
+
+    &__description {
+      font-size: 1.1rem;
+    }
+  }
+
+  .how-we-work {
+    &__step {
+      max-width: 45%;
+    }
+  }
+
+  .ourServices {
+    .service {
+      max-width: 45%;
+    }
+  }
+}
+
+/* Для ноутбуков и настольных компьютеров */
+@media (min-width: 1024px) {
+  .hero {
+    &__title {
+      font-size: 3rem;
+    }
+
+    &__subtitle {
+      font-size: 1.5rem;
+    }
+
+    &__description {
+      font-size: 1.2rem;
+    }
+  }
+
+  .how-we-work {
+    &__step {
+      max-width: 300px;
+    }
+  }
+
+  .ourServices {
+    .service {
+      max-width: 300px;
     }
   }
 }
