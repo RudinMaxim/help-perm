@@ -1,8 +1,15 @@
 import { Container, MotivationalBanner } from '@/components';
 import { services } from '@/constants/services';
 import { steps } from '@/constants/steps';
+import { getMetadata } from '@/utils/getMetadata';
+import { Metadata } from 'next/types';
 import { ContactUs, Hero, OurServices } from './module';
 import { HowWeWork } from './module/HowWeWork';
+
+export const metadata: Metadata = getMetadata({
+  title: 'Помощь рядом - Поддержка и решение жизненных проблем',
+  description: 'Наша организация готова оказать профессиональную помощь и поддержку в решении различных жизненных проблем. Независимо от ситуации, мы поможем найти решение и пройти этот путь вместе с вами.',
+});
 
 export default function Home() {
 
