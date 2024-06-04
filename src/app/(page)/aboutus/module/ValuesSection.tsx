@@ -1,5 +1,5 @@
+import { Value } from '@/constants/values';
 import styles from '../AboutUs.module.scss';
-import { Value } from '../page';
 
 interface ValuesSectionProps {
     title: string;

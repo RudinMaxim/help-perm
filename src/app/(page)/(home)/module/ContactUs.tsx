@@ -1,7 +1,6 @@
 'use client';
-import React from 'react';
-import styles from '../Home.module.scss';
 import { useWhatsAppMessage } from '@/hook/useWhatsAppMessage';
+import styles from '../Home.module.scss';
 
 interface ContactUsProps {
   title: string;
@@ -23,7 +22,6 @@ export function ContactUs({ title, phone }: ContactUsProps) {
             name="name"
             value={messageData.name}
             onChange={handleChange}
-            required
           />
         </div>
         <div className={styles.formGroup}>
@@ -34,7 +32,6 @@ export function ContactUs({ title, phone }: ContactUsProps) {
             name="email"
             value={messageData.email}
             onChange={handleChange}
-            required
           />
         </div>
         <div className={styles.formGroup}>

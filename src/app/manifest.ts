@@ -2,9 +2,9 @@ import { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
     return {
-      name: 'Samovartime',
-      short_name: 'Samovartime',
-      description: 'Поставщик весового чая в Перми с доставкой по всей России',
+      name: 'Помощь рядом',
+      short_name: 'Помощь всегда рядом',
+      description: 'Жизнь порой преподносит неожиданные испытания, и порой может показаться, что вы остались один на один со своими проблемами. Но это не так – мы, готовы оказать вам профессиональную помощь и поддержку. Независимо от того, какие трудности вы переживаете, мы поможем найти решение и пройти этот путь вместе с вами.',
       start_url: '/',
       display: 'standalone',
       background_color: '#fff',
