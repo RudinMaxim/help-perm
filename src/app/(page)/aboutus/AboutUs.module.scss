@@ -1,0 +1,190 @@
+.hero {
+  background-image: url('/josh-appel-0nkFvdcM-X4-unsplash.jpg');
+  background-color: var(--text-color);
+  background-size: cover;
+  background-position: center;
+  min-height: 900px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: var(--bg-color);
+  margin: 2rem 1rem;
+  border-radius: var(--border-radius-black);
+
+  .heroContent {
+    max-width: 800px;
+    padding: 20px;
+  }
+
+  .heroTitle {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  .heroSubtitle {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .heroDescription {
+    font-size: 1.2rem;
+    margin-bottom: 3rem;
+  }
+
+  .heroButton {
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    background-color: var(--primary-color);
+    color: var(--bg-color);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  .heroButton:hover {
+    opacity: 0.8;
+  }
+
+  .heroButtonContainer {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.teamSection {
+  background-color: var(--primary-color);
+  padding: 4rem 2rem;
+  margin: 0 1rem;
+  text-align: center;
+  color: var(--bg-color);
+  border-radius: var(--border-radius-black);
+
+  .teamContent {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .teamTitle {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .teamDescription {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+  }
+
+  .teamMembers {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  .teamMember {
+    max-width: 100%;
+    margin: 1rem;
+    padding: 1rem 2rem;
+    border: 1px solid #ddd;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    border-radius: var(--border-radius-black);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+
+  .teamMemberImage {
+    width: 100%;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .teamMemberName {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+  }
+
+  .teamMemberRole {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: var(--text-color-secondary);
+  }
+
+  .teamMemberBio {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+}
+
+.valuesSection {
+  padding: 4rem 1rem;
+  text-align: center;
+
+  .valuesContent {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .valuesTitle {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .valuesList {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+
+  .valuesItem {
+    max-width: 100%;
+    margin: 1rem;
+    padding: 1rem 2rem;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius-black);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+
+  .valuesIcon {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    color: var(--primary-color);
+  }
+
+  .valuesItemTitle {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    overflow: hidden;
+  }
+
+  .valuesItemDescription {
+    font-size: 1.1rem;
+    line-height: 1.5;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .hero{
+    min-height: 500px;
+    .heroTitle {
+      font-size: 2rem;
+    }
+    .heroSubtitle {
+      font-size: 1rem;
+    }
+  }
+
+  .teamSection {
+    padding: 2rem 1rem;
+  }
+}
