@@ -1,5 +1,5 @@
 .hero {
-  background-image: url('/austin-schmid-hRdVSYpffas-unsplash.webp');
+  background-image: url('/hanna-morris-Eu_jjK6Z67Q-unsplash.jpg');
   background-color: var(--text-color);
   background-size: cover;
   background-position: center;
@@ -273,6 +273,23 @@
     }
   }
 }
+
+.beforeAfter {
+  .swiper-button-prev,
+  .swiper-button-next {
+    color: #333;
+  }
+
+  .swiper-pagination-bullet {
+    background-color: #ccc;
+    opacity: 1;
+
+    &.swiper-pagination-bullet-active {
+      background-color: #333;
+    }
+  }
+}
+
 @media (min-width: 768px) and (max-width: 1023px) {
   .hero {
     &__title {

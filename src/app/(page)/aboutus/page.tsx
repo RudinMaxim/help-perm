@@ -1,12 +1,7 @@
-import { teamMembers } from "@/constants/teamMembers";
 import { values } from '@/constants/values';
 import { ContactUs } from "../(home)/module";
 import { AboutHero, TeamSection } from "./module";
 import { ValuesSection } from "./module/ValuesSection";
-
-
-
-
 
 export default function selfhelp() {
   return (
@@ -18,8 +13,8 @@ export default function selfhelp() {
         buttonText="Получить помощь"
       />
       <TeamSection title="Наша команда"
-        description="Познакомьтесь с людьми, которые стоят за нашей организацией и помогают тем, кто нуждается в поддержке."
-        members={teamMembers} />
+        description="Наша команда объединяет профессионалов различных направлений, призванных оказывать помощь тем, кто оказался в трудной жизненной ситуации. Мы состоим из опытных специалистов в области психологии, социальной работы, юриспруденции и смежных дисциплин. Объединив усилия, мы обеспечиваем комплексный подход к решению проблем каждого обратившегося, окружая его профессиональной поддержкой на всех этапах преодоления трудностей."
+      />
       <ValuesSection
         title="Наши ценности"
         values={values}

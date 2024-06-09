@@ -77,49 +77,7 @@
   }
 
   .teamDescription {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-  }
-
-  .teamMembers {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 2rem;
-  }
-
-  .teamMember {
-    max-width: 100%;
-    margin: 1rem;
-    padding: 1rem 2rem;
-    border: 1px solid #ddd;
-    color: var(--text-color);
-    background-color: var(--bg-color);
-    border-radius: var(--border-radius-black);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-  }
-
-  .teamMemberImage {
-    width: 100%;
-    border-radius: 0.5rem;
-    margin-bottom: 1rem;
-  }
-
-  .teamMemberName {
     font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-    color: var(--primary-color);
-  }
-
-  .teamMemberRole {
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
-    color: var(--text-color-secondary);
-  }
-
-  .teamMemberBio {
-    font-size: 1rem;
     line-height: 1.5;
   }
 }
@@ -174,7 +132,7 @@
 }
 
 @media screen and (max-width: 768px) {
-  .hero{
+  .hero {
     min-height: 500px;
     .heroTitle {
       font-size: 2rem;

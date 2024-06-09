@@ -1,10 +1,12 @@
 import {
+  FaAccessibleIcon,
   FaBookReader,
   FaGavel,
-  FaUserFriends,
-  FaMoneyBillWave,
-  FaAccessibleIcon,
+  FaGlassWhiskey,
   FaHome,
+  FaMoneyBillWave,
+  FaPills,
+  FaUserFriends,
 } from 'react-icons/fa';
 
 export const services = [
@@ -43,5 +45,16 @@ export const services = [
     title: 'Помощь бездомным',
     description:
       'Наша организация предоставляет временное жилье, питание, одежду и другую необходимую помощь людям, оказавшимся без крова.',
+  }, {
+    icon: <FaPills />,
+    title: 'Помощь наркозависимым',
+    description:
+      'Мы предлагаем комплексную программу реабилитации и поддержки для людей, страдающих от наркотической зависимости, включая консультации, терапию и сопровождение на пути к выздоровлению.',
+  },
+  {
+    icon: <FaGlassWhiskey />,
+    title: 'Помощь алкозависимым',
+    description:
+      'Наша организация оказывает помощь людям, страдающим от алкогольной зависимости, предлагая программы детоксикации, психологическую поддержку и сопровождение в процессе реабилитации.',
   },
 ];

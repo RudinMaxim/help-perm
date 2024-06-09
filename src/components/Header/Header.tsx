@@ -9,9 +9,7 @@ export function Header() {
 			<div className={style.header__logo_side}>
 				<Logo />
 				<NavBar />
-
 			</div>
-
 			<PhoneLink/>
 		</header>
 	);

@@ -2,5 +2,7 @@ import { ContactUs } from './ContactUs';
 import { Hero } from './Hero';
 import { HowWeWork } from './HowWeWork';
 import { OurServices } from './OurServices';
+import { Results } from './Results';
 
-export { Hero, ContactUs, HowWeWork, OurServices };
+export { ContactUs, Hero, HowWeWork, OurServices, Results };
+
