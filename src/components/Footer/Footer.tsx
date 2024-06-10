@@ -1,4 +1,5 @@
-import { FaFacebook, FaInstagram, FaTwitter } from 'react-icons/fa';
+import { MAIN_PHONE_NUMBER, SECOND_PHONE_NUMBER } from '@/constants/phone';
+import Link from 'next/link';
 import { Logo } from '..';
 import styles from './Footer.module.scss';
 
@@ -10,12 +11,18 @@ export function Footer() {
           <Logo />
         </div>
         <div className={styles.contactInfo}>
-          <p>Адрес компании</p>
-          <p>Телефон: +1 234 567 890</p>
-          <p>Email:info@company.com</p>
+          <p>Телефон: 
+            <Link href={`tel:${MAIN_PHONE_NUMBER}`}>{MAIN_PHONE_NUMBER}</Link>
+          </p>
+          <p>Телефон: 
+            <Link href={`tel:${SECOND_PHONE_NUMBER}`}>{SECOND_PHONE_NUMBER}</Link>
+          </p>
+          {/* <p>Email:
+            <Link href={`mailto:${MAIN_EMAIL}`}>{MAIN_EMAIL}</Link>
+          </p> */}
         </div>
         <div className={styles.socialLinks}>
-          <h3>Следите за нами</h3>
+          {/* <h3>Следите за нами</h3>
           <div className={styles.icons}>
             <a href="#" target="_blank" rel="noopener noreferrer">
               <FaFacebook />
@@ -26,7 +33,7 @@ export function Footer() {
             <a href="#" target="_blank" rel="noopener noreferrer">
               <FaInstagram />
             </a>
-          </div>
+          </div> */}
         </div>
       </div>
       <div className={styles.copyright}>

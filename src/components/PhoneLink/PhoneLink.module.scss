@@ -1,5 +1,5 @@
 .phoneLink {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   font-size: 1.5rem;
   font-weight: 900;
@@ -7,6 +7,7 @@
   color: var(--primary-color);
   transition: all 0.3s ease;
   padding: 0.25rem 0.5rem;
+  flex-direction: column;
 
 
   &:focus {
