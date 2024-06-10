@@ -1,3 +1,4 @@
+import { MAIN_PHONE_NUMBER } from '@/constants/phone';
 import styles from './MotivationalBanner.module.scss';
 
 export function MotivationalBanner() {
@@ -11,8 +12,8 @@ export function MotivationalBanner() {
           проблемах. Наша команда специалистов готова поддержать вас и помочь
           справиться с любыми трудностями.
         </p>
-        <a href="/#contactUs" className={styles.button}>
-          Получить помощь
+        <a href={`tel:${MAIN_PHONE_NUMBER}`} className={styles.button}>
+          Позвонить сейчас
         </a>
       </div>
     </article>

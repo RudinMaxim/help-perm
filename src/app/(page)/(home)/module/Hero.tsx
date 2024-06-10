@@ -23,7 +23,7 @@ export function Hero({ title, subtitle, description, buttonText }: HeroProps) {
             href={`tel:${MAIN_PHONE_NUMBER}`}
             className={style.hero__button_second}
           >
-            Позвонить сейчас
+            Заказать звонок
           </a>
         </div>
       </div>

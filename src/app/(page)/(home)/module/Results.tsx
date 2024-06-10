@@ -29,7 +29,7 @@ export const Results: React.FC<ResultsProps> = ({ stories }) => {
                     enabled: true,
                 }}
                 loop={true}
-                autoplay={{ delay: 3500 }}
+                autoplay={{ delay: 3500, disableOnInteraction: false }}
             >
                 {stories.map((story, index) => (
                     <SwiperSlide key={`Results__${index}__${story.description}`}>
