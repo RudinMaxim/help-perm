@@ -64,6 +64,11 @@
     }
   }
 }
+.header__contacts_side{
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+}
 
 @media (max-width: 768px) {
   .header {
@@ -78,6 +83,8 @@
     .nav ul {
       padding-right: 0;
     }
+  }
+  .header__contacts_side{    align-items: flex-start;
   }
 }
 
