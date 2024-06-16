@@ -1,5 +1,8 @@
 'use client';
+import { MAIN_EMAIL, MAIN_PHONE_NUMBER, MAIN_TLEGRAMM_LINK, SECOND_PHONE_NUMBER } from '@/constants/phone';
 import { useWhatsAppMessage } from '@/hook/useWhatsAppMessage';
+import Link from 'next/link';
+import { FaEnvelope, FaPhone, FaTelegram, FaWhatsapp } from 'react-icons/fa';
 import styles from '../Home.module.scss';
 
 interface ContactUsProps {
@@ -52,6 +55,38 @@ export function ContactUs({ title, phone }: ContactUsProps) {
           Отправить в WhatsApp
         </button>
       </form>
+      <ul className={styles.contactInfo}>
+        <li>
+          <Link href={`tel:${SECOND_PHONE_NUMBER}`} target="_blank" rel="noreferrer">
+            <FaPhone size={'2rem'} />
+            +7 923 523 11 51
+          </Link>
+        </li>
+        <li>
+          <Link href={`tel:${MAIN_PHONE_NUMBER}`} target="_blank" rel="noreferrer">
+            <FaPhone size={'2rem'} />
+            +7 922 922 80 04
+          </Link>
+        </li>
+        <li>
+          <Link href={`mailto:${MAIN_EMAIL}`}>
+            <FaEnvelope size={'2rem'} />
+            {MAIN_EMAIL}
+          </Link>
+        </li>
+        <li>
+          <Link href={MAIN_TLEGRAMM_LINK} target="_blank" rel="noreferrer">
+            <FaTelegram size={'2rem'} />
+            Telegram
+          </Link>
+        </li>
+        <li>
+          <Link href={`https://wa.me/${MAIN_PHONE_NUMBER}`} target="_blank" rel="noreferrer">
+            <FaWhatsapp size={'2rem'} />
+            WhatsApp
+          </Link>
+        </li>
+      </ul>
     </section>
   );
 }

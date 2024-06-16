@@ -23,9 +23,9 @@ export default function Home() {
           description="Жизнь порой преподносит неожиданные испытания, и порой может показаться, что вы остались один на один со своими проблемами. Но это не так – мы, готовы оказать вам профессиональную помощь и поддержку. Независимо от того, какие трудности вы переживаете, мы поможем найти решение и пройти этот путь вместе с вами."
           buttonText="Получить помощь"
         />
-        <HowWeWork title="Как мы работаем" steps={steps} />
-        <MotivationalBanner />
         <OurServices title="Чем поможем" services={services} />
+        <MotivationalBanner />
+        <HowWeWork title="Как мы работаем" steps={steps} />
         <Results stories={stories} />
       </Container>
       <ContactUs title="Свяжитесь с нами" phone="+79223261682" />
