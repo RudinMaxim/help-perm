@@ -27,7 +27,7 @@ export function Hero({ title, subtitle, description, buttonText }: HeroProps) {
             Написать в WhatsApp
           </Link>
           <Link
-            href={`https://t.me/Max_Rudin`}
+            href={`https://t.me/Eaterina_Tenenkova`}
             target="_blank"
             rel="noopener noreferrer"
             className={style.hero__button_second}
