@@ -5,7 +5,6 @@ import style from './Logo.module.scss';
 export function Logo() {
     return (
         <Link href="/" className={style.logo}>
-
             <Image
                 src="/logo.svg"
                 alt="Logo"
@@ -13,7 +12,9 @@ export function Logo() {
                 height={32}
             />
             <span >
-                Помощь рядом
+                Бесплатная помощь
+                <br />
+                зависимым
             </span>
         </Link>
     );

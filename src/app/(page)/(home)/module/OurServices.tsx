@@ -12,17 +12,17 @@ interface OurServicesProps {
 }
 export function OurServices({ services, title }: OurServicesProps) {
   return (
-    <div className={styles.ourServices}>
+    <section className={styles.ourServices}>
       <h2 className={styles.title}>{title}</h2>
       <div className={styles.services}>
         {services.map((service, index) => (
-          <div key={index} className={styles.service}>
+          <div key={`OurServices__${index}`} className={styles.service}>
             <div className={styles.serviceIcon}>{service.icon}</div>
             <h3 className={styles.serviceTitle}>{service.title}</h3>
             <p className={styles.serviceDescription}>{service.description}</p>
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 }

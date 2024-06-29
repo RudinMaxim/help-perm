@@ -14,7 +14,7 @@ export function Header() {
 			</div>
 			<div className={style.header__contacts_side}>
 				<PhoneLink />
-				<Link href={`mailto:${MAIN_EMAIL}`}>
+				<Link href={`mailto:${MAIN_EMAIL}`} title="Написать нам">
 					blagotvoritelnostperm@gmail.com
 				</Link>
 			</div>

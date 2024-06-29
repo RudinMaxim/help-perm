@@ -31,12 +31,12 @@ export const Results: React.FC<ResultsProps> = ({ stories }) => {
                 loop={true}
                 autoplay={{ delay: 3500, disableOnInteraction: false }}
             >
-                {stories.map((story, index) => (
+                {stories?.map((story, index) => (
                     <SwiperSlide key={`Results__${index}__${story.description}`}>
                         <div className={styles.beforeAfter__imageContainer}>
                             <Image
                                 src={story.image}
-                                alt={`История ${index + 1}`}
+                                alt={`История__${index + 1}`}
                                 width={isSmallScreen ? 300 : 500}
                                 height={isSmallScreen ? 300 : 500}
                                 className={styles.beforeAfter__image}

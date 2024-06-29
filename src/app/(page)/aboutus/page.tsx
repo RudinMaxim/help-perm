@@ -1,3 +1,4 @@
+import { MAIN_PHONE_NUMBER } from '@/constants/phone';
 import { values } from '@/constants/values';
 import { ContactUs } from "../(home)/module";
 import { AboutHero, TeamSection } from "./module";
@@ -19,7 +20,7 @@ export default function selfhelp() {
         title="Наши ценности"
         values={values}
       />
-      <ContactUs title="Свяжитесь с нами" phone="+79223261682" />
+      <ContactUs title="Свяжитесь с нами" phone={MAIN_PHONE_NUMBER} />
     </main>
   );
 }

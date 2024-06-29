@@ -8,7 +8,7 @@ interface HowWeWorkProps {
 
 export function HowWeWork({ title, steps }: HowWeWorkProps) {
   return (
-    <div className={styles['how-we-work']}>
+    <section className={styles['how-we-work']}>
       <h2 className={styles['how-we-work__title']}>{title}</h2>
       <div className={styles['how-we-work__steps']}>
         {steps.map((step, index) => (
@@ -25,6 +25,6 @@ export function HowWeWork({ title, steps }: HowWeWorkProps) {
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 }

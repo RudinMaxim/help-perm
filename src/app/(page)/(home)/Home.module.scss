@@ -1,5 +1,6 @@
 .hero {
-  background-image: url('/hanna-morris-Eu_jjK6Z67Q-unsplash.webp');
+  position: relative;
+  background-image: url('/hanna-morris-Eu_jjK6Z67Q-unsplash2.webp');
   background-color: var(--text-color);
   background-size: cover;
   background-position: center;
@@ -12,6 +13,7 @@
   color: var(--bg-color);
   margin-top: 2rem;
   border-radius: 2rem;
+  overflow: hidden;
 
   &__content {
     max-width: 800px;
@@ -91,7 +93,8 @@
       font-size: 1rem;
     }
 
-    &__button, &__button_second{
+    &__button,
+    &__button_second {
       padding: 0.5rem 1rem;
       font-size: 1rem;
     }
@@ -170,11 +173,11 @@
 
 .ourServices {
   padding: 4rem 1rem;
-  text-align: center;
 
   .title {
     font-size: 2.5rem;
     margin-bottom: 3rem;
+    text-align: center;
   }
 
   .services {
@@ -205,11 +208,13 @@
     font-size: 1.5rem;
     margin-bottom: 1rem;
     overflow: hidden;
+    text-align: center;
   }
 
   .serviceDescription {
     font-size: 1.1rem;
     line-height: 1.5;
+    text-align: center;
   }
 }
 
