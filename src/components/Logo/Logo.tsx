@@ -8,8 +8,8 @@ export function Logo() {
             <Image
                 src="/logo.svg"
                 alt="Logo"
-                width={62}
-                height={62}
+                width={52}
+                height={52}
             />
             <span >
                 Бесплатная помощь
