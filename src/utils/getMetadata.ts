@@ -18,7 +18,6 @@ export const getMetadata = (props: IMetadata): Metadata => {
     '@type': 'Organization',
     name: 'Благотворительная помощь в России',
     url: BASE_URL,
-    logo: `${BASE_URL}/favicon.ico`,
     contactPoint: [
       {
         '@type': 'ContactPoint',
@@ -110,7 +109,7 @@ export const getMetadata = (props: IMetadata): Metadata => {
     },
     other: {
       'yandex-verification': '07c30b0770e6567f',
-      'google-site-verification': 'YOUR_GOOGLE_VERIFICATION_CODE', // Замените на ваш код верификации Google
+      'google-site-verification': 'Es1etisPASiWvXIWEfo788aAH534wlF1ZlO8-8ZpSLY', // Замените на ваш код верификации Google
       'msvalidate.01': 'YOUR_BING_VERIFICATION_CODE', // Замените на ваш код верификации Bing
       'geo.region': 'RU',
       'geo.placename': 'Россия',

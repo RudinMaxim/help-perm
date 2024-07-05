@@ -1,10 +1,8 @@
-
-import Script from 'next/script';
+import Script from 'next/script'
 
 export default function YandexMetrika() {
        return (
               <>
-                     {/* <!-- Yandex.Metrika counter --> */}
                      <Script id="yandex-metrika" strategy="afterInteractive">
                             {`
           (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
@@ -25,7 +23,6 @@ export default function YandexMetrika() {
                                    <img src="https://mc.yandex.ru/watch/97610015" style={{ position: 'absolute', left: '-9999px' }} alt="" />
                             </div>
                      </noscript>
-                     {/* <!-- /Yandex.Metrika counter --> */}
               </>
        )
 }
