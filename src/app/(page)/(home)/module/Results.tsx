@@ -21,7 +21,7 @@ export const Results: React.FC<ResultsProps> = ({ stories }) => {
 
     return (
         <section className={styles.beforeAfter}>
-            <h2 className={styles.title}>Наши результаты</h2>
+            <h1 className={styles.title}>Наши результаты</h1>
             <Swiper
                 spaceBetween={30}
                 slidesPerView={isSmallScreen ? 1 : 2}

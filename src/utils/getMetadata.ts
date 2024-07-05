@@ -15,11 +15,10 @@ interface IMetadata {
 
 export const getMetadata = (props: IMetadata): Metadata => {
   const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Organization',
     name: 'Благотворительная помощь в России',
     url: BASE_URL,
     logo: `${BASE_URL}/android-chrome-512x512.png`,
+    
     contactPoint: [
       {
         '@type': 'ContactPoint',
@@ -103,6 +102,15 @@ export const getMetadata = (props: IMetadata): Metadata => {
           'помощь смоленск',
           'помощь брянск',
         ],
+
+        icons: [
+          `${BASE_URL}/android-chrome-192x192.png`,
+          `${BASE_URL}/android-chrome-512x512.png`,
+          `${BASE_URL}/apple-touch-icon.png`,
+          `${BASE_URL}/favicon-16x16.png`,
+          `${BASE_URL}/favicon-32x32.png`,
+          `${BASE_URL}/site.webmanifest`,
+        ],
     viewport:
       'width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no',
     formatDetection: {
@@ -112,6 +120,7 @@ export const getMetadata = (props: IMetadata): Metadata => {
       canonical: props.url ? `${BASE_URL}/${props.url}` : BASE_URL,
     },
     other: {
+      'google-site-verification': 'Es1etisPASiWvXIWEfo788aAH534wlF1ZlO8-8ZpSLY',
       'og:type': 'website',
       'og:title': `${props.title ?? 'Бесплатная помощь зависимым в России'}`,
       'og:url': `${props.url ? BASE_URL + '/' + props.url : BASE_URL + '/'}`,

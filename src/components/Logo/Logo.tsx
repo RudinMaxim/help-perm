@@ -8,12 +8,11 @@ export function Logo() {
             <Image
                 src="/logo.svg"
                 alt="Logo"
-                width={32}
-                height={32}
+                width={62}
+                height={62}
             />
             <span >
                 Бесплатная помощь
-                <br />
                 зависимым
             </span>
         </Link>

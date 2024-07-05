@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.5rem 1rem;
+  padding: 0.5rem 1rem;
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin-top: 0.25rem;
@@ -19,9 +19,11 @@
   }
 
   .nav {
+    width: 100%;
     ul {
       display: flex;
       align-items: center;
+      justify-content: center;
       gap: 2rem;
       font-size: 1.2rem;
       font-weight: 500;
@@ -32,17 +34,19 @@
 
         a {
           display: inline-block;
-          padding: 0.5rem;
-          border-radius: 4px;
-          transition: background-color 0.3s ease, color 0.3s ease;
+          transition: background-color 0.3s ease, color 0.3s ease,
+            transform 0.3s ease;
+          background-color: var(--primary-color);
+          color: var(--bg-color);
+          padding: 0.75rem 2rem;
+          border-radius: 30px;
 
           &:focus {
-            border-radius: 0.25rem;
-            border: 1px solid var(--primary-color);
+            border: 2px solid var(--secondary-color);
           }
           @media (hover) {
             &:hover {
-              color: var(--primary-color);
+              transform: translateY(-0.5rem);
             }
           }
           &:active {
@@ -64,38 +68,28 @@
     }
   }
 }
-.header__contacts_side{
-  display: flex;
-  align-items: flex-end;
-  flex-direction: column;
-}
 
 @media (max-width: 768px) {
   .header {
     flex-direction: column;
     padding: 1rem 0;
 
-    .header__logo_side {
-      padding-left: 0;
-      margin-bottom: 1rem;
-    }
+    .nav {
+      ul {
+        justify-content: flex-start;
+        margin: 1rem 0;
 
-    .nav ul {
-      padding-right: 0;
+        padding-right: 0;
+        li {
+        }
+      }
     }
-  }
-  .header__contacts_side{    align-items: flex-start;
   }
 }
 
 @media (max-width: 480px) {
   .header {
     padding: 0.5rem 0;
-
-    .header__logo_side {
-      gap: 1rem;
-      padding-left: 1rem;
-    }
 
     .nav ul {
       gap: 1rem;
@@ -131,7 +125,7 @@
 
         a {
           display: block;
-          padding: 0.5rem;
+          padding: 0.75rem ;
           width: 100%;
           text-align: left;
         }

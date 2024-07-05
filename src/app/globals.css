@@ -27,10 +27,9 @@ html {
   flex-direction: column;
 }
 
-main{
+main {
   flex: 1;
 }
-
 
 * {
   box-sizing: border-box;
@@ -54,4 +53,10 @@ li {
   margin: 0 auto;
   padding: 0px 8px;
   background-color: var(--bg-color);
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
 }
