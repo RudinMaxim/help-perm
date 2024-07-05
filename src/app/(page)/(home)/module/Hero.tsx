@@ -21,8 +21,8 @@ export function Hero({ title, subtitle, description, buttonText }: HeroProps) {
           <Link href={`https://wa.me/${MAIN_PHONE_NUMBER.replace(
             '+',
             ''
-          )}`} className={style.hero__button} rel="noopener noreferrer" target='_blank'>
-            <FaWhatsapp />
+          )}`} className={style.hero__button_second} rel="noopener noreferrer" target='_blank'>
+            <FaWhatsapp size={32} />
 
             Написать в WhatsApp
           </Link>
@@ -32,17 +32,15 @@ export function Hero({ title, subtitle, description, buttonText }: HeroProps) {
             rel="noopener noreferrer"
             className={style.hero__button_second}
           >
-            <FaTelegram /> Написать в Telegram
+            <FaTelegram size={32} /> Написать в Telegram
           </Link>
         </div>
-        <div >
-          <Link
-            href={`tel:${MAIN_PHONE_NUMBER}`}
-            className={style.hero__button_second}
-          >
-            Заказать звонок
-          </Link>
-        </div>
+        <Link
+          href={`tel:${MAIN_PHONE_NUMBER}`}
+          className={style.hero__button}
+        >
+          Заказать звонок
+        </Link>
       </div>
     </section >
   );
