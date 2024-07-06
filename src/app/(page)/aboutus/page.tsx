@@ -1,8 +1,16 @@
 import { MAIN_PHONE_NUMBER } from '@/constants/phone';
 import { values } from '@/constants/values';
+import { getMetadata } from '@/utils/getMetadata';
+import { Metadata } from 'next';
 import { ContactUs } from "../(home)/module";
 import { AboutHero, TeamSection } from "./module";
 import { ValuesSection } from "./module/ValuesSection";
+
+export const metadata: Metadata = getMetadata({
+  title: 'О нас - Бесплатная помощь зависимым по всей России',
+  description: 'Узнайте больше о нашей некоммерческой организации, которая оказывает помощь людям, оказавшимся в сложных жизненных ситуациях. Наша команда профессионалов готова предложить вам поддержку, консультации и решения.',
+});
+
 
 export default function selfhelp() {
   return (
