@@ -1,0 +1,42 @@
+.baseButton {
+  display: inline-block;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+  background-color: var(--bg-color);
+  color: var(--primary-color);
+  padding: 1rem 2rem;
+  font-size: 1.25rem;
+  border-radius: 30px;
+  cursor: pointer;
+
+  &:focus {
+    border: 2px solid var(--secondary-color);
+  }
+  @media (hover) {
+    &:hover {
+      transform: translateY(-0.5rem);
+    }
+  }
+  &:active {
+    color: var(--primary-color);
+  }
+}
+
+.primaryButton {
+  background-color: var(--bg-color);
+  color: var(--primary-color);
+}
+
+.secondaryButton {
+  background-color: var(--primary-color);
+  color: var(--bg-color);
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+@media (max-width: 767px) {
+  .baseButton {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+  }
+}

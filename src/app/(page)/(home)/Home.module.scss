@@ -1,10 +1,11 @@
 .hero {
   position: relative;
-  background-image: url('/hanna-morris-Eu_jjK6Z67Q-unsplash2.webp');
+  background-image: url('/hero_1.webp');
   background-color: var(--text-color);
   background-size: cover;
-  background-position: center;
-  min-height: 900px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  min-height: 1000px;
   height: 100%;
   display: flex;
   justify-content: center;
@@ -35,52 +36,6 @@
     margin-bottom: 3rem;
   }
 
-  &__button {
-    display: inline-block;
-    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
-    background-color: var(--bg-color);
-    color: var(--primary-color);
-    padding: 1rem 2rem;
-    font-size: 1.25rem;
-    border-radius: 30px;
-
-    &:focus {
-      border: 2px solid var(--secondary-color);
-    }
-    @media (hover) {
-      &:hover {
-        transform: translateY(-0.5rem);
-      }
-    }
-    &:active {
-      color: var(--primary-color);
-    }
-  }
-  &__button_second {
-    display: inline-block;
-    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
-    background-color: var(--primary-color);
-    color: var(--bg-color);
-    padding: 1rem 2rem;
-    border-radius: 30px;
-
-    &:focus {
-      border: 2px solid var(--secondary-color);
-    }
-    @media (hover) {
-      &:hover {
-        transform: translateY(-0.5rem);
-      }
-    }
-    &:active {
-      color: var(--primary-color);
-    }
-
-    &:hover {
-      opacity: 0.8;
-    }
-  }
-
   .hero__list__button {
     display: flex;
     align-items: center;
@@ -107,12 +62,6 @@
     }
 
     &__description {
-      font-size: 1rem;
-    }
-
-    &__button,
-    &__button_second {
-      padding: 0.5rem 1rem;
       font-size: 1rem;
     }
   }

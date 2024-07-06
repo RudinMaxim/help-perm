@@ -1,5 +1,5 @@
 import { MAIN_PHONE_NUMBER, SECOND_TLEGRAMM_LINK } from '@/constants/phone';
-import Link from 'next/link';
+import { ButtonLink } from '@/ui';
 import { FaTelegram, FaWhatsapp } from 'react-icons/fa';
 import style from '../Home.module.scss';
 
@@ -18,29 +18,30 @@ export function Hero({ title, subtitle, description, buttonText }: HeroProps) {
         <h2 className={style.hero__subtitle}>{subtitle}</h2>
         <p className={style.hero__description}>{description}</p>
         <div className={style.hero__list__button}>
-          <Link href={`https://wa.me/${MAIN_PHONE_NUMBER.replace(
+          <ButtonLink href={`https://wa.me/${MAIN_PHONE_NUMBER.replace(
             '+',
             ''
-          )}`} className={style.hero__button_second} rel="noopener noreferrer" target='_blank'>
+          )}`} variant='secondary' rel="noopener noreferrer" target='_blank'>
             <FaWhatsapp size={32} />
 
             Написать в WhatsApp
-          </Link>
-          <Link
+          </ButtonLink>
+          <ButtonLink
             href={SECOND_TLEGRAMM_LINK}
             target="_blank"
+            variant="secondary"
             rel="noopener noreferrer"
-            className={style.hero__button_second}
           >
             <FaTelegram size={32} /> Написать в Telegram
-          </Link>
+          </ButtonLink>
         </div>
-        <Link
+
+        <ButtonLink
           href={`tel:${MAIN_PHONE_NUMBER}`}
           className={style.hero__button}
         >
           Заказать звонок
-        </Link>
+        </ButtonLink>
       </div>
     </section >
   );

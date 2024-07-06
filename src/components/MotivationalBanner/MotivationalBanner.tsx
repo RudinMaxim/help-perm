@@ -1,5 +1,5 @@
 import { MAIN_PHONE_NUMBER } from '@/constants/phone';
-import Link from 'next/link';
+import { ButtonLink } from '@/ui';
 import styles from './MotivationalBanner.module.scss';
 
 export function MotivationalBanner() {
@@ -13,9 +13,9 @@ export function MotivationalBanner() {
           проблемах. Наша команда специалистов готова поддержать вас и помочь
           справиться с любыми трудностями.
         </p>
-        <Link href={`tel:${MAIN_PHONE_NUMBER}`} className={styles.button}>
+        <ButtonLink href={`tel:${MAIN_PHONE_NUMBER}`} >
           Позвонить сейчас
-        </Link>
+        </ButtonLink>
       </div>
     </article>
   );

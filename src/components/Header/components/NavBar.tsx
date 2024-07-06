@@ -1,6 +1,6 @@
 
 import { PATH_URL } from '@/constants/path'
-import Link from 'next/link'
+import { ButtonLink } from '@/ui'
 import style from '../Header.module.scss'
 
 export function NavBar() {
@@ -9,9 +9,9 @@ export function NavBar() {
             <ul>
                 {Object.values(PATH_URL).map(({ url, name }) => (
                     <li key={`NavBar__${url}`}>
-                        <Link href={url}>
+                        <ButtonLink href={url}>
                             {name}
-                        </Link>
+                        </ButtonLink>
                     </li>
                 ))}
             </ul>
