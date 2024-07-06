@@ -1,4 +1,5 @@
 import { Container, MotivationalBanner } from '@/components';
+import { MAIN_PHONE_NUMBER } from '@/constants/phone';
 import { services } from '@/constants/services';
 import { ContactUs } from '@/module';
 import { getMetadata } from '@/utils/getMetadata';
@@ -25,7 +26,7 @@ export default function Home() {
         <MotivationalBanner />
         
       </Container>
-      <ContactUs title="Свяжитесь с нами" phone="+79223261682" />
+      <ContactUs title="Свяжитесь с нами" phone={MAIN_PHONE_NUMBER} />
     </main>
   );
 }

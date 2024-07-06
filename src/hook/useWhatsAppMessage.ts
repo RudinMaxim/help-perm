@@ -13,21 +13,37 @@ export const useWhatsAppMessage = (phoneNumber: string) => {
     message: '',
   });
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setMessageData((prevData) => ({ ...prevData, [name]: value }));
+    
+    if (name === 'phone') {
+      // Удаляем все нецифровые символы
+      let cleanedValue = value.replace(/\D/g, '');
+      
+      // Убираем первую цифру, если она 7 или 8
+      if (cleanedValue.startsWith('7') || cleanedValue.startsWith('8')) {
+        cleanedValue = cleanedValue.slice(1);
+      }
+      
+      // Ограничиваем длину до 10 цифр
+      cleanedValue = cleanedValue.slice(0, 10);
+      
+      // Если первая цифра не 9, заменяем ее на 9
+      if (cleanedValue.length > 0 && cleanedValue[0] !== '9') {
+        cleanedValue = '9' + cleanedValue.slice(1);
+      }
+
+      setMessageData(prev => ({ ...prev, [name]: cleanedValue }));
+    } else {
+      setMessageData(prev => ({ ...prev, [name]: value }));
+    }
   };
 
   const sendMessage = () => {
     const { name, phone, message } = messageData;
-    const messageText = `Имя: ${name}\nНомер: ${phone}\n\n${message}`;
-    const encodedMessage = encodeURIComponent(messageText);
-    const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-
-    window.open(whatsappLink, '_blank');
-    setMessageData({ name: '', phone: '', message: '' });
+    const fullPhone = `7${phone}`;
+    const whatsappMessage = `https://wa.me/${fullPhone}?text=Имя: ${name}%0AТелефон: +7${phone}%0AСообщение: ${message}`;
+    window.open(whatsappMessage, '_blank');
   };
 
   return { messageData, handleChange, sendMessage };

@@ -57,16 +57,15 @@ export function ContactUs({ title, phone, isMainPage }: ContactUsProps) {
             onChange={handleChange}
           />
           <label htmlFor="phone" className={styles.label}>
-            <span>
-              +7
-            </span>
-
+            <span>+7</span>
             <input
               type="tel"
               id="phone"
               name="phone"
               value={messageData.phone}
               onChange={handleChange}
+              maxLength={10}
+              placeholder="9XXXXXXXXX"
             />
           </label>
 

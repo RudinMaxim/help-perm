@@ -3,6 +3,7 @@ import { getMetadata } from '@/utils/getMetadata';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.scss';
+import YandexMetrika from './YandexMetrika';
 
 const poppins = Inter({ subsets: ['latin'], weight: '400' });
 
@@ -16,7 +17,13 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const handleAcceptCookies = () => {
+    console.log('Cookies accepted');
+  };
 
+  const handleDeclineCookies = () => {
+    console.log('Cookies declined');
+  };
 
   return (
     <html lang="ru">
@@ -24,8 +31,11 @@ export default function RootLayout({
         <Header />
         {children}
         <Footer />
-
-        {/* <YandexMetrika /> */}
+        {/* <CookieConsent
+          onAccept={handleAcceptCookies}
+          onDecline={handleDeclineCookies}
+        /> */}
+        <YandexMetrika />
       </body>
     </html>
   );
