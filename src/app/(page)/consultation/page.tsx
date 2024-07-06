@@ -11,7 +11,7 @@ export const metadata: Metadata = getMetadata({
 export default function consultation() {
   return (
     <main>
-      <ContactUs title="Свяжитесь с нами" phone={MAIN_PHONE_NUMBER} />
+      <ContactUs title="Запишитесь на бесплатную консультацию" phone={MAIN_PHONE_NUMBER} />
     </main>
   );
 }

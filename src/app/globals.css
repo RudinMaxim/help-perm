@@ -8,7 +8,7 @@
   --border-radius-black: 2rem;
 
   --primary-color: #538af7;
-  --secondary-color: #c0c0c0;
+  --secondary-color: #F0F1F3;
   --bg-color: #ffffff;
   --text-color: #000000;
 }
@@ -31,10 +31,12 @@ main {
   flex: 1;
 }
 
+
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  border: none;
   outline: none;
 }
 
@@ -50,13 +52,13 @@ li {
 .container {
   max-width: var(--max-width);
   width: 100%;
-  margin: 0 auto;
-  padding: 0px 8px;
+  margin: 1rem auto;
+  padding: 0px 1rem;
   background-color: var(--bg-color);
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
   }
-}
+} */

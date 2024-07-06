@@ -2,14 +2,14 @@ import { useState } from 'react';
 
 interface MessageData {
   name: string;
-  email: string;
+  phone: string;
   message: string;
 }
 
 export const useWhatsAppMessage = (phoneNumber: string) => {
   const [messageData, setMessageData] = useState<MessageData>({
     name: '',
-    email: '',
+    phone: '',
     message: '',
   });
 
@@ -21,13 +21,13 @@ export const useWhatsAppMessage = (phoneNumber: string) => {
   };
 
   const sendMessage = () => {
-    const { name, email, message } = messageData;
-    const messageText = `Имя: ${name}\nЭлектронная почта: ${email}\n\n${message}`;
+    const { name, phone, message } = messageData;
+    const messageText = `Имя: ${name}\nНомер: ${phone}\n\n${message}`;
     const encodedMessage = encodeURIComponent(messageText);
     const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
 
     window.open(whatsappLink, '_blank');
-    setMessageData({ name: '', email: '', message: '' });
+    setMessageData({ name: '', phone: '', message: '' });
   };
 
   return { messageData, handleChange, sendMessage };
