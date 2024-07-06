@@ -1,8 +1,9 @@
 import { MAIN_PHONE_NUMBER } from '@/constants/phone';
 import { stories } from '@/constants/stories';
+import { ContactUs } from '@/module';
 import { getMetadata } from '@/utils/getMetadata';
 import { Metadata } from 'next';
-import { ContactUs, Results } from "../(home)/module";
+import { Results } from './module';
 
 export const metadata: Metadata = getMetadata({
   title: 'Результаты - Бесплатная помощь зависимым по всей России',
@@ -11,7 +12,7 @@ export const metadata: Metadata = getMetadata({
 });
 
 
-export default function selfhelp() {
+export default function results() {
   return (
     <main>
       <Results stories={stories} />

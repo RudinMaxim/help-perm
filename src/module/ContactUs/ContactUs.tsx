@@ -3,14 +3,15 @@ import { MAIN_EMAIL, MAIN_PHONE_NUMBER, MAIN_TLEGRAMM_LINK, SECOND_PHONE_NUMBER 
 import { useWhatsAppMessage } from '@/hook/useWhatsAppMessage';
 import Link from 'next/link';
 import { FaEnvelope, FaPhone, FaTelegram, FaWhatsapp } from 'react-icons/fa';
-import styles from '../Home.module.scss';
+import styles from './ContactUs.module.scss';
 
 interface ContactUsProps {
   title: string;
   phone: string;
+  isMainPage?: boolean;
 }
 
-export function ContactUs({ title, phone }: ContactUsProps) {
+export function ContactUs({ title, phone, isMainPage }: ContactUsProps) {
   const { messageData, handleChange, sendMessage } = useWhatsAppMessage(phone);
 
   return (

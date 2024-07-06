@@ -1,5 +1,7 @@
 import { AboutHero } from './AboutHero'
+import { HowWeWork } from './HowWeWork'
 import { TeamSection } from './TeamSection'
+import { ValuesSection } from './ValuesSection'
 
-export { AboutHero, TeamSection }
+export { AboutHero, HowWeWork, TeamSection, ValuesSection }
 

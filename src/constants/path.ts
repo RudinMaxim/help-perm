@@ -7,8 +7,8 @@ export const PATH_URL = {
     url: '/aboutus',
     name: 'О нас',
   },
-  contact: {
-    url: '/contact',
-    name: 'Контакты',
+  consultation: {
+    url: '/consultation',
+    name: 'Консультация',
   },
 };

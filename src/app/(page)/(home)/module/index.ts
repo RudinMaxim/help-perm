@@ -1,8 +1,6 @@
-import { ContactUs } from './ContactUs';
+import { HowWeWork } from '../../aboutus/module/HowWeWork';
 import { Hero } from './Hero';
-import { HowWeWork } from './HowWeWork';
 import { OurServices } from './OurServices';
-import { Results } from './Results';
 
-export { ContactUs, Hero, HowWeWork, OurServices, Results };
+export { Hero, HowWeWork, OurServices };
 

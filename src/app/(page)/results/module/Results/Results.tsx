@@ -8,7 +8,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { Autoplay, Keyboard } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import styles from '../Home.module.scss';
+import styles from './Results.module.scss';
 
 SwiperCore.use([Autoplay, Keyboard]);
 

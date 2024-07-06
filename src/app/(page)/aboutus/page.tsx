@@ -1,10 +1,10 @@
 import { MAIN_PHONE_NUMBER } from '@/constants/phone';
+import { steps } from '@/constants/steps';
 import { values } from '@/constants/values';
+import { ContactUs } from '@/module';
 import { getMetadata } from '@/utils/getMetadata';
 import { Metadata } from 'next';
-import { ContactUs } from "../(home)/module";
-import { AboutHero, TeamSection } from "./module";
-import { ValuesSection } from "./module/ValuesSection";
+import { AboutHero, HowWeWork, TeamSection, ValuesSection } from "./module";
 
 export const metadata: Metadata = getMetadata({
   title: 'О нас - Бесплатная помощь зависимым по всей России',
@@ -21,6 +21,7 @@ export default function selfhelp() {
         description="Мы - некоммерческая организация, созданная для оказания помощи людям, оказавшимся в сложных жизненных ситуациях. Наша команда профессионалов готова предложить вам поддержку, консультации и решения, чтобы вы смогли преодолеть трудности и вернуться к нормальной жизни."
         buttonText="Получить помощь"
       />
+      <HowWeWork title="Как мы работаем?" steps={steps} />
       <TeamSection title="Наша команда"
         description="Наша команда объединяет профессионалов различных направлений, призванных оказывать помощь тем, кто оказался в трудной жизненной ситуации. Мы состоим из опытных специалистов в области психологии, социальной работы, юриспруденции и смежных дисциплин. Объединив усилия, мы обеспечиваем комплексный подход к решению проблем каждого обратившегося, окружая его профессиональной поддержкой на всех этапах преодоления трудностей."
       />

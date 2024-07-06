@@ -2,7 +2,6 @@ import { Footer, Header } from '@/components';
 import { getMetadata } from '@/utils/getMetadata';
 import type { Metadata } from 'next';
 import { Poppins } from 'next/font/google';
-import YandexMetrika from './YandexMetrika';
 import './globals.css';
 
 const poppins = Poppins({ subsets: ['latin'], weight: '400' });
@@ -26,7 +25,7 @@ export default function RootLayout({
         {children}
         <Footer />
 
-        <YandexMetrika />
+        {/* <YandexMetrika /> */}
       </body>
     </html>
   );

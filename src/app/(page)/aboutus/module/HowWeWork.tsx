@@ -1,5 +1,5 @@
 import { Step } from '@/constants/steps';
-import styles from '../Home.module.scss';
+import styles from '../AboutUs.module.scss';
 
 interface HowWeWorkProps {
   title: string;

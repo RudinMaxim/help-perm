@@ -1,10 +1,9 @@
 import { Container, MotivationalBanner } from '@/components';
 import { services } from '@/constants/services';
-import { steps } from '@/constants/steps';
+import { ContactUs } from '@/module';
 import { getMetadata } from '@/utils/getMetadata';
 import { Metadata } from 'next/types';
-import { ContactUs, Hero, OurServices } from './module';
-import { HowWeWork } from './module/HowWeWork';
+import { Hero, OurServices } from './module';
 
 export const metadata: Metadata = getMetadata({
   title: 'Бесплатная помощь зависимым в России',
@@ -24,7 +23,7 @@ export default function Home() {
         />
         <OurServices title="Чем поможем?" services={services} />
         <MotivationalBanner />
-        <HowWeWork title="Как мы работаем?" steps={steps} />
+        
       </Container>
       <ContactUs title="Свяжитесь с нами" phone="+79223261682" />
     </main>
