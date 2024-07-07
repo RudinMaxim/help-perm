@@ -1,5 +1,9 @@
 'use client';
-import { MAIN_EMAIL, MAIN_PHONE_NUMBER, SECOND_PHONE_NUMBER } from '@/constants/phone';
+import {
+  MAIN_EMAIL,
+  MAIN_PHONE_NUMBER,
+  SECOND_PHONE_NUMBER,
+} from '@/constants/phone';
 import { useWhatsAppMessage } from '@/hook/useWhatsAppMessage';
 import Link from 'next/link';
 import styles from './ContactUs.module.scss';
@@ -13,7 +17,15 @@ interface ContactUsProps {
 export function ContactUs({ title, phone, isMainPage }: ContactUsProps) {
   const { messageData, handleChange, sendMessage } = useWhatsAppMessage(phone);
 
-  const MainTitle = isMainPage ? <h1 className={styles.title}>Запишитесь <br /> на <b>бесплатную</b>  <br /> консультацию</h1> : <h2 className={styles.title}>Запишитесь <br /> на <b>бесплатную</b>  <br /> консультацию</h2>
+  const MainTitle = isMainPage ? (
+    <h1 className={styles.title}>
+      Запишитесь <br /> на <b>бесплатную</b> <br /> консультацию
+    </h1>
+  ) : (
+    <h2 className={styles.title}>
+      Запишитесь <br /> на <b>бесплатную</b> <br /> консультацию
+    </h2>
+  );
 
   return (
     <section id="contactUs" className={`${styles.contact__us} container`}>
@@ -23,29 +35,53 @@ export function ContactUs({ title, phone, isMainPage }: ContactUsProps) {
         <div className={styles.contact__us__info__list}>
           <ul>
             <li>
-              <Link href={`tel:${MAIN_PHONE_NUMBER}`} target="_blank" rel="noreferrer">
+              <Link
+                href={`tel:${MAIN_PHONE_NUMBER}`}
+                target="_blank"
+                rel="noreferrer"
+              >
                 +7 922 922 80 04
               </Link>
             </li>
             <li>
-              <Link href={`tel:${SECOND_PHONE_NUMBER}`} target="_blank" rel="noreferrer">
+              <Link
+                href={`tel:${SECOND_PHONE_NUMBER}`}
+                target="_blank"
+                rel="noreferrer"
+              >
                 +7 923 523 11 51
               </Link>
             </li>
 
             <li>
-              <Link href={`mailto:${MAIN_EMAIL}`}>
+              <Link href={`mailto:${MAIN_EMAIL}`} style={{ fontSize: '1rem' }}>
                 {MAIN_EMAIL}
               </Link>
             </li>
           </ul>
           <ul className={styles.contact__us__info__social}>
-            <li>Время работы: <b>круглосуточно</b></li>
+            <li>
+              Время работы: <b>круглосуточно</b>
+            </li>
+            <li>
+              Адрес:{' '}
+              <b>
+                <Link
+                  href={'https://yandex.ru/maps/-/CDGVvO~I'}
+                  target="_blank"
+                >
+                  Фиалковая улица, 13, Пермь, 614023
+                </Link>
+              </b>
+            </li>
           </ul>
         </div>
       </div>
 
-      <form className={styles.contact__us__form} onSubmit={(e) => e.preventDefault()}>
+      <form
+        className={styles.contact__us__form}
+        onSubmit={(e) => e.preventDefault()}
+      >
         <div className={styles.contact__us__form__inputs}>
           <input
             type="text"
@@ -72,13 +108,12 @@ export function ContactUs({ title, phone, isMainPage }: ContactUsProps) {
           <textarea
             id="message"
             name="message"
-            placeholder='Опишите свою проблему'
+            placeholder="Опишите свою проблему"
             value={messageData.message}
             onChange={handleChange}
             required
           />
         </div>
-
 
         <button
           type="button"

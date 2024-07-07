@@ -4,7 +4,10 @@ export function Footer() {
   return (
     <footer className={styles.footer}>
       <div className={styles.copyright}>
-        <p>&copy; {new Date().getFullYear()} Max Rudin. Все права защищены.</p>
+        <p>
+          &copy; {new Date().getFullYear()} Путь Преодоления. Все права
+          защищены.
+        </p>
       </div>
     </footer>
   );
