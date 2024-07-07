@@ -87,7 +87,7 @@ export function ContactUs({ title, phone, isMainPage }: ContactUsProps) {
             type="text"
             id="name"
             name="name"
-            placeholder="Как к вам обращатся?"
+            placeholder="Как к вам обращаться?"
             value={messageData.name}
             className={styles.input}
             onChange={handleChange}
