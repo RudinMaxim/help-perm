@@ -1,5 +1,5 @@
 import { Container, MotivationalBanner } from '@/components';
-import { MAIN_PHONE_NUMBER } from '@/constants/phone';
+import { MAIN_EMAIL, MAIN_PHONE_NUMBER, SECOND_PHONE_NUMBER } from '@/constants/phone';
 import { services } from '@/constants/services';
 import { ContactUs } from '@/module';
 import { getMetadata } from '@/utils/getMetadata';
@@ -26,7 +26,15 @@ export default function Home() {
         <MotivationalBanner />
         
       </Container>
-      <ContactUs title="Свяжитесь с нами" phone={MAIN_PHONE_NUMBER} />
+      <ContactUs
+        title="Контактная форма"
+        phone={MAIN_PHONE_NUMBER}
+        isMainPage={false}
+        mainEmail={MAIN_EMAIL}
+        mainPhoneNumber={MAIN_PHONE_NUMBER}
+        secondPhoneNumber={SECOND_PHONE_NUMBER}
+      />
+
     </main>
   );
 }

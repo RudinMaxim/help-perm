@@ -1,9 +1,4 @@
 'use client';
-import {
-  MAIN_EMAIL,
-  MAIN_PHONE_NUMBER,
-  SECOND_PHONE_NUMBER,
-} from '@/constants/phone';
 import { useWhatsAppMessage } from '@/hook/useWhatsAppMessage';
 import Link from 'next/link';
 import styles from './ContactUs.module.scss';
@@ -12,10 +7,20 @@ interface ContactUsProps {
   title: string;
   phone: string;
   isMainPage?: boolean;
+  mainEmail: string;
+  mainPhoneNumber: string;
+  secondPhoneNumber: string;
 }
 
-export function ContactUs({ title, phone, isMainPage }: ContactUsProps) {
-  const { messageData, handleChange, sendMessage } = useWhatsAppMessage(phone);
+export function ContactUs({
+  title,
+  phone,
+  isMainPage,
+  mainEmail,
+  mainPhoneNumber,
+  secondPhoneNumber,
+}: ContactUsProps) {
+  const { messageData, handleChange, handleSubmit, isLoading } = useWhatsAppMessage(phone);
 
   const MainTitle = isMainPage ? (
     <h1 className={styles.title}>
@@ -36,26 +41,26 @@ export function ContactUs({ title, phone, isMainPage }: ContactUsProps) {
           <ul>
             <li>
               <Link
-                href={`tel:${MAIN_PHONE_NUMBER}`}
+                href={`tel:${mainPhoneNumber}`}
                 target="_blank"
                 rel="noreferrer"
               >
-                +7 922 922 80 04
+                {mainPhoneNumber}
               </Link>
             </li>
             <li>
               <Link
-                href={`tel:${SECOND_PHONE_NUMBER}`}
+                href={`tel:${secondPhoneNumber}`}
                 target="_blank"
                 rel="noreferrer"
               >
-                +7 923 523 11 51
+                {secondPhoneNumber}
               </Link>
             </li>
 
             <li>
-              <Link href={`mailto:${MAIN_EMAIL}`} style={{ fontSize: '1rem' }}>
-                {MAIN_EMAIL}
+              <Link href={`mailto:${mainEmail}`} style={{ fontSize: '1rem' }}>
+                {mainEmail}
               </Link>
             </li>
           </ul>
@@ -80,17 +85,17 @@ export function ContactUs({ title, phone, isMainPage }: ContactUsProps) {
 
       <form
         className={styles.contact__us__form}
-        onSubmit={(e) => e.preventDefault()}
+        onSubmit={handleSubmit}
       >
         <div className={styles.contact__us__form__inputs}>
           <input
             type="text"
             id="name"
             name="name"
-            placeholder="Как к вам обращаться?"
+            placeholder='Как к вам обращаться?'
             value={messageData.name}
-            className={styles.input}
             onChange={handleChange}
+            className={styles.input}
           />
           <label htmlFor="phone" className={styles.label}>
             <span>+7</span>
@@ -108,7 +113,6 @@ export function ContactUs({ title, phone, isMainPage }: ContactUsProps) {
           <textarea
             id="message"
             name="message"
-            placeholder="Опишите свою проблему"
             value={messageData.message}
             onChange={handleChange}
             required
@@ -116,11 +120,11 @@ export function ContactUs({ title, phone, isMainPage }: ContactUsProps) {
         </div>
 
         <button
-          type="button"
+          type="submit"
           className={styles.submitButton}
-          onClick={sendMessage}
+          disabled={isLoading}
         >
-          Сделать первый шаг
+          {isLoading ? 'Отправка...' : 'Сделать первый шаг'}
         </button>
       </form>
     </section>

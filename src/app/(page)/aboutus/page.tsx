@@ -1,4 +1,4 @@
-import { MAIN_PHONE_NUMBER } from '@/constants/phone';
+import { MAIN_EMAIL, MAIN_PHONE_NUMBER, SECOND_PHONE_NUMBER } from '@/constants/phone';
 import { steps } from '@/constants/steps';
 import { values } from '@/constants/values';
 import { ContactUs } from '@/module';
@@ -29,7 +29,15 @@ export default function selfhelp() {
         title="Наши ценности"
         values={values}
       />
-      <ContactUs title="Свяжитесь с нами" phone={MAIN_PHONE_NUMBER} />
+      <ContactUs
+        title="Контактная форма"
+        phone={MAIN_PHONE_NUMBER}
+        isMainPage={false}
+        mainEmail={MAIN_EMAIL}
+        mainPhoneNumber={MAIN_PHONE_NUMBER}
+        secondPhoneNumber={SECOND_PHONE_NUMBER}
+      />
+
     </main>
   );
 }

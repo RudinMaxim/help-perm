@@ -2,6 +2,7 @@ import { Footer, Header } from '@/components';
 import { getMetadata } from '@/utils/getMetadata';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import { Toaster } from 'sonner';
 import './globals.scss';
 import YandexMetrika from './YandexMetrika';
 
@@ -17,13 +18,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const handleAcceptCookies = () => {
-    console.log('Cookies accepted');
-  };
-
-  const handleDeclineCookies = () => {
-    console.log('Cookies declined');
-  };
 
   return (
     <html lang="ru">
@@ -35,6 +29,7 @@ export default function RootLayout({
           onAccept={handleAcceptCookies}
           onDecline={handleDeclineCookies}
         /> */}
+        <Toaster position="top-right" expand={false} richColors />
         <YandexMetrika />
       </body>
     </html>
