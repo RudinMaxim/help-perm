@@ -23,6 +23,33 @@ interface SendMessageResult {
   errors?: ValidationErrors;
 }
 
+async function sendToGoogleSheets(data: MessageData) {
+  try {
+    const response = await fetch('/api/send-to-sheets', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to send data to Google Sheets');
+    }
+
+    return true;
+  } catch (error) {
+    console.error('Error sending data to Google Sheets:', error);
+    return false;
+  }
+}
+
+function sendToWhatsApp(data: MessageData) {
+  const { name, phone, message } = data;
+  const whatsappMessage = `https://wa.me/${MAIN_PHONE_NUMBER}?text=Имя: ${name}%0AТелефон: +7${phone}%0AСообщение: ${message}`;
+  window.open(whatsappMessage, '_blank');
+}
+
 export const useWhatsAppMessage = (phoneNumber: string) => {
   const [messageData, setMessageData] = useState<MessageData>({
     name: '',
@@ -69,12 +96,17 @@ export const useWhatsAppMessage = (phoneNumber: string) => {
     }
 
     setIsLoading(true);
-    const { name, phone, message } = messageData;
-    const whatsappMessage = `https://wa.me/${MAIN_PHONE_NUMBER}?text=Имя: ${name}%0AТелефон: +7${phone}%0AСообщение: ${message}`;
 
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      window.open(whatsappMessage, '_blank');
+      // Отправка данных в Google Sheets
+      const sheetsSent = await sendToGoogleSheets(messageData);
+      if (!sheetsSent) {
+        throw new Error('Failed to send data to Google Sheets');
+      }
+
+      // Отправка сообщения в WhatsApp
+      sendToWhatsApp(messageData);
+
       router.push('/#message-sent');
       setMessageData({ name: '', phone: '', message: '' });
       return { success: true };
@@ -97,7 +129,7 @@ export const useWhatsAppMessage = (phoneNumber: string) => {
     if (result.success) {
       toast.success('Сообщение успешно отправлено!');
     } else if (result.errors) {
-      Object.values(result.errors).forEach(error => {
+      Object.values(result.errors).forEach((error) => {
         toast.error(error);
       });
     } else {

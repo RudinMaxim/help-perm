@@ -1,1 +1,1 @@
-export const BASE_URL = 'https://бесплатная-помощь-зависимым.рф/';
+export const BASE_URL = 'https://бесплатная-помощь-зависимым.рф';

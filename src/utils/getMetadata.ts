@@ -45,6 +45,22 @@ export const getMetadata = (props: IMetadata): Metadata => {
     },
   };
 
+  const cities = [
+    'Киров', 'Кировская область',
+    'Пермь', 'Пермский край',
+    'Уфа', 'Башкирия', 'Республика Башкортостан',
+    'Нижний Новгород', 'Нижегородская область',
+    'Екатеринбург', 'Свердловская область',
+    'Оренбург', 'Оренбургская область',
+    'Самара', 'Самарская область',
+    'Новосибирск', 'Новосибирская область',
+    'Кемерово', 'Кемеровская область',
+    'Москва', 'Московская область',
+    'Челябинск', 'Челябинская область',
+    'Нижний Тагил', 'Свердловская область',
+    'Казань', 'Республика Татарстан'
+  ];
+
   const defaultKeywords = [
     'благотворительность',
     'помощь',
@@ -60,17 +76,20 @@ export const getMetadata = (props: IMetadata): Metadata => {
     'помощь наркозависимым',
     'помощь алкоголезависимым',
     'помощь в России',
+    ...cities
   ];
 
   const metadataKeywords = Array.isArray(props.keywords)
-    ? props.keywords.join(', ')
+    ? [...props.keywords, ...cities].join(', ')
     : props.keywords ?? defaultKeywords.join(', ');
+
+  const cityDescription = cities.join(', ');
 
   return {
     title: props.title ?? 'Бесплатная помощь зависимым в России',
     description:
       props.description ??
-      `Психологическая помощь, юридическая консультация, семейное и финансовое консультирование, помощь людям с ограниченными возможностями, бездомным, наркозависимым и алкоголезависимым. Звоните: ☎️${MAIN_PHONE_NUMBER}, ☎️${SECOND_PHONE_NUMBER} или пишите: ${MAIN_EMAIL}`,
+      `Психологическая помощь, юридическая консультация, семейное и финансовое консультирование, помощь людям с ограниченными возможностями, бездомным, наркозависимым и алкоголезависимым в городах: ${cityDescription}. Звоните: ☎️${MAIN_PHONE_NUMBER}, ☎️${SECOND_PHONE_NUMBER} или пишите: ${MAIN_EMAIL}`,
     keywords: metadataKeywords,
     authors: [{ name: 'Благотворительная организация' }],
     viewport: {
@@ -101,7 +120,7 @@ export const getMetadata = (props: IMetadata): Metadata => {
       locale: 'ru_RU',
       url: props.url ? `${BASE_URL}/${props.url}` : BASE_URL,
       title: props.title ?? 'Бесплатная помощь зависимым в России',
-      description: props.description ?? 'Психологическая помощь, юридическая консультация, семейное и финансовое консультирование, помощь людям с ограниченными возможностями, бездомным, наркозависимым и алкоголезависимым.',
+      description: props.description ?? `Психологическая помощь, юридическая консультация, семейное и финансовое консультирование, помощь людям с ограниченными возможностями, бездомным, наркозависимым и алкоголезависимым в городах: ${cityDescription}.`,
       siteName: 'Бесплатная помощь зависимым',
       images: [
         {
@@ -112,18 +131,11 @@ export const getMetadata = (props: IMetadata): Metadata => {
         },
       ],
     },
-    twitter: {
-      card: 'summary_large_image',
-      title: props.title ?? 'Бесплатная помощь зависимым в России',
-      description: props.description ?? 'Психологическая помощь, юридическая консультация, семейное и финансовое консультирование, помощь людям с ограниченными возможностями, бездомным, наркозависимым и алкоголезависимым.',
-      images: [`${BASE_URL}/android-chrome-512x512.png`],
-    },
     other: {
       'yandex-verification': '07c30b0770e6567f',
-      'google-site-verification': 'Es1etisPASiWvXIWEfo788aAH534wlF1ZlO8-8ZpSLY', // Замените на ваш код верификации Google
-      'msvalidate.01': 'YOUR_BING_VERIFICATION_CODE', // Замените на ваш код верификации Bing
+      'google-site-verification': 'Es1etisPASiWvXIWEfo788aAH534wlF1ZlO8-8ZpSLY',
       'geo.region': 'RU',
-      'geo.placename': 'Россия',
+      'geo.placename': 'Россия, ' + cities.join(', '),
       'geo.position': '61.52401;105.318756',
       'ICBM': '61.52401, 105.318756',
       'og:locale:alternate': 'en_US',
@@ -148,6 +160,5 @@ export const getMetadata = (props: IMetadata): Metadata => {
     category: 'charity',
     classification: 'Благотворительность, Социальная помощь',
     metadataBase: new URL(BASE_URL),
-    
   };
 };

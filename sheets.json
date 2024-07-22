@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "teak-territory-430216-s7",
+  "private_key_id": "6fdf31b32b8608ff19f1b6238d935f60ec7e8c6a",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC6SaoXNN0z70l0\nx2CNdjRqdl5LvawzH5V/nVt2PP4HO5P1dfXH8EIqw6bfFudEDeT5rYbL9nmLMIMc\ny+QAXfE5kdnS21z+GjCLQUtqBg4UxzNNmg/tAqYfDVnF7P1E+0DEgCXiBcxmfKFt\nepBGKHNOxYIxQMlEAwYzYtgGnKhWkz87PNwDPue/Q9ovedLfT++c3c1lB21Po5NM\n+bZcjmzn9bma6ulnyezftrQoKo/FJzg2Kuif4UH4oEIiADbS4+wyFPkqlTzKd8pQ\nuC8ANy0ZwqJsMMsS2/Ri1seeVsx9Fp/uYfXlJ2nFV+6wxY0n2T0FQPBXeXtapObj\nDY8dTjjFAgMBAAECggEABTKtAPzD91ZZRwg71Mv+5mxAcVNCN3hNeZlwcI9/HxXg\nflw47B1IxgdeOUywTfZ9ScziZ//hSwBNiEOALH/H4q1ZK0hdAzzD11Q5Fc+ZcPxQ\nnX0LrgysNKLwuv8ZNLrgscWe86bpxH+nGXZECaZzS+K4S/Dc132mHKTza4Ek3qrX\nnN01MzViSci5/7GfGEJjl8KRVIi+j/7qBUH14zVo+2h28mWyRXWoxJw5MgBxn+Cq\n0bD7FUuBlpxXZzIpq9DjaiQLikdX03UXZux5sjsPATWdpF9LIEwWWM/XwrvT31fC\nH8qkFOBSIFN637f7kHRySRuTPEsuRoDZvnLqJ6OWOQKBgQDmyZqZcagKv4mpMblz\nSSwBbVPzJtuvkW3JeMYdRC4JQVjFv/mtJt2cWplWFfHv9E9JFTpOV60dUoNMO0N3\nNzgflWXSAkIuiVl9v37q82rOWmY2CLJ3fRIP0WV0pNwT1RgIQSF9j2xn2Mq+kbnC\nY5DeerMsKaScNSih2BJtvwuYrwKBgQDOo4sDI/CfVPsVxhZnuQYt6H44cZWb2r+h\n3Dr/UBk/C3w853OdbvGaNjTp2IBaVZvrcEwMqgXSaP4pBEo01OV9mvyRIiJquWI3\nGYAb0eVNcbfcAtxg5SJ298wlWXqLCpnfUp25FEA7ylrnEF3tnD5HjS+8i2G3zlh9\ngujA4eO6ywKBgQCQ622yBwWvYiEOZpP+SadhagZ6PB9dOuQGzFkTTZne4/LbkjY1\nPZ+RK+73eKZIuFAFI1hOk424SPT7rIcr2Dfc1VJvsk1erY7NgK8w2BNsaqWeLo3q\nrFXoKuQbf95Wccw6erOOBb7b4u1FB3rvDtiMa94Q0EF2eYb/QhAoa/vbLwKBgQCB\nfn+pMiai0vCejoqP6aVzs5UV7ihhiU46MvdN9HY9ygbLbAhKCrKhf4LdYO3ernON\nscwWy53mZCGStruCLEC83BmXIhsLYq2n9fUQehMG21LrL2fH2RAmGdf3OAHRjI0t\nJGrvBz/RuFgLIXibZSSqVlIqB/bu5wMRdK5D4cuCzQKBgEHqVWcLuIf5GJbr8s5D\nCjQQAme/BEI+KSywAuKcnAoizZ0YST3A2PAAcPcaW0RNMIsNSXKdWKgdTdRmPhMv\ngS0xNtCzK53vSjNX6B9FQYYmWXCM7ajGaQZu6tTewKWoT4BVWoXoVIDIXe+w/eTF\n7buhfdy37FndKTqWKgvrTl50\n-----END PRIVATE KEY-----\n",
+  "client_email": "id-66-554@teak-territory-430216-s7.iam.gserviceaccount.com",
+  "client_id": "108465768379720136615",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/id-66-554%40teak-territory-430216-s7.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
