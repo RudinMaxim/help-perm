@@ -1,7 +1,6 @@
 // app/hooks/useWhatsAppMessage.ts
 'use client';
 
-import { MAIN_PHONE_NUMBER } from '@/constants/phone';
 import { useRouter } from 'next/navigation';
 import { useCallback, useState } from 'react';
 import { toast } from 'sonner';
@@ -44,11 +43,11 @@ async function sendToGoogleSheets(data: MessageData) {
   }
 }
 
-function sendToWhatsApp(data: MessageData) {
-  const { name, phone, message } = data;
-  const whatsappMessage = `https://wa.me/${MAIN_PHONE_NUMBER}?text=Имя: ${name}%0AТелефон: +7${phone}%0AСообщение: ${message}`;
-  window.open(whatsappMessage, '_blank');
-}
+// function sendToWhatsApp(data: MessageData) {
+//   const { name, phone, message } = data;
+//   const whatsappMessage = `https://wa.me/${MAIN_PHONE_NUMBER}?text=Имя: ${name}%0AТелефон: +7${phone}%0AСообщение: ${message}`;
+//   window.open(whatsappMessage, '_blank');
+// }
 
 export const useWhatsAppMessage = (phoneNumber: string) => {
   const [messageData, setMessageData] = useState<MessageData>({
@@ -98,14 +97,10 @@ export const useWhatsAppMessage = (phoneNumber: string) => {
     setIsLoading(true);
 
     try {
-      // Отправка данных в Google Sheets
       const sheetsSent = await sendToGoogleSheets(messageData);
       if (!sheetsSent) {
         throw new Error('Failed to send data to Google Sheets');
       }
-
-      // Отправка сообщения в WhatsApp
-      sendToWhatsApp(messageData);
 
       router.push('/#message-sent');
       setMessageData({ name: '', phone: '', message: '' });
