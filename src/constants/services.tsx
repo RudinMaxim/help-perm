@@ -1,15 +1,26 @@
-import { FaAccessibleIcon, FaBookReader, FaGavel, FaGlassWhiskey, FaHome, FaMoneyBillWave, FaPills, FaUserFriends } from 'react-icons/fa';
+import {
+  FaAccessibleIcon,
+  FaBookReader,
+  FaGavel,
+  FaGlassWhiskey,
+  FaHome,
+  FaMoneyBillWave,
+  FaPills,
+  FaUserFriends,
+} from 'react-icons/fa';
 
 export const services = [
   {
     icon: <FaPills />,
     title: 'Помощь наркозависимым',
-    description: 'Реабилитация, консультации и поддержка для преодоления наркозависимости.',
+    description:
+      'Реабилитация, консультации и поддержка для преодоления наркозависимости.',
   },
   {
     icon: <FaGlassWhiskey />,
     title: 'Помощь алкозависимым',
-    description: 'Детоксикация, психологическая поддержка и реабилитация алкозависимых.',
+    description:
+      'Детоксикация, психологическая поддержка и реабилитация алкозависимых.',
   },
   {
     icon: <FaHome />,
@@ -19,7 +30,8 @@ export const services = [
   {
     icon: <FaBookReader />,
     title: 'Психологическая помощь',
-    description: 'Профессиональная поддержка в преодолении психологических проблем.',
+    description:
+      'Профессиональная поддержка в преодолении психологических проблем во время восстановления и адаптации в нашем центре.',
   },
   {
     icon: <FaGavel />,
@@ -29,7 +41,8 @@ export const services = [
   {
     icon: <FaUserFriends />,
     title: 'Семейное консультирование',
-    description: 'Помощь в решении семейных конфликтов и проблем.',
+    description:
+      'Помощь в решении семейных конфликтов и проблем для семей участников программы восстановления.',
   },
   {
     icon: <FaMoneyBillWave />,
@@ -39,6 +52,7 @@ export const services = [
   {
     icon: <FaAccessibleIcon />,
     title: 'Помощь людям с ограниченными возможностями',
-    description: 'Поддержка и помощь в адаптации для людей с ограниченными возможностями.',
+    description:
+      'Поддержка и помощь в адаптации для людей с ограниченными возможностями.',
   },
 ];
