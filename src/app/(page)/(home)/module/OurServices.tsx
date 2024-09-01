@@ -14,6 +14,9 @@ export function OurServices({ services, title }: OurServicesProps) {
   return (
     <section className={styles.ourServices}>
       <h2 className={styles.title}>{title}</h2>
+      <h3 className={`${styles.subtitle} ${styles.serviceSubtitle}`}>
+        Помощь предоставляется во время реабилитации и адаптации
+      </h3>
       <div className={styles.services}>
         {services.map((service, index) => (
           <div key={`OurServices__${index}`} className={styles.service}>

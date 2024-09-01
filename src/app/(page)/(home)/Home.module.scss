@@ -130,6 +130,24 @@
     line-height: 1.5;
     text-align: center;
   }
+
+  .subtitle {
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    color: var(--primary-color);
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  .serviceSubtitle {
+    background-color: rgba(var(--primary-color-rgb), 0.1);
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius-black);
+    font-weight: 900;
+    transition: all 0.3s ease;
+  }
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
