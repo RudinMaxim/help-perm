@@ -12,5 +12,8 @@ export const PATH_URL = {
     url: '/aboutus',
     name: 'О нас',
   },
- 
+  requisites: {
+     url: "/requisites",
+     name: 'Реквизиты',
+  }
 };

@@ -20,7 +20,8 @@ export function ContactUs({
   mainPhoneNumber,
   secondPhoneNumber,
 }: ContactUsProps) {
-  const { messageData, handleChange, handleSubmit, isLoading } = useWhatsAppMessage(phone);
+  const { messageData, handleChange, handleSubmit, isLoading } =
+    useWhatsAppMessage(phone);
 
   const MainTitle = isMainPage ? (
     <h1 className={styles.title}>
@@ -79,20 +80,20 @@ export function ContactUs({
                 </Link>
               </b>
             </li>
+            <li>
+              ИИН: <b>6330044310</b>
+            </li>
           </ul>
         </div>
       </div>
 
-      <form
-        className={styles.contact__us__form}
-        onSubmit={handleSubmit}
-      >
+      <form className={styles.contact__us__form} onSubmit={handleSubmit}>
         <div className={styles.contact__us__form__inputs}>
           <input
             type="text"
             id="name"
             name="name"
-            placeholder='Как к вам обращаться?'
+            placeholder="Как к вам обращаться?"
             value={messageData.name}
             onChange={handleChange}
             className={styles.input}
