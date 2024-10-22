@@ -13,6 +13,18 @@ export const metadata: Metadata = getMetadata({
   description: 'Жизнь порой преподносит неожиданные испытания, и порой может показаться, что вы остались один на один со своими проблемами. Но это не так – мы, готовы оказать вам профессиональную помощь и поддержку. Независимо от того, какие трудности вы переживаете, мы поможем найти решение и пройти этот путь вместе с вами.',
 });
 
+declare global {
+  interface Window {
+    ym: (
+      counterId: number,
+      type: string,
+      goal: string,
+      params?: Record<string, any>
+    ) => void;
+  }
+}
+
+
 export default function RootLayout({
   children,
 }: Readonly<{

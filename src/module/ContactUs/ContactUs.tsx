@@ -21,7 +21,7 @@ export function ContactUs({
   secondPhoneNumber,
 }: ContactUsProps) {
   const { messageData, handleChange, handleSubmit, isLoading } =
-    useWhatsAppMessage(phone);
+    useWhatsAppMessage();
 
   const MainTitle = isMainPage ? (
     <h1 className={styles.title}>

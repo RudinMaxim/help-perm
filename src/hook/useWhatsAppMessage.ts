@@ -49,7 +49,7 @@ async function sendToGoogleSheets(data: MessageData) {
 //   window.open(whatsappMessage, '_blank');
 // }
 
-export const useWhatsAppMessage = (phoneNumber: string) => {
+export const useWhatsAppMessage = () => {
   const [messageData, setMessageData] = useState<MessageData>({
     name: '',
     phone: '',
