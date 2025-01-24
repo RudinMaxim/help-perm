@@ -8,6 +8,7 @@ import { getMetadata } from '@/utils/getMetadata';
 import { Metadata } from 'next';
 import { RequisitesPage } from './module';
 import { Container } from '@/components';
+import { LicenseDisplay } from './module/LicensesSection';
 
 export const metadata: Metadata = getMetadata({
   title: 'Реквизиты - Бесплатная помощь зависимым по всей России',
@@ -20,6 +21,7 @@ export default function requisites() {
     <main>
       <Container>
         <RequisitesPage />
+        <LicenseDisplay/>
       </Container>
 
       <ContactUs
