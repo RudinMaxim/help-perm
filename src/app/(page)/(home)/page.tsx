@@ -9,6 +9,7 @@ import { ContactUs } from '@/module';
 import { getMetadata } from '@/utils/getMetadata';
 import { Metadata } from 'next/types';
 import { Hero, OurServices, SocialGoal } from './module';
+import { LicenseDisplay } from '../requisites/module/LicensesSection';
 
 export const metadata: Metadata = getMetadata({
   title: 'Бесплатная помощь зависимым в России',
@@ -29,6 +30,7 @@ export default function Home() {
         <SocialGoal/>
         <OurServices title="Чем поможем?" services={services} />
         <MotivationalBanner />
+        <LicenseDisplay/>
       </Container>
       <ContactUs
         title="Контактная форма"
