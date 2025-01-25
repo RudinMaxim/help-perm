@@ -5,7 +5,7 @@ export function Footer() {
     <footer className={styles.footer}>
       <div className={styles.copyright}>
         <p>
-          &copy; {new Date().getFullYear()}  МЕЖРЕГИОНАЛЬНАЯ БЛАГОТВОРИТЕЛЬНАЯ ОБЩЕСТВЕННАЯ ОРГАНИЗАЦИЯ &quot;ПУТЬ ПРЕОДОЛЕНИЯ&quot;. Все права
+          &copy; {new Date().getFullYear()}  ООО &quot;Феникс&quot;. Все права
           защищены.
         </p>
       </div>
