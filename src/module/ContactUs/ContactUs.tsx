@@ -69,20 +69,6 @@ export function ContactUs({
             <li>
               Время работы: <b>круглосуточно</b>
             </li>
-            <li>
-              Адрес:{' '}
-              <b>
-                <Link
-                  href={'https://yandex.ru/maps/-/CDGVvO~I'}
-                  target="_blank"
-                >
-                  Фиалковая улица, 13, Пермь, 614023
-                </Link>
-              </b>
-            </li>
-            <li>
-              ИИН: <b>6330044310</b>
-            </li>
           </ul>
         </div>
       </div>
