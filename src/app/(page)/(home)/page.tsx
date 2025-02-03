@@ -28,7 +28,7 @@ export default function Home() {
           buttonText="Получить помощь"
         />
         <SocialGoal/>
-        <OurServices title="Чем поможем?" services={services} />
+        {/* <OurServices title="Чем поможем?" services={services} /> */}
         <MotivationalBanner />
         <LicenseDisplay/>
       </Container>
