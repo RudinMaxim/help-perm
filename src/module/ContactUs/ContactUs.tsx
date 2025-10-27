@@ -20,7 +20,7 @@ export function ContactUs({
   mainPhoneNumber,
   secondPhoneNumber,
 }: ContactUsProps) {
-  const { messageData, handleChange, handleSubmit, isLoading } =
+  const { messageData, handleChange, handleSubmit, isLoading, validationErrors, serverError } =
     useWhatsAppMessage();
 
   const MainTitle = isMainPage ? (
@@ -73,8 +73,21 @@ export function ContactUs({
         </div>
       </div>
 
-      <form className={styles.contact__us__form} onSubmit={handleSubmit}>
+      <form
+        className={styles.contact__us__form}
+        onSubmit={handleSubmit}
+        aria-busy={isLoading}
+        noValidate
+      >
+        {serverError ? (
+          <div className={styles.serverError} role="alert">
+            {serverError}
+          </div>
+        ) : null}
         <div className={styles.contact__us__form__inputs}>
+          <label htmlFor="name" className="visually-hidden">
+            Имя
+          </label>
           <input
             type="text"
             id="name"
@@ -83,7 +96,15 @@ export function ContactUs({
             value={messageData.name}
             onChange={handleChange}
             className={styles.input}
+            aria-required="true"
+            aria-invalid={!!validationErrors?.name}
+            aria-describedby={validationErrors?.name ? 'error-name' : undefined}
           />
+          {validationErrors?.name ? (
+            <div id="error-name" role="alert" className={styles.error}>
+              {validationErrors.name}
+            </div>
+          ) : null}
           <label htmlFor="phone" className={styles.label}>
             <span>+7</span>
             <input
@@ -94,24 +115,52 @@ export function ContactUs({
               onChange={handleChange}
               maxLength={10}
               placeholder="9XXXXXXXXX"
+              aria-required="true"
+              aria-invalid={!!validationErrors?.phone}
+              aria-describedby={validationErrors?.phone ? 'error-phone' : undefined}
             />
           </label>
+          {validationErrors?.phone ? (
+            <div id="error-phone" role="alert" className={styles.error}>
+              {validationErrors.phone}
+            </div>
+          ) : null}
 
+          <label htmlFor="message" className="visually-hidden">
+            Сообщение
+          </label>
           <textarea
             id="message"
             name="message"
             value={messageData.message}
             onChange={handleChange}
             required
+            aria-required="true"
+            aria-invalid={!!validationErrors?.message}
+            aria-describedby={validationErrors?.message ? 'error-message' : undefined}
           />
+          {validationErrors?.message ? (
+            <div id="error-message" role="alert" className={styles.error}>
+              {validationErrors.message}
+            </div>
+          ) : null}
         </div>
 
         <button
           type="submit"
           className={styles.submitButton}
           disabled={isLoading}
+          aria-disabled={isLoading}
         >
-          {isLoading ? 'Отправка...' : 'Сделать первый шаг'}
+          {isLoading ? (
+            <>
+              <span className={styles.spinner} aria-hidden="true" />
+              <span className="visually-hidden">Отправка</span>
+              Отправка...
+            </>
+          ) : (
+            'Сделать первый шаг'
+          )}
         </button>
       </form>
     </section>

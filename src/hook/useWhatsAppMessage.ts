@@ -56,6 +56,8 @@ export const useWhatsAppMessage = () => {
     message: '',
   });
   const [isLoading, setIsLoading] = useState(false);
+  const [validationErrors, setValidationErrors] = useState<ValidationErrors>({});
+  const [serverError, setServerError] = useState<string | null>(null);
   const router = useRouter();
 
   const validateForm = useCallback((): ValidationErrors => {
@@ -64,6 +66,7 @@ export const useWhatsAppMessage = () => {
     if (messageData.phone.length !== 10)
       errors.phone = 'Неверный формат телефона';
     if (!messageData.message.trim()) errors.message = 'Сообщение обязательно';
+    setValidationErrors(errors);
     return errors;
   }, [messageData]);
 
@@ -81,8 +84,10 @@ export const useWhatsAppMessage = () => {
           cleanedValue = '9' + cleanedValue.slice(1);
         }
         setMessageData((prev) => ({ ...prev, [name]: cleanedValue }));
+        setValidationErrors((prev) => ({ ...prev, phone: undefined }));
       } else {
         setMessageData((prev) => ({ ...prev, [name]: value }));
+        setValidationErrors((prev) => ({ ...prev, [name]: undefined }));
       }
     },
     []
@@ -93,7 +98,8 @@ export const useWhatsAppMessage = () => {
     if (Object.keys(errors).length > 0) {
       return { success: false, errors };
     }
-
+    setValidationErrors({});
+    setServerError(null);
     setIsLoading(true);
 
     try {
@@ -104,13 +110,17 @@ export const useWhatsAppMessage = () => {
 
       router.push('/#message-sent');
       setMessageData({ name: '', phone: '', message: '' });
+      toast.success('Сообщение успешно отправлено!');
       return { success: true };
     } catch (error) {
       console.error('Failed to send message:', error);
+      const msg = error instanceof Error ? error.message : 'Не удалось отправить сообщение. Попробуйте еще раз.';
+      setServerError(msg);
+      toast.error('Не удалось отправить сообщение. Попробуйте еще раз.');
       return {
         success: false,
         errors: {
-          message: 'Не удалось отправить сообщение. Попробуйте еще раз.',
+          message: msg,
         },
       };
     } finally {
@@ -121,16 +131,15 @@ export const useWhatsAppMessage = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const result = await sendMessage();
-    if (result.success) {
-      toast.success('Сообщение успешно отправлено!');
-    } else if (result.errors) {
+    if (!result.success && result.errors) {
+      // show the first validation/server error inline; sonner already shows toast in sendMessage
       Object.values(result.errors).forEach((error) => {
+        // keep toasts but also keep inline errors
         toast.error(error);
       });
-    } else {
-      toast.error('Произошла ошибка при отправке сообщения.');
     }
+    return result;
   };
 
-  return { messageData, handleChange, handleSubmit, isLoading };
+  return { messageData, handleChange, handleSubmit, isLoading, validationErrors, serverError };
 };

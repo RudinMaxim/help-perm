@@ -154,3 +154,50 @@
     }
   }
 }
+
+/* Inline error and button spinner styles */
+.error {
+  width: 100%;
+  color: #ffdddd;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 0.5rem 0.75rem;
+  border-radius: 12px;
+  font-weight: 700;
+  margin-top: -0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.serverError {
+  width: 100%;
+  background: rgba(255, 0, 0, 0.08);
+  color: #fff;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.submitButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  border-radius: 14px;
+  font-weight: 800;
+}
+
+.spinner {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  border-top-color: #fff;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
