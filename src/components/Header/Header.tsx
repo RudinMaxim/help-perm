@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { MAIN_EMAIL } from '@/constants/phone';
 import Link from 'next/link';
 import { Logo } from '../Logo/Logo';
@@ -11,30 +11,50 @@ import { NavBar } from './components/NavBar';
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [lastScrollY, setLastScrollY] = useState(0); 
+  const lastScrollYRef = useRef(0);
+  const navId = 'main-navigation';
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const handleScroll = () => {
-    const currentScrollY = window.scrollY;
-
-    if (currentScrollY > lastScrollY && currentScrollY > 50) {
-      setIsScrolled(true);
-    } else if (currentScrollY < lastScrollY) {
-      setIsScrolled(false); 
-    }
-
-    setLastScrollY(currentScrollY);
-  };
-
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > lastScrollYRef.current && currentScrollY > 50) {
+        setIsScrolled(true);
+      } else if (currentScrollY < lastScrollYRef.current) {
+        setIsScrolled(false);
+      }
+
+      lastScrollYRef.current = currentScrollY;
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [lastScrollY]);
+  }, []);
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isMenuOpen) setIsMenuOpen(false);
+    };
+
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+      setTimeout(() => {
+        const firstLink = document.getElementById(navId)?.querySelector('a') as HTMLAnchorElement | null;
+        firstLink?.focus();
+      }, 0);
+    } else {
+      document.body.style.overflow = '';
+    }
+
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [isMenuOpen]);
 
   return (
     <header
@@ -42,11 +62,15 @@ export function Header() {
     >
       <div className={style.header__logo_side}>
         <Logo />
-        <BurgerMenu isOpen={isMenuOpen} toggleMenu={toggleMenu} />
+        <BurgerMenu
+          isOpen={isMenuOpen}
+          toggleMenu={toggleMenu}
+          ariaControls={navId}
+        />
       </div>
-      <NavBar isOpen={isMenuOpen} />
+  <NavBar isOpen={isMenuOpen} id={navId} />
       <div className={style.header__contacts_side}>
-        <PhoneLink />
+  <PhoneLink />
         <Link href={`mailto:${MAIN_EMAIL}`} title="Написать нам">
           blagotvoritelnostperm@gmail.com
         </Link>

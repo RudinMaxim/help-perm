@@ -4,8 +4,8 @@ import style from './Logo.module.scss';
 
 export function Logo() {
   return (
-    <Link href="/" className={style.logo}>
-      <Image src="/logo.svg" alt="Logo" width={52} height={52} />
+    <Link href="/" className={style.logo} aria-label="Путь Преодоления, главная">
+      <Image src="/logo.svg" alt="Логотип Путь Преодоления" width={52} height={52} />
       <span>Путь Преодоления</span>
     </Link>
   );

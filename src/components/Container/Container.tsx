@@ -1,6 +1,14 @@
 import React from 'react';
-import '../../app/globals.scss';
 
-export function Container({ children }: { children: React.ReactNode }) {
-	return <div className='container'>{children}</div>;
+interface Props {
+	children: React.ReactNode;
+	className?: string;
+}
+
+export function Container({ children, className = '' }: Props) {
+	return (
+		<main className={`container ${className}`} role="main">
+			{children}
+		</main>
+	);
 }

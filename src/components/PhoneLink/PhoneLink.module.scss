@@ -1,28 +1,37 @@
 .phoneLink {
-  display: flex;
-  font-size: 1.5rem;
-  font-weight: 900;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 600;
   text-decoration: none;
   color: var(--primary-color);
-  transition: all 0.3s ease;
-  flex-direction: column;
-  text-align: end;
+  transition: transform 0.18s ease, color 0.18s ease;
+  text-align: left;
 
-
-  &:focus {
-    border-radius: 0.25rem;
-    border: 2px solid var(--primary-color);
+  &:focus-visible {
+    border-radius: 6px;
+    box-shadow: 0 0 0 3px rgba(83,138,247,0.16);
   }
 }
 
 @media (max-width: 768px) {
   .phoneLink {
-    font-size: 1.25rem;
-    text-align: center;
+    font-size: 1.1rem;
+    justify-content: center;
   }
 }
 
 @media (max-width: 480px) {
-  .phoneLink {
+
+
+  .icon {
+    display: inline-block;
+    width: 1.2em;
+    height: 1.2em;
+  }
+
+  .number {
+    line-height: 1;
   }
 }

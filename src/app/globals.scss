@@ -37,8 +37,16 @@ main {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  border: none;
-  outline: none;
+  outline: 1px solid red;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap;
 }
 
 a {
@@ -62,8 +70,6 @@ li {
   }
 }
 
-/* @media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-} */
+input {
+  border: none;
+}
