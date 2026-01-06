@@ -43,12 +43,6 @@ async function sendToGoogleSheets(data: MessageData) {
   }
 }
 
-// function sendToWhatsApp(data: MessageData) {
-//   const { name, phone, message } = data;
-//   const whatsappMessage = `https://wa.me/${MAIN_PHONE_NUMBER}?text=Имя: ${name}%0AТелефон: +7${phone}%0AСообщение: ${message}`;
-//   window.open(whatsappMessage, '_blank');
-// }
-
 export const useWhatsAppMessage = () => {
   const [messageData, setMessageData] = useState<MessageData>({
     name: '',

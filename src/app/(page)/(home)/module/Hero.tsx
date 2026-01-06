@@ -1,6 +1,7 @@
 import { MAIN_PHONE_NUMBER, SECOND_TLEGRAMM_LINK } from '@/constants/phone';
 import { ButtonLink } from '@/ui';
-import { FaTelegram, FaWhatsapp } from 'react-icons/fa';
+import Image from 'next/image';
+import { FaTelegram } from 'react-icons/fa';
 import style from '../Home.module.scss';
 
 interface HeroProps {
@@ -18,13 +19,15 @@ export function Hero({ title, subtitle, description, buttonText }: HeroProps) {
         <h2 className={style.hero__subtitle}>{subtitle}</h2>
         <p className={style.hero__description}>{description}</p>
         <div className={style.hero__list__button}>
-          <ButtonLink href={`https://wa.me/${MAIN_PHONE_NUMBER.replace(
-            '+',
-            ''
-          )}`} variant='secondary' rel="noopener noreferrer" target='_blank'>
-            <FaWhatsapp size={32} />
+          <ButtonLink
+            href="https://max.ru/u/f9LHodD0cOJr3BzFadTicPzzLvk8o0ZJ8qicmF3Kj3RJ3K28msr4F9vmytM"
+            variant="secondary"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <Image src="/logo-max.png" alt="MAX" width={32} height={32} />
 
-            Написать в WhatsApp
+            Написать в MAX
           </ButtonLink>
           <ButtonLink
             href={SECOND_TLEGRAMM_LINK}

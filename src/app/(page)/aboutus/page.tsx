@@ -37,7 +37,6 @@ export default function selfhelp() {
         mainPhoneNumber={MAIN_PHONE_NUMBER}
         secondPhoneNumber={SECOND_PHONE_NUMBER}
       />
-
     </main>
   );
 }
