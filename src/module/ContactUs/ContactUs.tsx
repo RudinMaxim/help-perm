@@ -1,11 +1,10 @@
 'use client';
-import { useWhatsAppMessage } from '@/hook/useWhatsAppMessage';
+import { useId } from 'react';
+import { useContactForm } from '@/hook/useContactForm';
 import Link from 'next/link';
 import styles from './ContactUs.module.scss';
 
 interface ContactUsProps {
-  title: string;
-  phone: string;
   isMainPage?: boolean;
   mainEmail: string;
   mainPhoneNumber: string;
@@ -13,38 +12,32 @@ interface ContactUsProps {
 }
 
 export function ContactUs({
-  title,
-  phone,
   isMainPage,
   mainEmail,
   mainPhoneNumber,
   secondPhoneNumber,
 }: ContactUsProps) {
   const { messageData, handleChange, handleSubmit, isLoading, validationErrors, serverError } =
-    useWhatsAppMessage();
-
-  const MainTitle = isMainPage ? (
-    <h1 className={styles.title}>
-      Запишитесь <br /> на <b>бесплатную</b> <br /> консультацию
-    </h1>
-  ) : (
-    <h2 className={styles.title}>
-      Запишитесь <br /> на <b>бесплатную</b> <br /> консультацию
-    </h2>
-  );
+    useContactForm();
+  const headingId = useId();
+  const TitleTag = isMainPage ? 'h1' : 'h2';
 
   return (
-    <section id="contactUs" className={`${styles.contact__us} container`}>
+    <section
+      id="contactUs"
+      className={`${styles.contact__us} container`}
+      aria-labelledby={headingId}
+    >
       <div className={styles.contact__us__info}>
-        {MainTitle}
+        <TitleTag id={headingId} className={styles.title}>
+          Запишитесь <br /> на <b>бесплатную</b> <br /> консультацию
+        </TitleTag>
 
         <div className={styles.contact__us__info__list}>
           <ul>
             <li>
               <Link
                 href={`tel:${mainPhoneNumber}`}
-                target="_blank"
-                rel="noreferrer"
               >
                 {mainPhoneNumber}
               </Link>
@@ -52,8 +45,6 @@ export function ContactUs({
             <li>
               <Link
                 href={`tel:${secondPhoneNumber}`}
-                target="_blank"
-                rel="noreferrer"
               >
                 {secondPhoneNumber}
               </Link>
@@ -96,6 +87,8 @@ export function ContactUs({
             value={messageData.name}
             onChange={handleChange}
             className={styles.input}
+            autoComplete="name"
+            required
             aria-required="true"
             aria-invalid={!!validationErrors?.name}
             aria-describedby={validationErrors?.name ? 'error-name' : undefined}
@@ -115,6 +108,9 @@ export function ContactUs({
               onChange={handleChange}
               maxLength={10}
               placeholder="9XXXXXXXXX"
+              inputMode="numeric"
+              autoComplete="tel"
+              required
               aria-required="true"
               aria-invalid={!!validationErrors?.phone}
               aria-describedby={validationErrors?.phone ? 'error-phone' : undefined}

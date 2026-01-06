@@ -7,8 +7,8 @@ interface Props {
 
 export function Container({ children, className = '' }: Props) {
 	return (
-		<main className={`container ${className}`} role="main">
+		<div className={`container ${className}`}>
 			{children}
-		</main>
+		</div>
 	);
 }

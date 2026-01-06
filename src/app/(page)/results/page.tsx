@@ -14,12 +14,10 @@ export const metadata: Metadata = getMetadata({
 
 export default function results() {
   return (
-    <main>
+    <main id="main-content">
       <Results stories={stories} />
       <ContactUs
-        title="Контактная форма"
-        phone={MAIN_PHONE_NUMBER}
-        isMainPage={true}
+        isMainPage={false}
         mainEmail={MAIN_EMAIL}
         mainPhoneNumber={MAIN_PHONE_NUMBER}
         secondPhoneNumber={SECOND_PHONE_NUMBER}

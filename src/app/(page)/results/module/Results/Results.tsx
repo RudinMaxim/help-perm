@@ -18,6 +18,7 @@ interface ResultsProps {
 
 export const Results: React.FC<ResultsProps> = ({ stories }) => {
     const isSmallScreen = useMediaQuery("(max-width: 767px)");
+    const prefersReducedMotion = useMediaQuery("(prefers-reduced-motion: reduce)");
 
     return (
         <section className={styles.beforeAfter}>
@@ -29,7 +30,7 @@ export const Results: React.FC<ResultsProps> = ({ stories }) => {
                     enabled: true,
                 }}
                 loop={true}
-                autoplay={{ delay: 3500, disableOnInteraction: false }}
+                autoplay={prefersReducedMotion ? false : { delay: 3500, disableOnInteraction: false }}
             >
                 {stories?.map((story, index) => (
                     <SwiperSlide key={`Results__${index}__${story.description}`}>

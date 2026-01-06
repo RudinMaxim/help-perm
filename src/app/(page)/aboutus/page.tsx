@@ -14,7 +14,7 @@ export const metadata: Metadata = getMetadata({
 
 export default function selfhelp() {
   return (
-    <main>
+    <main id="main-content">
       <AboutHero
         title="Кто мы и чем занимаемся"
         subtitle="Наша миссия - поддержка в трудные времена"
@@ -30,8 +30,6 @@ export default function selfhelp() {
         values={values}
       />
       <ContactUs
-        title="Контактная форма"
-        phone={MAIN_PHONE_NUMBER}
         isMainPage={false}
         mainEmail={MAIN_EMAIL}
         mainPhoneNumber={MAIN_PHONE_NUMBER}

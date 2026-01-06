@@ -8,9 +8,9 @@ interface ValuesSectionProps {
 
 export function ValuesSection({ title, values }: ValuesSectionProps) {
     return (
-        <section className={styles.valuesSection}>
+        <section className={styles.valuesSection} aria-labelledby="values-section-title">
             <div className={styles.valuesContent}>
-                <h2 className={styles.valuesTitle}>{title}</h2>
+                <h2 id="values-section-title" className={styles.valuesTitle}>{title}</h2>
                 <ul className={styles.valuesList}>
                     {values.map((value, index) => (
                         <li key={`ValuesSection__${index}`} className={styles.valuesItem}>

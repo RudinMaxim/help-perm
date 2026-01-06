@@ -1,4 +1,4 @@
-// app/hooks/useWhatsAppMessage.ts
+// app/hooks/useContactForm.ts
 'use client';
 
 import { useRouter } from 'next/navigation';
@@ -43,7 +43,7 @@ async function sendToGoogleSheets(data: MessageData) {
   }
 }
 
-export const useWhatsAppMessage = () => {
+export const useContactForm = () => {
   const [messageData, setMessageData] = useState<MessageData>({
     name: '',
     phone: '',

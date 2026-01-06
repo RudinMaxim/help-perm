@@ -4,11 +4,10 @@ import {
   MAIN_PHONE_NUMBER,
   SECOND_PHONE_NUMBER,
 } from '@/constants/phone';
-import { services } from '@/constants/services';
 import { ContactUs } from '@/module';
 import { getMetadata } from '@/utils/getMetadata';
 import { Metadata } from 'next/types';
-import { Hero, OurServices, SocialGoal } from './module';
+import { Hero, SocialGoal } from './module';
 import { LicenseDisplay } from '../requisites/module/LicensesSection';
 
 export const metadata: Metadata = getMetadata({
@@ -19,22 +18,17 @@ export const metadata: Metadata = getMetadata({
 
 export default function Home() {
   return (
-    <main>
+    <main id="main-content">
       <Container>
         <Hero
           title="Бесплатная помощь зависимым по всей России"
-          subtitle=""
           description="Независимо от того, какие трудности вы переживаете, мы поможем найти решение и пройти этот путь вместе с вами. Обратившись к нам сегодня,уже спустя месяц Ваш близкий человек может стать свободным от зависимости."
-          buttonText="Получить помощь"
         />
-        <SocialGoal/>
-        {/* <OurServices title="Чем поможем?" services={services} /> */}
+        <SocialGoal />
         <MotivationalBanner />
-        <LicenseDisplay/>
+        <LicenseDisplay />
       </Container>
       <ContactUs
-        title="Контактная форма"
-        phone={MAIN_PHONE_NUMBER}
         isMainPage={false}
         mainEmail={MAIN_EMAIL}
         mainPhoneNumber={MAIN_PHONE_NUMBER}

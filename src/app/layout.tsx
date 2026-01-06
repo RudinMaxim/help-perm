@@ -1,5 +1,5 @@
 import { Footer, Header } from '@/components';
-import { getMetadata } from '@/utils/getMetadata';
+import { getMetadata, getOrganizationJsonLd } from '@/utils/getMetadata';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { Toaster } from 'sonner';
@@ -30,10 +30,13 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
+  const organizationJsonLd = getOrganizationJsonLd();
   return (
     <html lang="ru">
       <body className={poppins.className}>
+        <a className="skip-link" href="#main-content">
+          Перейти к содержимому
+        </a>
         <Header />
         {children}
         <Footer />
@@ -43,6 +46,10 @@ export default function RootLayout({
         /> */}
         <Toaster position="top-right" expand={false} richColors />
         <YandexMetrika />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
       </body>
     </html>
   );

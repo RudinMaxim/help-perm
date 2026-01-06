@@ -8,8 +8,9 @@
   border-radius: 30px;
   cursor: pointer;
 
-  &:focus {
-    border: 2px solid var(--secondary-color);
+  &:focus-visible {
+    outline: 3px solid var(--secondary-color);
+    outline-offset: 3px;
   }
   @media (hover) {
     &:hover {

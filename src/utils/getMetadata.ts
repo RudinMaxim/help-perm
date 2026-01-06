@@ -13,38 +13,39 @@ interface IMetadata {
   url?: string;
 }
 
-export const getMetadata = (props: IMetadata): Metadata => {
-  const jsonLd = {
-    '@type': 'Organization',
-    name: 'Благотворительная помощь в России',
-    url: BASE_URL,
-    contactPoint: [
-      {
-        '@type': 'ContactPoint',
-        telephone: MAIN_PHONE_NUMBER,
-        contactType: 'customer support',
-      },
-      {
-        '@type': 'ContactPoint',
-        telephone: SECOND_PHONE_NUMBER,
-        contactType: 'customer support',
-      },
-      {
-        '@type': 'ContactPoint',
-        email: MAIN_EMAIL,
-        contactType: 'customer support',
-      },
-    ],
-    areaServed: {
-      '@type': 'Country',
-      name: 'Россия',
+export const getOrganizationJsonLd = () => ({
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Благотворительная помощь в России',
+  url: BASE_URL,
+  contactPoint: [
+    {
+      '@type': 'ContactPoint',
+      telephone: MAIN_PHONE_NUMBER,
+      contactType: 'customer support',
     },
-    address: {
-      '@type': 'PostalAddress',
-      addressCountry: 'RU',
+    {
+      '@type': 'ContactPoint',
+      telephone: SECOND_PHONE_NUMBER,
+      contactType: 'customer support',
     },
-  };
+    {
+      '@type': 'ContactPoint',
+      email: MAIN_EMAIL,
+      contactType: 'customer support',
+    },
+  ],
+  areaServed: {
+    '@type': 'Country',
+    name: 'Россия',
+  },
+  address: {
+    '@type': 'PostalAddress',
+    addressCountry: 'RU',
+  },
+});
 
+export const getMetadata = (props: IMetadata): Metadata => {
   const cities = [
     'Киров', 'Кировская область',
     'Пермь', 'Пермский край',
@@ -95,7 +96,6 @@ export const getMetadata = (props: IMetadata): Metadata => {
     viewport: {
       width: 'device-width',
       initialScale: 1,
-      userScalable: false,
     },
     themeColor: [
       { media: '(prefers-color-scheme: light)', color: 'white' },
@@ -131,6 +131,12 @@ export const getMetadata = (props: IMetadata): Metadata => {
         },
       ],
     },
+    twitter: {
+      card: 'summary_large_image',
+      title: props.title ?? 'Бесплатная помощь зависимым в России',
+      description: props.description ?? `Психологическая помощь, юридическая консультация, семейное и финансовое консультирование, помощь людям с ограниченными возможностями, бездомным, наркозависимым и алкоголезависимым в городах: ${cityDescription}.`,
+      images: [`${BASE_URL}/android-chrome-512x512.png`],
+    },
     other: {
       'yandex-verification': '07c30b0770e6567f',
       'google-site-verification': 'Es1etisPASiWvXIWEfo788aAH534wlF1ZlO8-8ZpSLY',
@@ -139,7 +145,6 @@ export const getMetadata = (props: IMetadata): Metadata => {
       'geo.position': '61.52401;105.318756',
       'ICBM': '61.52401, 105.318756',
       'og:locale:alternate': 'en_US',
-      'script:ld+json': JSON.stringify(jsonLd)
     },
     formatDetection: {
       telephone: true,

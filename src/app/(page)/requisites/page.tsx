@@ -18,15 +18,13 @@ export const metadata: Metadata = getMetadata({
 
 export default function requisites() {
   return (
-    <main>
+    <main id="main-content">
       <Container>
         <RequisitesPage />
-        <LicenseDisplay/>
+        <LicenseDisplay />
       </Container>
 
       <ContactUs
-        title="Контактная форма"
-        phone={MAIN_PHONE_NUMBER}
         isMainPage={false}
         mainEmail={MAIN_EMAIL}
         mainPhoneNumber={MAIN_PHONE_NUMBER}

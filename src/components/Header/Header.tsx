@@ -68,9 +68,9 @@ export function Header() {
           ariaControls={navId}
         />
       </div>
-  <NavBar isOpen={isMenuOpen} id={navId} />
+      <NavBar isOpen={isMenuOpen} id={navId} />
       <div className={style.header__contacts_side}>
-  <PhoneLink />
+        <PhoneLink />
         <Link href={`mailto:${MAIN_EMAIL}`} title="Написать нам">
           blagotvoritelnostperm@gmail.com
         </Link>

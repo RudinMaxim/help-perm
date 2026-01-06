@@ -111,6 +111,7 @@
       display: flex;
       align-items: center;
       gap: 0.25rem;
+      border: 2px solid transparent;
 
       span {
         padding: 0.75rem;
@@ -126,7 +127,21 @@
         flex: 1;
         font-size: inherit;
         font-weight: inherit;
+        background-color: transparent;
       }
+    }
+
+    .input,
+    textarea {
+      background-color: var(--bg-color);
+      border: 2px solid transparent;
+    }
+
+    .label:focus-within,
+    .input:focus-visible,
+    textarea:focus-visible {
+      outline: 3px solid var(--bg-color);
+      outline-offset: 2px;
     }
 
     textarea {
