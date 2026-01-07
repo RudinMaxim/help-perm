@@ -32,7 +32,7 @@ export function RequisitesPage() {
           </tr>
           <tr>
             <th scope="row">Фактический адрес</th>
-            <td>614023, город Пермь, Фиалковая ул., д. 13</td>
+            <td>614023, город Пермь, Фиалковая ул., д. 24</td>
           </tr>
           <tr>
             <th scope="row">Фактический адрес</th>
