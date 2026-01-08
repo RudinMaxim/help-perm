@@ -1,19 +1,22 @@
 .header {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.5rem 1rem;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 0;
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   position: sticky;
   top: 0;
   z-index: 100;
   width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
   transition: transform 0.3s ease, opacity 0.3s ease;
 
-  @media (max-width: 988px) {
-    flex-direction: column;
-    padding: 0.5rem;
+  @media (min-width: 769px) {
+    flex-direction: row;
+    align-items: center;
+    padding: 0.5rem 1rem;
   }
 
   &__logo_side {
@@ -28,43 +31,84 @@
       justify-content: space-between;
       padding: 0.5rem 0;
     }
+
+    @media (min-width: 769px) {
+      width: auto;
+      padding: 0;
+    }
+  }
+
+  .menu {
+    display: none;
+    flex-direction: column;
+    gap: 1rem;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    padding: 0.75rem 1rem 1rem;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+    border-radius: 0 0 20px 20px;
+
+    @media (min-width: 769px) {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 1rem;
+      position: static;
+      width: auto;
+      background-color: transparent;
+      padding: 0;
+      box-shadow: none;
+      border-radius: 0;
+      flex: 1;
+    }
+  }
+
+  .menu__open {
+    display: flex;
   }
 
   .nav {
+    display: none;
     width: 100%;
 
     ul {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 1rem;
-      font-size: clamp(0.9rem, 2vw, 1.2rem);
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0.5rem;
+      font-size: 0.95rem;
       font-weight: 500;
-      padding: 0 1rem;
-      margin: 1rem 0;
+      padding: 0;
+      margin: 0;
       list-style-type: none;
 
-      @media (max-width: 768px) {
-        flex-wrap: wrap;
+      @media (min-width: 769px) {
+        flex-direction: row;
         justify-content: center;
-        gap: 0.5rem;
+        align-items: center;
+        gap: 0.75rem;
       }
 
       li {
         position: relative;
 
         a {
-          display: inline-block;
-          transition: background-color 0.3s ease, color 0.3s ease,
-            transform 0.3s ease;
-          background-color: var(--primary-color);
-          color: var(--bg-color);
-          padding: 0.75rem 1.5rem;
-          border-radius: 30px;
+          display: block;
+          transition: color 0.2s ease, border-color 0.2s ease;
+          background-color: transparent;
+          color: var(--primary-color);
+          padding: 0.25rem 0.4rem;
+          border-radius: 0;
           text-decoration: none;
+          text-align: center;
+          line-height: 1.2;
+          border-bottom: 2px solid transparent;
 
           @media (max-width: 480px) {
-            padding: 0.5rem 1rem;
+            padding: 0.25rem 0.4rem;
           }
 
           &:focus-visible {
@@ -74,7 +118,7 @@
 
           @media (hover: hover) {
             &:hover {
-              transform: translateY(-0.25rem);
+              border-color: currentColor;
             }
           }
 
@@ -84,7 +128,7 @@
         }
 
         .navLinkActive {
-          box-shadow: 0 0 0 2px var(--bg-color) inset;
+          border-color: currentColor;
         }
 
         &::after {
@@ -100,44 +144,46 @@
       }
     }
 
-    @media (max-width: 768px) {
-      display: none;
-      flex-direction: column;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      width: 100%;
-      background-color: #fff;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-
-      &__open {
-        display: flex;
-      }
-
-      ul {
-        flex-direction: column;
-        align-items: stretch;
-        padding: 1rem;
-
-        li {
-          margin-bottom: 0.5rem;
-
-          a {
-            display: block;
-            text-align: center;
-          }
-        }
-      }
+    @media (min-width: 769px) {
+      display: block;
+      flex: 1;
     }
   }
-  &Hidden {
-    transform: translateY(-100%);
-    opacity: 0;
+
+  .nav__open {
+    display: block;
+  }
+
+  .menu__contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    padding-top: 0.5rem;
+    font-size: 0.9rem;
+    align-items: flex-start;
+
+    @media (min-width: 769px) {
+      border-top: 0;
+      padding-top: 0;
+      gap: 0.25rem;
+      margin-left: auto;
+    }
+  }
+
+  .menu__contacts a {
+    color: var(--primary-color);
+    text-decoration: none;
   }
 }
 
+.headerHidden {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
 .burger_menu {
-  display: none;
+  display: flex;
   flex-direction: column;
   justify-content: space-around;
   width: 2rem;
@@ -148,8 +194,8 @@
   padding: 0;
   z-index: 10;
 
-  @media (max-width: 768px) {
-    display: flex;
+  @media (min-width: 769px) {
+    display: none;
   }
 
   span {
