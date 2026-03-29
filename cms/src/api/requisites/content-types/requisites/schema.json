@@ -1,0 +1,62 @@
+{
+  "kind": "singleType",
+  "collectionName": "requisites",
+  "info": {
+    "singularName": "requisites",
+    "pluralName": "requisites-list",
+    "displayName": "Реквизиты"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "ogrn": {
+      "type": "string"
+    },
+    "ogrnDate": {
+      "type": "string"
+    },
+    "inn": {
+      "type": "string"
+    },
+    "kpp": {
+      "type": "string"
+    },
+    "registrationDate": {
+      "type": "string"
+    },
+    "legalAddress": {
+      "type": "string"
+    },
+    "actualAddresses": {
+      "type": "json"
+    },
+    "head": {
+      "type": "string"
+    },
+    "mainActivity": {
+      "type": "text"
+    },
+    "taxAuthority": {
+      "type": "string"
+    },
+    "okpo": {
+      "type": "string"
+    },
+    "okato": {
+      "type": "string"
+    },
+    "oktmo": {
+      "type": "string"
+    },
+    "okfs": {
+      "type": "string"
+    },
+    "okogu": {
+      "type": "string"
+    },
+    "okopf": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "kind": "singleType",
+  "collectionName": "contact_infos",
+  "info": {
+    "singularName": "contact-info",
+    "pluralName": "contact-infos",
+    "displayName": "Контактная информация"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "mainPhone": {
+      "type": "string",
+      "required": true
+    },
+    "secondPhone": {
+      "type": "string"
+    },
+    "mainEmail": {
+      "type": "email",
+      "required": true
+    },
+    "mainTelegramLink": {
+      "type": "string"
+    },
+    "secondTelegramLink": {
+      "type": "string"
+    },
+    "maxMessengerLink": {
+      "type": "string"
+    }
+  }
+}

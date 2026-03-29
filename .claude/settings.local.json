@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find /c/Users/rudin/pet/help-perm/cms/node_modules/@strapi -name develop* -o -name watch*)",
+      "Bash(node:*)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:hub.docker.com)",
+      "WebSearch",
+      "Bash(npx patch-package:*)"
+    ]
+  }
+}

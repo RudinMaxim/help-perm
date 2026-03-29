@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "values",
+  "info": {
+    "singularName": "value",
+    "pluralName": "values",
+    "displayName": "Ценность"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "icon": {
+      "type": "string"
+    },
+    "order": {
+      "type": "integer",
+      "default": 0
+    }
+  }
+}

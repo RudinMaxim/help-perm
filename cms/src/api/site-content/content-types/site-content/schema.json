@@ -1,0 +1,50 @@
+{
+  "kind": "singleType",
+  "collectionName": "site_contents",
+  "info": {
+    "singularName": "site-content",
+    "pluralName": "site-contents",
+    "displayName": "Контент сайта"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "homeHeroTitle": {
+      "type": "string"
+    },
+    "homeHeroDescription": {
+      "type": "text"
+    },
+    "socialGoalTitle": {
+      "type": "string"
+    },
+    "socialGoalText": {
+      "type": "text"
+    },
+    "motivationalBannerTitle": {
+      "type": "string"
+    },
+    "motivationalBannerDescription": {
+      "type": "text"
+    },
+    "aboutHeroTitle": {
+      "type": "string"
+    },
+    "aboutHeroSubtitle": {
+      "type": "string"
+    },
+    "aboutHeroDescription": {
+      "type": "text"
+    },
+    "aboutHeroButtonText": {
+      "type": "string"
+    },
+    "teamTitle": {
+      "type": "string"
+    },
+    "teamDescription": {
+      "type": "text"
+    }
+  }
+}

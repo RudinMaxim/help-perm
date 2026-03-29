@@ -1,0 +1,57 @@
+version: '3.8'
+
+services:
+  cms:
+    build:
+      context: ../cms
+      dockerfile: Dockerfile
+    environment:
+      NODE_ENV: production
+      HOST: ${STRAPI_HOST}
+      PORT: ${STRAPI_PORT}
+      APP_KEYS: ${APP_KEYS}
+      API_TOKEN_SALT: ${API_TOKEN_SALT}
+      ADMIN_JWT_SECRET: ${ADMIN_JWT_SECRET}
+      TRANSFER_TOKEN_SALT: ${TRANSFER_TOKEN_SALT}
+      ENCRYPTION_KEY: ${ENCRYPTION_KEY}
+      JWT_SECRET: ${JWT_SECRET}
+      DATABASE_CLIENT: ${DATABASE_CLIENT}
+      DATABASE_FILENAME: ${DATABASE_FILENAME}
+      STRAPI_PUBLIC_URL: ${STRAPI_PUBLIC_URL}
+    volumes:
+      - cms_uploads:/app/public/uploads
+      - cms_database:/app/.tmp
+    restart: always
+
+  web:
+    build:
+      context: ../app
+      dockerfile: Dockerfile
+    environment:
+      NODE_ENV: production
+      CMS_INTERNAL_URL: ${CMS_INTERNAL_URL}
+      NEXT_PUBLIC_CMS_URL: ${NEXT_PUBLIC_CMS_URL}
+      YANDEX_METRICA: ${YANDEX_METRICA}
+    depends_on:
+      - cms
+    restart: always
+
+  nginx:
+    image: jonasal/nginx-certbot:latest
+    restart: always
+    environment:
+      CERTBOT_EMAIL: ${CERTBOT_EMAIL}
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./user_conf.d:/etc/nginx/user_conf.d:ro
+      - letsencrypt:/etc/letsencrypt
+    depends_on:
+      - web
+      - cms
+
+volumes:
+  cms_uploads:
+  cms_database:
+  letsencrypt:
