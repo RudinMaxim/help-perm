@@ -33,12 +33,12 @@ async function sendToContactApi(data: MessageData) {
     });
 
     if (!response.ok) {
-      throw new Error('Failed to send data to Google Sheets');
+      throw new Error('Failed to send data to CMS');
     }
 
     return true;
   } catch (error) {
-    console.error('Error sending data to Google Sheets:', error);
+    console.error('Error sending data to CMS:', error);
     return false;
   }
 }

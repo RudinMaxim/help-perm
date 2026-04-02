@@ -110,7 +110,7 @@ async function fetchCMS<T>(path: string): Promise<T | null> {
   try {
     const res = await fetch(`${CMS_URL}/api${path}`, {
       headers: { 'Content-Type': 'application/json' },
-      next: { revalidate: 3600 },
+      cache: 'no-store',
     });
     if (!res.ok) return null;
     return res.json() as Promise<T>;

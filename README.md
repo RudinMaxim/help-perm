@@ -33,7 +33,28 @@ npm run start
 
 CMS будет доступна на `http://localhost:1337`.
 
-### 2. Запуск frontend
+### 2. Заполнить CMS тестовыми данными
+
+После запуска CMS в отдельном терминале:
+
+```bash
+cd cms
+npm run seed
+```
+
+Сид заполняет:
+
+- контактную информацию
+- тексты для страниц
+- реквизиты
+- услуги
+- шаги
+- ценности
+- истории
+
+Если сид уже запускался раньше, single types будут обновлены, а коллекции не будут задублированы.
+
+### 3. Запуск frontend
 
 В другом терминале:
 
@@ -47,13 +68,40 @@ CMS_INTERNAL_URL=http://localhost:1337 NEXT_PUBLIC_CMS_URL=http://localhost:1337
 
 Frontend будет доступен на `http://localhost:3000`.
 
-### 3. Быстрая проверка
+### 4. Быстрая проверка
 
 ```bash
 curl -I http://localhost:1337/admin
 curl -I http://localhost:3000
 curl http://localhost:1337/api/contact-info
 ```
+
+### 5. Проверка интеграции CMS и app
+
+В проекте есть две основные интеграции:
+
+1. SSR-чтение контента из CMS
+2. Отправка формы из UI в CMS через Next.js API route
+
+Проверка SSR:
+
+- откройте `http://localhost:3000`
+- измените тексты в Strapi Admin
+- обновите страницу в браузере
+- убедитесь, что новый контент отображается на сайте
+
+Контент для UI берётся серверно из `app/src/lib/cms.ts` через `CMS_INTERNAL_URL`.
+
+Проверка формы:
+
+- откройте форму на сайте
+- отправьте тестовую заявку
+- откройте Strapi Admin
+- убедитесь, что запись появилась в коллекции `Заявка`
+
+Цепочка отправки такая:
+
+`UI -> /api/contact (Next.js) -> /api/applications (Strapi)`
 
 ## Запуск через Docker Compose
 
@@ -70,6 +118,22 @@ docker compose logs --tail 100 nginx
 
 ```bash
 docker compose down
+```
+
+### Seed для Docker Compose
+
+После запуска стека можно заполнить CMS тестовыми данными так:
+
+```bash
+cd infrastructure
+docker compose exec -T cms npm run seed:prod
+```
+
+После этого проверьте:
+
+```bash
+docker compose exec -T cms node -e "fetch('http://127.0.0.1:1337/api/contact-info').then(r=>r.text()).then(console.log)"
+docker compose exec -T cms node -e "fetch('http://web:3000').then(r=>{console.log(r.status);return r.text()}).then(t=>console.log(t.slice(0,300)))"
 ```
 
 ## Деплой на Ubuntu VPS
@@ -311,4 +375,3 @@ docker compose down
 - CMS использует `sqlite`
 - frontend внутри docker-сети ходит в CMS по адресу `http://cms:1337`
 - публичный URL CMS задаётся через `STRAPI_PUBLIC_URL`
-
