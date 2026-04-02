@@ -106,6 +106,7 @@
     justify-content: center;
     align-items: center;
     height: auto;
+    width: min(100%, 26rem);
     padding-inline: clamp(1rem, 3vw, 2rem);
   }
 
@@ -129,6 +130,10 @@
 }
 
 @media (max-width: 768px) {
+  .swiper .swiperSlide {
+    width: 100%;
+  }
+
   .requisites {
     margin: 1rem;
     padding: 1rem;

@@ -1,3 +1,8 @@
+'use client';
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { A11y, Keyboard } from 'swiper/modules';
+import 'swiper/css';
 import styles from '../Home.module.scss';
 import { CmsIcon } from '@/lib/icons';
 
@@ -27,17 +32,26 @@ export function OurServices({
         {footnote?.trim() ? <p className={styles.sectionLead}>{footnote}</p> : null}
       </div>
 
-      <div className={styles.servicesGrid} data-motion-stagger>
+      <Swiper
+        modules={[A11y, Keyboard]}
+        slidesPerView="auto"
+        spaceBetween={16}
+        watchOverflow
+        keyboard={{ enabled: true, onlyInViewport: false }}
+        className={styles.servicesSwiper}
+      >
         {services.map((service) => (
-          <article key={`OurServices__${service.id}`} className={styles.service} data-motion-card>
-            <div className={styles.serviceIcon}>
-              <CmsIcon name={service.icon} size={32} />
-            </div>
-            <h3 className={styles.serviceTitle}>{service.title}</h3>
-            <p className={styles.serviceDescription}>{service.description}</p>
-          </article>
+          <SwiperSlide key={`OurServices__${service.id}`} className={styles.serviceSlide}>
+            <article className={styles.service} data-motion-card>
+              <div className={styles.serviceIcon}>
+                <CmsIcon name={service.icon} size={32} />
+              </div>
+              <h3 className={styles.serviceTitle}>{service.title}</h3>
+              <p className={styles.serviceDescription}>{service.description}</p>
+            </article>
+          </SwiperSlide>
         ))}
-      </div>
+      </Swiper>
     </section>
   );
 }

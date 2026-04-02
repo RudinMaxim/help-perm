@@ -3,7 +3,6 @@ import { ContactUs } from '@/module';
 import {
   cmsMediaUrl,
   getContactInfo,
-  getLicenseInfo,
   getServices,
   getSiteContent,
   getSteps,
@@ -14,9 +13,7 @@ import {
 import { getMetadata } from '@/utils/getMetadata';
 import { Metadata } from 'next/types';
 import styles from './Home.module.scss';
-import { Hero, OurServices, SocialGoal } from './module';
-import { ValuesSection } from '../aboutus/module';
-import { LicenseDisplay } from '../requisites/module/LicensesSection';
+import { Hero, OurServices, SocialChannels, SocialGoal } from './module';
 import { Results } from '../results/module';
 
 export const metadata: Metadata = getMetadata({
@@ -26,12 +23,11 @@ export const metadata: Metadata = getMetadata({
 });
 
 export default async function Home() {
-  const [contactInfo, services, siteContent, uiContent, licenseInfo, stories, steps, values] = await Promise.all([
+  const [contactInfo, services, siteContent, uiContent, stories, steps, values] = await Promise.all([
     getContactInfo(),
     getServices(),
     getSiteContent(),
     getUiContent(),
-    getLicenseInfo(),
     getStories(),
     getSteps(),
     getValues(),
@@ -58,12 +54,13 @@ export default async function Home() {
           description={siteContent?.homeHeroDescription ?? ''}
           steps={steps}
           howWeWorkTitle={uiContent?.aboutHowWeWorkTitle ?? ''}
+        />
+        <SocialChannels
           mainPhone={mainPhone}
-          secondTelegramLink={secondTelegramLink}
           maxMessengerLink={maxMessengerLink}
+          secondTelegramLink={secondTelegramLink}
           maxButtonText={uiContent?.homeHeroMaxButtonText ?? ''}
           telegramButtonText={uiContent?.homeHeroTelegramButtonText ?? ''}
-          callButtonText={uiContent?.homeHeroCallButtonText ?? ''}
         />
         <SocialGoal
           eyebrow={siteContent?.aboutHeroSubtitle ?? ''}
@@ -83,10 +80,6 @@ export default async function Home() {
           stories={storyItems}
           title={uiContent?.resultsPageTitle ?? ''}
           storyAltPrefix={uiContent?.resultsStoryAltPrefix ?? ''}
-        />
-        <LicenseDisplay
-          data={licenseInfo}
-          imageAltPrefix={uiContent?.licenseImageAltPrefix ?? ''}
         />
       </Container>
       <ContactUs

@@ -2,7 +2,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { toast } from 'sonner';
 
 interface MessageData {
@@ -65,6 +65,10 @@ export const useContactForm = (messages: ContactFormMessages) => {
   const [validationErrors, setValidationErrors] = useState<ValidationErrors>({});
   const [serverError, setServerError] = useState<string | null>(null);
   const router = useRouter();
+
+  useEffect(() => {
+    setMessageData((prev) => ({ ...prev, consentGiven: false }));
+  }, []);
 
   const validateForm = useCallback((): ValidationErrors => {
     const errors: ValidationErrors = {};

@@ -53,9 +53,9 @@ export function ContactUs({
             лишних формальностей.
           </p>
 
-          <div className={styles.contactCards} data-motion-stagger>
-            <article className={styles.contactCard} data-motion-card>
-              <p className={styles.contactCardLabel}>Телефон</p>
+          <div className={styles.contactDetails} data-motion-stagger>
+            <div className={styles.contactDetail} data-motion-card>
+              <p className={styles.contactDetailLabel}>Телефон</p>
               {mainPhoneNumber ? (
                 <Link href={`tel:${mainPhoneNumber}`}>
                   {mainPhoneNumber}
@@ -66,21 +66,21 @@ export function ContactUs({
                   {secondPhoneNumber}
                 </Link>
               ) : null}
-            </article>
+            </div>
 
-            <article className={styles.contactCard} data-motion-card>
-              <p className={styles.contactCardLabel}>Электронная почта</p>
+            <div className={styles.contactDetail} data-motion-card>
+              <p className={styles.contactDetailLabel}>Электронная почта</p>
               {mainEmail ? (
                 <Link href={`mailto:${mainEmail}`}>
                   {mainEmail}
                 </Link>
               ) : null}
-            </article>
+            </div>
 
-            <article className={styles.contactCard} data-motion-card>
-              <p className={styles.contactCardLabel}>Режим связи</p>
+            <div className={styles.contactDetail} data-motion-card>
+              <p className={styles.contactDetailLabel}>Режим связи</p>
               <p>{uiText?.contactFormWorkingHoursText ?? ''}</p>
-            </article>
+            </div>
           </div>
         </div>
 
@@ -88,6 +88,7 @@ export function ContactUs({
           className={styles.contactForm}
           onSubmit={handleSubmit}
           aria-busy={isLoading}
+          autoComplete="off"
           noValidate
           data-motion-card
         >
@@ -188,6 +189,7 @@ export function ContactUs({
                 name="consentGiven"
                 checked={messageData.consentGiven}
                 onChange={handleChange}
+                autoComplete="off"
                 required
                 aria-required="true"
               />

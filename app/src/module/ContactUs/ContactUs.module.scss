@@ -51,43 +51,30 @@
   line-height: 1.75;
 }
 
-.contactCards {
+.contactDetails {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1rem;
-
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-  }
+  padding-top: 0.5rem;
 }
 
-.contactCard {
-  min-height: 100%;
-  padding: 1.25rem;
-  border: 1px solid var(--line-color);
-  border-radius: 1.35rem;
-  background: var(--surface-strong);
-  box-shadow: var(--shadow-sm);
-
-  p+a,
-  a+a,
-  p+p {
-    margin-top: 0.45rem;
-  }
+.contactDetail {
+  display: grid;
+  gap: 0.45rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(20, 32, 51, 0.1);
 
   a {
-    display: block;
+    width: fit-content;
     color: var(--primary-color-strong);
     font-weight: 700;
   }
 }
 
-.contactCardLabel {
-  margin-bottom: 0.75rem;
+.contactDetailLabel {
   color: var(--text-color);
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-weight: 800;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
@@ -96,10 +83,6 @@
   flex-direction: column;
   gap: 1.25rem;
   padding: clamp(1.35rem, 3vw, 2rem);
-  border: 1px solid rgba(20, 32, 51, 0.08);
-  border-radius: calc(var(--border-radius-black) - 0.35rem);
-  background: var(--surface-strong);
-  box-shadow: var(--shadow-sm);
 }
 
 .formHeader {
@@ -275,10 +258,6 @@
 }
 
 @media (max-width: 576px) {
-  .contactCard {
-    padding: 1rem;
-  }
-
   .consent {
     font-size: 0.9rem;
   }
@@ -289,9 +268,6 @@
     max-width: 14ch;
   }
 
-  .contactCards {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
 }
 
 @media (max-width: 1280px) {
@@ -322,7 +298,7 @@
   }
 
   .fieldLabel,
-  .contactCardLabel {
+  .contactDetailLabel {
     font-size: 0.88rem;
   }
 }

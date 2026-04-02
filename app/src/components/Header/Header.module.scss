@@ -33,6 +33,7 @@
     transition: transform var(--transition), box-shadow var(--transition);
 
     span {
+      padding-top: 2px;
       font-size: 1.25rem;
       font-weight: 700;
       line-height: 1;

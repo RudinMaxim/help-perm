@@ -22,7 +22,7 @@ export function Header({
           aria-label="Перейти к форме обращения"
           title="Перейти к форме обращения"
         >
-          <span aria-hidden="true">↓</span>
+          <span aria-hidden="true">SOS</span>
         </a>
       </div>
     </header>

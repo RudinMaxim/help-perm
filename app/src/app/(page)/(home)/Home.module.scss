@@ -3,10 +3,8 @@
 }
 
 .pageShell {
-  width: 100%;
-  max-width: 1080px;
-  margin: 0 auto;
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: var(--section-space);
 }
 
@@ -22,11 +20,6 @@
   font-size: 0.9rem;
   font-weight: 700;
   letter-spacing: 0.02em;
-}
-
-.sectionHeader,
-.aboutIntro {
-  max-width: 48rem;
 }
 
 .sectionTitle {
@@ -54,8 +47,6 @@
     content: '';
     position: absolute;
     inset: 1.25rem;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: calc(var(--border-radius-black) - 0.5rem);
     pointer-events: none;
   }
 
@@ -99,6 +90,7 @@
     font-weight: 700;
     letter-spacing: 0.02em;
     backdrop-filter: blur(10px);
+    width: fit-content;
   }
 
   &__title {
@@ -110,46 +102,15 @@
 
   &__description {
     max-width: 34rem;
-    margin-bottom: 2rem;
+    margin-bottom: 0;
     color: rgba(255, 255, 255, 0.86);
     font-size: clamp(1.05rem, 2.2vw, 1.3rem);
     line-height: 1.65;
   }
 
-  &__actions {
-    display: grid;
-    gap: 1rem;
-    max-width: 40rem;
-  }
-
-  &__button {
-    width: fit-content;
-    min-width: 16rem;
-  }
-
-  &__actionsCaption {
-    max-width: 30rem;
-    color: rgba(255, 255, 255, 0.78);
-    font-weight: 600;
-  }
-
-  &__secondaryActions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.85rem;
-  }
-
-  &__secondaryButton {
-    min-width: 13rem;
-  }
-
-  &__aside {
-    align-self: stretch;
-  }
-
   &__asideCard {
-    height: 100%;
     padding: 1.25rem;
+    margin-top: auto;
     border: 1px solid rgba(255, 255, 255, 0.14);
     border-radius: 1.5rem;
     background: rgba(255, 255, 255, 0.12);
@@ -204,6 +165,86 @@
     }
   }
 
+}
+
+.socialChannels {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.socialChannels__header {
+  max-width: 38rem;
+}
+
+.socialChannels__title {
+  font-size: clamp(1.6rem, 3vw, 2.3rem);
+}
+
+.socialChannels__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+}
+
+.socialChannels__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+  min-width: 17rem;
+  padding: 0.95rem 1.1rem;
+  border: 1px solid var(--line-color);
+  border-radius: 1.35rem;
+  background: var(--surface-strong);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+
+  @media (hover: hover) {
+    &:hover {
+      transform: translateY(-2px);
+      border-color: rgba(37, 99, 235, 0.22);
+      box-shadow: var(--shadow-md);
+    }
+  }
+}
+
+.socialChannels__badgePrimary {
+  border-color: rgba(249, 115, 22, 0.2);
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.08), rgba(255, 255, 255, 0.96));
+}
+
+.socialChannels__media {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  flex: 0 0 auto;
+  border-radius: 1rem;
+  background: var(--primary-color-soft);
+  color: var(--primary-color-strong);
+}
+
+.socialChannels__phoneIcon,
+.socialChannels__formIcon {
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.socialChannels__content {
+  display: grid;
+  gap: 0.2rem;
+
+  strong {
+    color: var(--text-color);
+    font-size: 1rem;
+  }
+
+  span {
+    color: var(--muted-color);
+    font-size: 0.94rem;
+    line-height: 1.4;
+  }
 }
 
 .aboutSection {
@@ -261,18 +302,61 @@
   text-transform: uppercase;
 }
 
-.ourServices {
-  padding: clamp(1.75rem, 3vw, 2.5rem);
+  .ourServices {
+    padding: clamp(1.75rem, 3vw, 2.5rem);
   border: 1px solid rgba(255, 255, 255, 0.64);
   border-radius: var(--border-radius-black);
   background: var(--surface-color);
   backdrop-filter: blur(16px);
   box-shadow: var(--shadow-sm);
 
-  .servicesGrid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 1rem;
+  .serviceSlide {
+    width: min(100%, 20rem);
+    height: auto;
+    padding-block: 0.35rem 0.6rem;
+  }
+
+  .servicesSwiper {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow: hidden;
+    padding: 0.2rem 0.25rem 0.15rem;
+  }
+
+  :global(.swiper-wrapper) {
+    align-items: stretch;
+  }
+
+  :global(.swiper) {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  :global(.swiper-slide) {
+    height: auto;
+  }
+
+  @media (max-width: 767px) {
+    .serviceSlide {
+      width: 100%;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .serviceSlide {
+      width: 19rem;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .serviceSlide {
+      width: 20rem;
+    }
+  }
+
+  .servicesSwiper {
     padding-top: 2rem;
   }
 
@@ -335,19 +419,24 @@
     &__title {
       max-width: 12ch;
     }
-
-    &__button {
-      width: fit-content;
-    }
   }
 
   .ourServices {
     padding: 1.25rem;
     backdrop-filter: none;
+    overflow: hidden;
 
-    .servicesGrid {
-      grid-template-columns: 1fr;
+    .servicesSwiper {
+      overflow: hidden;
+      margin: 0;
+      padding-inline: 0;
       padding-top: 1.5rem;
+      padding-bottom: 0.35rem;
+    }
+
+    .serviceSlide {
+      width: calc(100% - 0.2rem);
+      padding-block: 0.2rem 0.45rem;
     }
 
     .service {
@@ -357,6 +446,11 @@
 
   .aboutGrid {
     grid-template-columns: 1fr;
+  }
+
+  .socialChannels__badge {
+    width: 100%;
+    min-width: 0;
   }
 }
 
@@ -371,8 +465,7 @@
   }
 
   .ourServices {
-    .servicesGrid {
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+    .servicesSwiper {
       padding-top: 1.75rem;
     }
   }
@@ -386,10 +479,6 @@
   }
 
   .ourServices {
-    .servicesGrid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
     .service {
       min-height: 20rem;
     }
@@ -403,8 +492,7 @@
     }
 
     &__eyebrow,
-    &__asideCard,
-    &__signalCard {
+    &__asideCard {
       backdrop-filter: none;
     }
   }

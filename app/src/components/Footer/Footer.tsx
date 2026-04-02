@@ -5,12 +5,16 @@ interface FooterProps {
   copyrightText: string;
   privacyPolicyText: string;
   privacyPolicyUrl: string;
+  requisitesText: string;
+  requisitesUrl: string;
 }
 
 export function Footer({
   copyrightText,
   privacyPolicyText,
   privacyPolicyUrl,
+  requisitesText,
+  requisitesUrl,
 }: FooterProps) {
   const copyrightWithYear = copyrightText.replace('{year}', String(new Date().getFullYear()));
 
@@ -20,6 +24,9 @@ export function Footer({
         <p className={styles.copyright}>
           {copyrightWithYear}
         </p>
+        <Link className={styles.link} href={requisitesUrl}>
+          {requisitesText}
+        </Link>
         <Link className={styles.link} href={privacyPolicyUrl}>
           {privacyPolicyText}
         </Link>

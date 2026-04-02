@@ -67,6 +67,8 @@ export default async function RootLayout({
         {children}
         <Footer
           copyrightText={ui?.footerCopyrightText ?? ''}
+          requisitesText={ui?.navRequisitesLabel ?? 'Реквизиты'}
+          requisitesUrl="/requisites"
           privacyPolicyText={ui?.footerPrivacyPolicyText ?? ''}
           privacyPolicyUrl="/privacy-policy"
         />
