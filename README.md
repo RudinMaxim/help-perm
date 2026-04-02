@@ -184,7 +184,7 @@ docker compose build cms web
 ```bash
 ssh root@YOUR_SERVER_IP
 apt update && apt upgrade -y
-apt install -y ca-certificates curl git openssl nano locales
+apt install -y ca-certificates curl git openssl nano locales ython3 python3-pip make g++
 timedatectl set-timezone Europe/Moscow
 locale-gen en_US.UTF-8
 update-locale LANG=en_US.UTF-8
