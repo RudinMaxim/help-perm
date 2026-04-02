@@ -1,4 +1,4 @@
-FROM node:20-alpine AS builder
+FROM node:22-bookworm-slim AS builder
 WORKDIR /my-space
 
 COPY package.json package-lock.json ./
@@ -6,7 +6,7 @@ RUN npm ci
 COPY . .
 RUN npm run build
 
-FROM node:20-alpine AS runner
+FROM node:22-bookworm-slim AS runner
 WORKDIR /my-space
 COPY --from=builder /my-space/package.json .
 COPY --from=builder /my-space/package-lock.json .

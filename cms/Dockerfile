@@ -1,7 +1,5 @@
-FROM node:20-alpine AS builder
+FROM node:22-bookworm-slim AS builder
 WORKDIR /app
-
-RUN apk add --no-cache python3 make g++
 
 COPY package.json package-lock.json ./
 RUN npm ci
@@ -9,10 +7,8 @@ RUN npm ci
 COPY . .
 RUN npm run build
 
-FROM node:20-alpine
+FROM node:22-bookworm-slim
 WORKDIR /app
-
-RUN apk add --no-cache libstdc++
 
 COPY --from=builder /app/package.json ./
 COPY --from=builder /app/package-lock.json ./
