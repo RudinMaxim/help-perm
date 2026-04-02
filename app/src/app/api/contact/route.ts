@@ -7,10 +7,8 @@ interface RequestBody {
   name: string;
   phone: string;
   message: string;
+  consentGiven: boolean;
   source?: string;
-  utm_source?: string;
-  utm_medium?: string;
-  utm_campaign?: string;
 }
 
 export async function POST(req: NextRequest) {
@@ -20,18 +18,16 @@ export async function POST(req: NextRequest) {
       name,
       phone,
       message,
+      consentGiven,
       source = '',
-      utm_source = '',
-      utm_medium = '',
-      utm_campaign = '',
     } = body;
 
-    const userAgent = req.headers.get('user-agent') || '';
-    const ipAddress =
-      req.headers.get('x-forwarded-for') ||
-      req.headers.get('x-real-ip') ||
-      'Unknown';
-    const referer = req.headers.get('referer') || '';
+    if (!consentGiven) {
+      return NextResponse.json(
+        { message: 'Consent to personal data processing is required' },
+        { status: 400 }
+      );
+    }
 
     const res = await fetch(`${CMS_URL}/api/applications`, {
       method: 'POST',
@@ -42,12 +38,8 @@ export async function POST(req: NextRequest) {
           phone: formatPhoneNumber(phone),
           message,
           source,
-          utmSource: utm_source,
-          utmMedium: utm_medium,
-          utmCampaign: utm_campaign,
-          userAgent,
-          ipAddress,
-          referer,
+          consentGiven: true,
+          consentAt: new Date().toISOString(),
         },
       }),
     });

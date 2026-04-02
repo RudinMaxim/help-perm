@@ -441,10 +441,11 @@ export interface ApiApplicationApplication extends Struct.CollectionTypeSchema {
     draftAndPublish: false;
   };
   attributes: {
+    consentAt: Schema.Attribute.DateTime;
+    consentGiven: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    ipAddress: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -455,17 +456,12 @@ export interface ApiApplicationApplication extends Struct.CollectionTypeSchema {
     name: Schema.Attribute.String & Schema.Attribute.Required;
     phone: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
-    referer: Schema.Attribute.String;
     source: Schema.Attribute.String;
     status: Schema.Attribute.Enumeration<['new', 'in_progress', 'done']> &
       Schema.Attribute.DefaultTo<'new'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    userAgent: Schema.Attribute.String;
-    utmCampaign: Schema.Attribute.String;
-    utmMedium: Schema.Attribute.String;
-    utmSource: Schema.Attribute.String;
   };
 }
 
@@ -496,6 +492,84 @@ export interface ApiContactInfoContactInfo extends Struct.SingleTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     secondPhone: Schema.Attribute.String;
     secondTelegramLink: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiLicenseInfoLicenseInfo extends Struct.SingleTypeSchema {
+  collectionName: 'license_infos';
+  info: {
+    displayName: '\u041b\u0438\u0446\u0435\u043d\u0437\u0438\u044f';
+    pluralName: 'license-infos';
+    singularName: 'license-info';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    date: Schema.Attribute.String;
+    imageUrls: Schema.Attribute.JSON;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::license-info.license-info'
+    > &
+      Schema.Attribute.Private;
+    number: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiPrivacyPolicyPrivacyPolicy extends Struct.SingleTypeSchema {
+  collectionName: 'privacy_policies';
+  info: {
+    displayName: '\u041f\u043e\u043b\u0438\u0442\u0438\u043a\u0430 \u043f\u0435\u0440\u0441\u043e\u043d\u0430\u043b\u044c\u043d\u044b\u0445 \u0434\u0430\u043d\u043d\u044b\u0445';
+    pluralName: 'privacy-policies';
+    singularName: 'privacy-policy';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    actionsText: Schema.Attribute.Text;
+    actionsTitle: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    dataItems: Schema.Attribute.JSON;
+    dataTitle: Schema.Attribute.String;
+    finalText: Schema.Attribute.Text;
+    finalTitle: Schema.Attribute.String;
+    lead: Schema.Attribute.Text;
+    legalBasisText: Schema.Attribute.Text;
+    legalBasisTitle: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::privacy-policy.privacy-policy'
+    > &
+      Schema.Attribute.Private;
+    operatorText: Schema.Attribute.Text;
+    operatorTitle: Schema.Attribute.String;
+    pageTitle: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    purposesItems: Schema.Attribute.JSON;
+    purposesTitle: Schema.Attribute.String;
+    rightsText: Schema.Attribute.Text;
+    rightsTitle: Schema.Attribute.String;
+    securityText: Schema.Attribute.Text;
+    securityTitle: Schema.Attribute.String;
+    storageText: Schema.Attribute.Text;
+    storageTitle: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -539,6 +613,106 @@ export interface ApiRequisitesRequisites extends Struct.SingleTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     registrationDate: Schema.Attribute.String;
     taxAuthority: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiUiContentUiContent extends Struct.SingleTypeSchema {
+  collectionName: 'ui_contents';
+  info: {
+    displayName: '\u0422\u0435\u043a\u0441\u0442\u044b \u0438\u043d\u0442\u0435\u0440\u0444\u0435\u0439\u0441\u0430';
+    pluralName: 'ui-contents';
+    singularName: 'ui-content';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    aboutHowWeWorkTitle: Schema.Attribute.String;
+    aboutValuesTitle: Schema.Attribute.String;
+    burgerMenuCloseLabel: Schema.Attribute.String;
+    burgerMenuOpenLabel: Schema.Attribute.String;
+    contactFormConsentLinkText: Schema.Attribute.String;
+    contactFormConsentPrefix: Schema.Attribute.String;
+    contactFormConsentRequiredError: Schema.Attribute.String;
+    contactFormConsentSuffix: Schema.Attribute.String;
+    contactFormMessageLabel: Schema.Attribute.String;
+    contactFormMessagePlaceholder: Schema.Attribute.String;
+    contactFormMessageRequiredError: Schema.Attribute.String;
+    contactFormNameLabel: Schema.Attribute.String;
+    contactFormNamePlaceholder: Schema.Attribute.String;
+    contactFormNameRequiredError: Schema.Attribute.String;
+    contactFormPhoneFormatError: Schema.Attribute.String;
+    contactFormPhoneLabel: Schema.Attribute.String;
+    contactFormPhonePlaceholder: Schema.Attribute.String;
+    contactFormSendFailureText: Schema.Attribute.String;
+    contactFormSendSuccessText: Schema.Attribute.String;
+    contactFormSubmitButtonText: Schema.Attribute.String;
+    contactFormSubmittingButtonText: Schema.Attribute.String;
+    contactFormSubmittingSrText: Schema.Attribute.String;
+    contactFormTitleHighlight: Schema.Attribute.String;
+    contactFormTitleMiddle: Schema.Attribute.String;
+    contactFormTitlePrefix: Schema.Attribute.String;
+    contactFormTitleSuffix: Schema.Attribute.String;
+    contactFormWorkingHoursText: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    footerCopyrightText: Schema.Attribute.String;
+    footerPrivacyPolicyText: Schema.Attribute.String;
+    headerEmailLinkTitle: Schema.Attribute.String;
+    headerNavAriaLabel: Schema.Attribute.String;
+    homeHeroCallButtonText: Schema.Attribute.String;
+    homeHeroMaxButtonText: Schema.Attribute.String;
+    homeHeroTelegramButtonText: Schema.Attribute.String;
+    homeMotivationalCallButtonText: Schema.Attribute.String;
+    homeServicesFootnote: Schema.Attribute.Text;
+    homeServicesTitle: Schema.Attribute.String;
+    licenseImageAltPrefix: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::ui-content.ui-content'
+    > &
+      Schema.Attribute.Private;
+    logoAlt: Schema.Attribute.String;
+    logoAriaLabel: Schema.Attribute.String;
+    logoText: Schema.Attribute.String;
+    navAboutUsLabel: Schema.Attribute.String;
+    navPrivacyPolicyLabel: Schema.Attribute.String;
+    navRequisitesLabel: Schema.Attribute.String;
+    notFoundLinkAriaLabel: Schema.Attribute.String;
+    notFoundLinkText: Schema.Attribute.String;
+    notFoundSubtitle: Schema.Attribute.String;
+    notFoundText: Schema.Attribute.Text;
+    phoneLinkLabelPrefix: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    requisitesActualAddressLabel: Schema.Attribute.String;
+    requisitesColumnNameLabel: Schema.Attribute.String;
+    requisitesColumnValueLabel: Schema.Attribute.String;
+    requisitesHeadLabel: Schema.Attribute.String;
+    requisitesInnKppLabel: Schema.Attribute.String;
+    requisitesLegalAddressLabel: Schema.Attribute.String;
+    requisitesMainActivityLabel: Schema.Attribute.String;
+    requisitesOgrnDatePrefix: Schema.Attribute.String;
+    requisitesOgrnLabel: Schema.Attribute.String;
+    requisitesOkatoLabel: Schema.Attribute.String;
+    requisitesOkfsLabel: Schema.Attribute.String;
+    requisitesOkoguLabel: Schema.Attribute.String;
+    requisitesOkopfLabel: Schema.Attribute.String;
+    requisitesOkpoLabel: Schema.Attribute.String;
+    requisitesOktmoLabel: Schema.Attribute.String;
+    requisitesPageTitle: Schema.Attribute.String;
+    requisitesRegistrationDateLabel: Schema.Attribute.String;
+    requisitesTableCaption: Schema.Attribute.String;
+    requisitesTaxAuthorityLabel: Schema.Attribute.String;
+    resultsPageTitle: Schema.Attribute.String;
+    resultsStoryAltPrefix: Schema.Attribute.String;
+    skipLinkText: Schema.Attribute.String;
+    sliderNextSlideMessage: Schema.Attribute.String;
+    sliderPrevSlideMessage: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1058,11 +1232,14 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::application.application': ApiApplicationApplication;
       'api::contact-info.contact-info': ApiContactInfoContactInfo;
+      'api::license-info.license-info': ApiLicenseInfoLicenseInfo;
+      'api::privacy-policy.privacy-policy': ApiPrivacyPolicyPrivacyPolicy;
       'api::requisites.requisites': ApiRequisitesRequisites;
       'api::service.service': ApiServiceService;
       'api::site-content.site-content': ApiSiteContentSiteContent;
       'api::step.step': ApiStepStep;
       'api::story.story': ApiStoryStory;
+      'api::ui-content.ui-content': ApiUiContentUiContent;
       'api::value.value': ApiValueValue;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;

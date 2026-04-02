@@ -30,23 +30,12 @@
     "source": {
       "type": "string"
     },
-    "utmSource": {
-      "type": "string"
+    "consentGiven": {
+      "type": "boolean",
+      "default": false
     },
-    "utmMedium": {
-      "type": "string"
-    },
-    "utmCampaign": {
-      "type": "string"
-    },
-    "userAgent": {
-      "type": "string"
-    },
-    "ipAddress": {
-      "type": "string"
-    },
-    "referer": {
-      "type": "string"
+    "consentAt": {
+      "type": "datetime"
     }
   }
 }

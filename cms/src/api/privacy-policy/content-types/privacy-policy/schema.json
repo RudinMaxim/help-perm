@@ -1,0 +1,74 @@
+{
+  "kind": "singleType",
+  "collectionName": "privacy_policies",
+  "info": {
+    "singularName": "privacy-policy",
+    "pluralName": "privacy-policies",
+    "displayName": "Политика персональных данных"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "pageTitle": {
+      "type": "string"
+    },
+    "lead": {
+      "type": "text"
+    },
+    "operatorTitle": {
+      "type": "string"
+    },
+    "operatorText": {
+      "type": "text"
+    },
+    "dataTitle": {
+      "type": "string"
+    },
+    "dataItems": {
+      "type": "json"
+    },
+    "purposesTitle": {
+      "type": "string"
+    },
+    "purposesItems": {
+      "type": "json"
+    },
+    "legalBasisTitle": {
+      "type": "string"
+    },
+    "legalBasisText": {
+      "type": "text"
+    },
+    "actionsTitle": {
+      "type": "string"
+    },
+    "actionsText": {
+      "type": "text"
+    },
+    "storageTitle": {
+      "type": "string"
+    },
+    "storageText": {
+      "type": "text"
+    },
+    "rightsTitle": {
+      "type": "string"
+    },
+    "rightsText": {
+      "type": "text"
+    },
+    "securityTitle": {
+      "type": "string"
+    },
+    "securityText": {
+      "type": "text"
+    },
+    "finalTitle": {
+      "type": "string"
+    },
+    "finalText": {
+      "type": "text"
+    }
+  }
+}

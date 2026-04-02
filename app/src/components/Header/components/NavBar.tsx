@@ -1,20 +1,34 @@
 'use client';
 
 import { usePathname } from 'next/navigation';
-import { PATH_URL } from '@/constants/path';
 import { ButtonLink } from '@/ui';
 import style from '../Header.module.scss';
 
-export function NavBar({ isOpen, id }: { isOpen: boolean; id?: string }) {
+interface NavItem {
+  url: string;
+  name: string;
+}
+
+export function NavBar({
+  isOpen,
+  id,
+  ariaLabel,
+  items,
+}: {
+  isOpen: boolean;
+  id?: string;
+  ariaLabel: string;
+  items: NavItem[];
+}) {
   const pathname = usePathname();
   return (
     <nav
       id={id}
-      aria-label="Основная навигация"
+      aria-label={ariaLabel}
       className={`${style.nav} ${isOpen ? style.nav__open : ''}`}
     >
       <ul>
-        {Object.values(PATH_URL).map(({ url, name }) => {
+        {items.map(({ url, name }) => {
           const isActive = pathname === url;
           return (
             <li key={`NavBar__${url}`}>

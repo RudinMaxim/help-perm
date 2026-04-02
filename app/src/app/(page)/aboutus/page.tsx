@@ -1,5 +1,5 @@
 import { ContactUs } from '@/module';
-import { getContactInfo, getSiteContent, getSteps, getValues } from '@/lib/cms';
+import { getContactInfo, getSiteContent, getSteps, getUiContent, getValues } from '@/lib/cms';
 import { getMetadata } from '@/utils/getMetadata';
 import { Metadata } from 'next';
 import { AboutHero, HowWeWork, TeamSection, ValuesSection } from './module';
@@ -10,11 +10,12 @@ export const metadata: Metadata = getMetadata({
 });
 
 export default async function AboutUs() {
-  const [contactInfo, siteContent, steps, values] = await Promise.all([
+  const [contactInfo, siteContent, steps, values, uiContent] = await Promise.all([
     getContactInfo(),
     getSiteContent(),
     getSteps(),
     getValues(),
+    getUiContent(),
   ]);
 
   const mainPhone = contactInfo?.mainPhone ?? '';
@@ -24,18 +25,18 @@ export default async function AboutUs() {
   return (
     <main id="main-content">
       <AboutHero
-        title={siteContent?.aboutHeroTitle ?? 'Кто мы и чем занимаемся'}
-        subtitle={siteContent?.aboutHeroSubtitle ?? 'Наша миссия - поддержка в трудные времена'}
+        title={siteContent?.aboutHeroTitle ?? ''}
+        subtitle={siteContent?.aboutHeroSubtitle ?? ''}
         description={siteContent?.aboutHeroDescription ?? ''}
-        buttonText={siteContent?.aboutHeroButtonText ?? 'Получить помощь'}
+        buttonText={siteContent?.aboutHeroButtonText ?? ''}
       />
-      <HowWeWork title="Как мы работаем?" steps={steps} />
+      <HowWeWork title={uiContent?.aboutHowWeWorkTitle ?? ''} steps={steps} />
       <TeamSection
-        title={siteContent?.teamTitle ?? 'Наша команда'}
+        title={siteContent?.teamTitle ?? ''}
         description={siteContent?.teamDescription ?? ''}
       />
       <ValuesSection
-        title="Наши ценности"
+        title={uiContent?.aboutValuesTitle ?? ''}
         values={values}
       />
       <ContactUs
@@ -43,6 +44,7 @@ export default async function AboutUs() {
         mainEmail={mainEmail}
         mainPhoneNumber={mainPhone}
         secondPhoneNumber={secondPhone}
+        uiText={uiContent}
       />
     </main>
   );

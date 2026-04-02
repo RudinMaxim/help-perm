@@ -163,11 +163,27 @@ docker compose exec -T cms node -e "fetch('http://web:3000').then(r=>{console.lo
 ```bash
 ssh root@YOUR_SERVER_IP
 apt update && apt upgrade -y
-apt install -y ca-certificates curl git openssl nano
+apt install -y ca-certificates curl git openssl nano locales
 timedatectl set-timezone Europe/Moscow
+locale-gen en_US.UTF-8
+update-locale LANG=en_US.UTF-8
 ```
 
-### 3. Открыть порты
+### 3. Создать администратора и Открыть порты
+
+Создаём пользователя `admin`:
+
+```bash
+adduser admin
+usermod -aG sudo admin
+groups admin
+```
+
+Открыть конфигурацию SSH (меняем значения для PermitRootLogin ):
+```bash
+nano /etc/ssh/sshd_config
+PermitRootLogin no
+```
 
 Если используете `ufw`:
 

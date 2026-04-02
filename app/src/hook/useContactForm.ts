@@ -9,12 +9,23 @@ interface MessageData {
   name: string;
   phone: string;
   message: string;
+  consentGiven: boolean;
 }
 
 interface ValidationErrors {
   name?: string;
   phone?: string;
   message?: string;
+  consent?: string;
+}
+
+interface ContactFormMessages {
+  nameRequiredError: string;
+  phoneFormatError: string;
+  messageRequiredError: string;
+  consentRequiredError: string;
+  sendSuccessText: string;
+  sendFailureText: string;
 }
 
 interface SendMessageResult {
@@ -43,11 +54,12 @@ async function sendToContactApi(data: MessageData) {
   }
 }
 
-export const useContactForm = () => {
+export const useContactForm = (messages: ContactFormMessages) => {
   const [messageData, setMessageData] = useState<MessageData>({
     name: '',
     phone: '',
     message: '',
+    consentGiven: false,
   });
   const [isLoading, setIsLoading] = useState(false);
   const [validationErrors, setValidationErrors] = useState<ValidationErrors>({});
@@ -56,17 +68,21 @@ export const useContactForm = () => {
 
   const validateForm = useCallback((): ValidationErrors => {
     const errors: ValidationErrors = {};
-    if (!messageData.name.trim()) errors.name = 'Имя обязательно';
+    if (!messageData.name.trim()) errors.name = messages.nameRequiredError;
     if (messageData.phone.length !== 10)
-      errors.phone = 'Неверный формат телефона';
-    if (!messageData.message.trim()) errors.message = 'Сообщение обязательно';
+      errors.phone = messages.phoneFormatError;
+    if (!messageData.message.trim()) errors.message = messages.messageRequiredError;
+    if (!messageData.consentGiven) {
+      errors.consent = messages.consentRequiredError;
+    }
     setValidationErrors(errors);
     return errors;
-  }, [messageData]);
+  }, [messageData, messages]);
 
   const handleChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
       const { name, value } = e.target;
+      const isCheckbox = e.target instanceof HTMLInputElement && e.target.type === 'checkbox';
 
       if (name === 'phone') {
         let cleanedValue = value.replace(/\D/g, '');
@@ -79,6 +95,10 @@ export const useContactForm = () => {
         }
         setMessageData((prev) => ({ ...prev, [name]: cleanedValue }));
         setValidationErrors((prev) => ({ ...prev, phone: undefined }));
+      } else if (isCheckbox) {
+        const checked = (e.target as HTMLInputElement).checked;
+        setMessageData((prev) => ({ ...prev, [name]: checked }));
+        setValidationErrors((prev) => ({ ...prev, consent: undefined }));
       } else {
         setMessageData((prev) => ({ ...prev, [name]: value }));
         setValidationErrors((prev) => ({ ...prev, [name]: undefined }));
@@ -103,14 +123,14 @@ export const useContactForm = () => {
       }
 
       router.push('/#message-sent');
-      setMessageData({ name: '', phone: '', message: '' });
-      toast.success('Сообщение успешно отправлено!');
+      setMessageData({ name: '', phone: '', message: '', consentGiven: false });
+      toast.success(messages.sendSuccessText);
       return { success: true };
     } catch (error) {
       console.error('Failed to send message:', error);
-      const msg = error instanceof Error ? error.message : 'Не удалось отправить сообщение. Попробуйте еще раз.';
+      const msg = error instanceof Error ? error.message : messages.sendFailureText;
       setServerError(msg);
-      toast.error('Не удалось отправить сообщение. Попробуйте еще раз.');
+      toast.error(messages.sendFailureText);
       return {
         success: false,
         errors: {
@@ -120,7 +140,7 @@ export const useContactForm = () => {
     } finally {
       setIsLoading(false);
     }
-  }, [messageData, validateForm, router]);
+  }, [messageData, messages, validateForm, router]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

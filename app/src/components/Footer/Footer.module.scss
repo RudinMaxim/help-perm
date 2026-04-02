@@ -4,7 +4,22 @@
   padding: 1rem;
 }
 
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
 .copyright {
   text-align: center;
   font-size: 0.9rem;
+}
+
+.link {
+  color: #fff;
+  font-size: 0.9rem;
+  text-decoration: underline;
+  text-underline-offset: 0.15rem;
 }

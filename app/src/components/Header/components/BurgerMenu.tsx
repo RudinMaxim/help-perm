@@ -4,17 +4,21 @@ export function BurgerMenu({
     isOpen,
     toggleMenu,
     ariaControls,
+    openLabel,
+    closeLabel,
 }: {
     isOpen: boolean;
     toggleMenu: () => void;
     ariaControls?: string;
+    openLabel: string;
+    closeLabel: string;
 }) {
     return (
         <button
             className={`${style.burger_menu} ${isOpen ? style.burger_menu__open : ''}`}
             onClick={toggleMenu}
             type="button"
-            aria-label={isOpen ? 'Закрыть меню' : 'Открыть меню'}
+            aria-label={isOpen ? closeLabel : openLabel}
             aria-expanded={isOpen}
             aria-controls={ariaControls}
         >

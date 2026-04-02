@@ -1,10 +1,19 @@
 import { Container, MotivationalBanner } from '@/components';
 import { ContactUs } from '@/module';
-import { getContactInfo, getServices, getSiteContent } from '@/lib/cms';
+import {
+  cmsMediaUrl,
+  getContactInfo,
+  getLicenseInfo,
+  getServices,
+  getSiteContent,
+  getStories,
+  getUiContent,
+} from '@/lib/cms';
 import { getMetadata } from '@/utils/getMetadata';
 import { Metadata } from 'next/types';
 import { Hero, OurServices, SocialGoal } from './module';
 import { LicenseDisplay } from '../requisites/module/LicensesSection';
+import { Results } from '../results/module';
 
 export const metadata: Metadata = getMetadata({
   title: 'Бесплатная помощь зависимым в России',
@@ -13,10 +22,13 @@ export const metadata: Metadata = getMetadata({
 });
 
 export default async function Home() {
-  const [contactInfo, services, siteContent] = await Promise.all([
+  const [contactInfo, services, siteContent, uiContent, licenseInfo, stories] = await Promise.all([
     getContactInfo(),
     getServices(),
     getSiteContent(),
+    getUiContent(),
+    getLicenseInfo(),
+    getStories(),
   ]);
 
   const mainPhone = contactInfo?.mainPhone ?? '';
@@ -24,37 +36,60 @@ export default async function Home() {
   const mainEmail = contactInfo?.mainEmail ?? '';
   const secondTelegramLink = contactInfo?.secondTelegramLink ?? '';
   const maxMessengerLink = contactInfo?.maxMessengerLink ?? '';
+  const storyItems = stories
+    .map((story) => ({
+      id: story.id,
+      description: story.description,
+      imageUrl: cmsMediaUrl(story.image),
+    }))
+    .filter((story) => story.imageUrl);
 
   return (
     <main id="main-content">
       <Container>
         <Hero
-          title={siteContent?.homeHeroTitle ?? 'Бесплатная помощь зависимым по всей России'}
+          title={siteContent?.homeHeroTitle ?? ''}
           description={siteContent?.homeHeroDescription ?? ''}
           mainPhone={mainPhone}
           secondTelegramLink={secondTelegramLink}
           maxMessengerLink={maxMessengerLink}
+          maxButtonText={uiContent?.homeHeroMaxButtonText ?? ''}
+          telegramButtonText={uiContent?.homeHeroTelegramButtonText ?? ''}
+          callButtonText={uiContent?.homeHeroCallButtonText ?? ''}
         />
         <SocialGoal
-          title={siteContent?.socialGoalTitle ?? 'Наша цель'}
+          title={siteContent?.socialGoalTitle ?? ''}
           text={siteContent?.socialGoalText ?? ''}
         />
         <OurServices
-          title="Наши услуги"
+          title={uiContent?.homeServicesTitle ?? ''}
           services={services}
+          footnote={uiContent?.homeServicesFootnote ?? ''}
+          prevSlideMessage={uiContent?.sliderPrevSlideMessage ?? ''}
+          nextSlideMessage={uiContent?.sliderNextSlideMessage ?? ''}
+        />
+        <Results
+          stories={storyItems}
+          title={uiContent?.resultsPageTitle ?? ''}
+          storyAltPrefix={uiContent?.resultsStoryAltPrefix ?? ''}
         />
         <MotivationalBanner
-          title={siteContent?.motivationalBannerTitle ?? 'Не откладывай помощь на потом – свяжись с нами прямо сейчас!'}
+          title={siteContent?.motivationalBannerTitle ?? ''}
           description={siteContent?.motivationalBannerDescription ?? ''}
           mainPhone={mainPhone}
+          buttonText={uiContent?.homeMotivationalCallButtonText ?? ''}
         />
-        <LicenseDisplay />
+        <LicenseDisplay
+          data={licenseInfo}
+          imageAltPrefix={uiContent?.licenseImageAltPrefix ?? ''}
+        />
       </Container>
       <ContactUs
         isMainPage={false}
         mainEmail={mainEmail}
         mainPhoneNumber={mainPhone}
         secondPhoneNumber={secondPhone}
+        uiText={uiContent}
       />
     </main>
   );

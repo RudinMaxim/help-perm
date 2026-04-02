@@ -1,5 +1,5 @@
 import { ContactUs } from '@/module';
-import { getContactInfo, getRequisites } from '@/lib/cms';
+import { getContactInfo, getLicenseInfo, getRequisites, getUiContent } from '@/lib/cms';
 import { getMetadata } from '@/utils/getMetadata';
 import { Metadata } from 'next';
 import { RequisitesPage } from './module';
@@ -13,9 +13,11 @@ export const metadata: Metadata = getMetadata({
 });
 
 export default async function Requisites() {
-  const [contactInfo, requisites] = await Promise.all([
+  const [contactInfo, requisites, uiContent, licenseInfo] = await Promise.all([
     getContactInfo(),
     getRequisites(),
+    getUiContent(),
+    getLicenseInfo(),
   ]);
 
   const mainPhone = contactInfo?.mainPhone ?? '';
@@ -25,14 +27,41 @@ export default async function Requisites() {
   return (
     <main id="main-content">
       <Container>
-        <RequisitesPage data={requisites} />
-        <LicenseDisplay />
+        <RequisitesPage
+          data={requisites}
+          labels={{
+            pageTitle: uiContent?.requisitesPageTitle ?? '',
+            tableCaption: uiContent?.requisitesTableCaption ?? '',
+            columnName: uiContent?.requisitesColumnNameLabel ?? '',
+            columnValue: uiContent?.requisitesColumnValueLabel ?? '',
+            ogrn: uiContent?.requisitesOgrnLabel ?? '',
+            ogrnDatePrefix: uiContent?.requisitesOgrnDatePrefix ?? '',
+            innKpp: uiContent?.requisitesInnKppLabel ?? '',
+            registrationDate: uiContent?.requisitesRegistrationDateLabel ?? '',
+            legalAddress: uiContent?.requisitesLegalAddressLabel ?? '',
+            actualAddress: uiContent?.requisitesActualAddressLabel ?? '',
+            head: uiContent?.requisitesHeadLabel ?? '',
+            mainActivity: uiContent?.requisitesMainActivityLabel ?? '',
+            taxAuthority: uiContent?.requisitesTaxAuthorityLabel ?? '',
+            okpo: uiContent?.requisitesOkpoLabel ?? '',
+            okato: uiContent?.requisitesOkatoLabel ?? '',
+            oktmo: uiContent?.requisitesOktmoLabel ?? '',
+            okfs: uiContent?.requisitesOkfsLabel ?? '',
+            okogu: uiContent?.requisitesOkoguLabel ?? '',
+            okopf: uiContent?.requisitesOkopfLabel ?? '',
+          }}
+        />
+        <LicenseDisplay
+          data={licenseInfo}
+          imageAltPrefix={uiContent?.licenseImageAltPrefix ?? ''}
+        />
       </Container>
       <ContactUs
         isMainPage={false}
         mainEmail={mainEmail}
         mainPhoneNumber={mainPhone}
         secondPhoneNumber={secondPhone}
+        uiText={uiContent}
       />
     </main>
   );

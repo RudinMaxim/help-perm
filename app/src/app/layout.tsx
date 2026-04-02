@@ -1,5 +1,6 @@
 import { Footer, Header } from '@/components';
-import { getContactInfo } from '@/lib/cms';
+import { getContactInfo, getUiContent } from '@/lib/cms';
+import { PATH_URL } from '@/constants/path';
 import { getMetadata, getOrganizationJsonLd } from '@/utils/getMetadata';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
@@ -31,20 +32,37 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const organizationJsonLd = getOrganizationJsonLd();
-  const contactInfo = await getContactInfo();
+  const [contactInfo, ui] = await Promise.all([getContactInfo(), getUiContent()]);
+  const navItems = [
+    { url: PATH_URL.aboutus.url, name: ui?.navAboutUsLabel ?? '' },
+    { url: PATH_URL.requisites.url, name: ui?.navRequisitesLabel ?? '' },
+  ].filter((item) => item.name.trim().length > 0);
 
   return (
     <html lang="ru">
       <body className={poppins.className}>
         <a className="skip-link" href="#main-content">
-          Перейти к содержимому
+          {ui?.skipLinkText ?? ''}
         </a>
         <Header
           mainPhone={contactInfo?.mainPhone ?? ''}
           mainEmail={contactInfo?.mainEmail ?? ''}
+          logoText={ui?.logoText ?? ''}
+          logoAriaLabel={ui?.logoAriaLabel ?? ''}
+          logoAlt={ui?.logoAlt ?? ''}
+          navAriaLabel={ui?.headerNavAriaLabel ?? ''}
+          navItems={navItems}
+          burgerOpenLabel={ui?.burgerMenuOpenLabel ?? ''}
+          burgerCloseLabel={ui?.burgerMenuCloseLabel ?? ''}
+          emailLinkTitle={ui?.headerEmailLinkTitle ?? ''}
+          phoneLinkLabelPrefix={ui?.phoneLinkLabelPrefix ?? ''}
         />
         {children}
-        <Footer />
+        <Footer
+          copyrightText={ui?.footerCopyrightText ?? ''}
+          privacyPolicyText={ui?.footerPrivacyPolicyText ?? ''}
+          privacyPolicyUrl={PATH_URL.privacyPolicy.url}
+        />
         <Toaster position="top-right" expand={false} richColors />
         <YandexMetrika />
         <script

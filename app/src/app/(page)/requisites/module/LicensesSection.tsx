@@ -2,6 +2,7 @@
 import React from 'react';
 import Image from 'next/image';
 import styles from '../Requisites.module.scss';
+import type { LicenseInfo } from '@/lib/cms';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Zoom } from 'swiper/modules';
 import 'swiper/css';
@@ -9,26 +10,25 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/zoom';
 
-export function LicenseDisplay() {
-  const licenseData = {
-    title: 'Лицензия на медицинскую деятельность',
-    number: '№ ЛО-18-01-002479',
-    date: '03.07.2018',
-    images: [
-      '/license/1.jpeg',
-      '/license/2.jpeg',
-      '/license/3.jpeg',
-      '/license/4.jpeg',
-    ],
-  };
+interface LicenseDisplayProps {
+  data: LicenseInfo | null;
+  imageAltPrefix: string;
+}
+
+export function LicenseDisplay({ data, imageAltPrefix }: LicenseDisplayProps) {
+  const images = data?.imageUrls ?? [];
+
+  if (!data?.title && images.length === 0) {
+    return null;
+  }
 
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <h2>{licenseData.title}</h2>
+        <h2>{data?.title ?? ''}</h2>
         <div className={styles.details}>
-          <span>{licenseData.number}</span>
-          <span>{licenseData.date}</span>
+          {data?.number ? <span>{data.number}</span> : null}
+          {data?.date ? <span>{data.date}</span> : null}
         </div>
       </div>
 
@@ -47,12 +47,12 @@ export function LicenseDisplay() {
           },
         }}
       >
-        {licenseData.images.map((src, index) => (
+        {images.map((src, index) => (
           <SwiperSlide key={index} className={styles.swiperSlide}>
             <div className="swiper-zoom-container">
               <Image
                 src={src}
-                alt={`Страница лицензии ${index + 1}`}
+                alt={`${imageAltPrefix} ${index + 1}`}
                 width={540}
                 height={810}
                 objectFit="contain"

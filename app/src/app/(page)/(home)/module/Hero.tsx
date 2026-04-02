@@ -10,9 +10,22 @@ interface HeroProps {
   mainPhone: string;
   secondTelegramLink: string;
   maxMessengerLink: string;
+  maxButtonText: string;
+  telegramButtonText: string;
+  callButtonText: string;
 }
 
-export function Hero({ title, subtitle, description, mainPhone, secondTelegramLink, maxMessengerLink }: HeroProps) {
+export function Hero({
+  title,
+  subtitle,
+  description,
+  mainPhone,
+  secondTelegramLink,
+  maxMessengerLink,
+  maxButtonText,
+  telegramButtonText,
+  callButtonText,
+}: HeroProps) {
   return (
     <section className={style.hero} aria-labelledby="home-hero-title">
       <div className={style.hero__content}>
@@ -36,7 +49,7 @@ export function Hero({ title, subtitle, description, mainPhone, secondTelegramLi
                 width={32}
                 height={32}
               />
-              Написать в MAX
+              {maxButtonText}
             </ButtonLink>
           )}
           {secondTelegramLink && (
@@ -46,7 +59,7 @@ export function Hero({ title, subtitle, description, mainPhone, secondTelegramLi
               variant="secondary"
               rel="noopener noreferrer"
             >
-              <FaTelegram size={32} aria-hidden="true" /> Написать в Telegram
+              <FaTelegram size={32} aria-hidden="true" /> {telegramButtonText}
             </ButtonLink>
           )}
         </div>
@@ -54,7 +67,7 @@ export function Hero({ title, subtitle, description, mainPhone, secondTelegramLi
           href={`tel:${mainPhone}`}
           className={style.hero__button}
         >
-          Заказать звонок
+          {callButtonText}
         </ButtonLink>
       </div>
     </section>

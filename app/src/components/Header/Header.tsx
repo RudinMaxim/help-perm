@@ -11,9 +11,30 @@ import { useMediaQuery } from '@/hook/useMediaQuery';
 interface HeaderProps {
   mainPhone: string;
   mainEmail: string;
+  logoText: string;
+  logoAriaLabel: string;
+  logoAlt: string;
+  navAriaLabel: string;
+  navItems: Array<{ url: string; name: string }>;
+  burgerOpenLabel: string;
+  burgerCloseLabel: string;
+  emailLinkTitle: string;
+  phoneLinkLabelPrefix: string;
 }
 
-export function Header({ mainPhone, mainEmail }: HeaderProps) {
+export function Header({
+  mainPhone,
+  mainEmail,
+  logoText,
+  logoAriaLabel,
+  logoAlt,
+  navAriaLabel,
+  navItems,
+  burgerOpenLabel,
+  burgerCloseLabel,
+  emailLinkTitle,
+  phoneLinkLabelPrefix,
+}: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const lastScrollYRef = useRef(0);
@@ -67,22 +88,24 @@ export function Header({ mainPhone, mainEmail }: HeaderProps) {
       className={`${style.header} ${isScrolled ? style.headerHidden : ''}`}
     >
       <div className={style.header__logo_side}>
-        <Logo />
+        <Logo text={logoText} ariaLabel={logoAriaLabel} alt={logoAlt} />
         <BurgerMenu
           isOpen={isMenuOpen}
           toggleMenu={toggleMenu}
           ariaControls={navId}
+          openLabel={burgerOpenLabel}
+          closeLabel={burgerCloseLabel}
         />
       </div>
       <div
         className={`${style.menu} ${isMenuOpen ? style.menu__open : ''}`}
         aria-hidden={!isMenuOpen && !isDesktop}
       >
-        <NavBar isOpen={isMenuOpen} id={navId} />
+        <NavBar isOpen={isMenuOpen} id={navId} ariaLabel={navAriaLabel} items={navItems} />
         <div className={style.menu__contacts}>
-          {mainPhone && <PhoneLink phone={mainPhone} />}
+          {mainPhone && <PhoneLink phone={mainPhone} labelPrefix={phoneLinkLabelPrefix} />}
           {mainEmail && (
-            <Link href={`mailto:${mainEmail}`} title="Написать нам">
+            <Link href={`mailto:${mainEmail}`} title={emailLinkTitle}>
               {mainEmail}
             </Link>
           )}

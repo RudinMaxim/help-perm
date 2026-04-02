@@ -18,9 +18,18 @@ export interface ServiceItem {
 interface OurServicesProps {
   services: ServiceItem[];
   title: string;
+  footnote: string;
+  prevSlideMessage: string;
+  nextSlideMessage: string;
 }
 
-export function OurServices({ services, title }: OurServicesProps) {
+export function OurServices({
+  services,
+  title,
+  footnote,
+  prevSlideMessage,
+  nextSlideMessage,
+}: OurServicesProps) {
   return (
     <section className={styles.ourServices}>
       <h2 className={styles.title}>{title}</h2>
@@ -39,8 +48,8 @@ export function OurServices({ services, title }: OurServicesProps) {
           onlyInViewport: false,
         }}
         a11y={{
-          prevSlideMessage: 'Previous slide',
-          nextSlideMessage: 'Next slide',
+          prevSlideMessage,
+          nextSlideMessage,
         }}
         breakpoints={{
           480: { slidesPerView: 2, spaceBetween: 20 },
@@ -64,7 +73,7 @@ export function OurServices({ services, title }: OurServicesProps) {
       </Swiper>
 
       <p className={`${styles.description} ${styles.serviceSubtitle}`}>
-        * Помощь предоставляется во время восстановления и адаптации
+        {footnote}
       </p>
     </section>
   );

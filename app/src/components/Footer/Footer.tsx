@@ -1,12 +1,28 @@
+import Link from 'next/link';
 import styles from './Footer.module.scss';
 
-export function Footer() {
+interface FooterProps {
+  copyrightText: string;
+  privacyPolicyText: string;
+  privacyPolicyUrl: string;
+}
+
+export function Footer({
+  copyrightText,
+  privacyPolicyText,
+  privacyPolicyUrl,
+}: FooterProps) {
+  const copyrightWithYear = copyrightText.replace('{year}', String(new Date().getFullYear()));
+
   return (
     <footer className={styles.footer} role="contentinfo">
       <div className={styles.inner}>
         <p className={styles.copyright}>
-          &copy; {new Date().getFullYear()} ООО &quot;Феникс&quot;. Все права защищены.
+          {copyrightWithYear}
         </p>
+        <Link className={styles.link} href={privacyPolicyUrl}>
+          {privacyPolicyText}
+        </Link>
       </div>
     </footer>
   );

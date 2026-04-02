@@ -1,0 +1,18 @@
+{
+  "kind": "singleType",
+  "collectionName": "license_infos",
+  "info": {
+    "singularName": "license-info",
+    "pluralName": "license-infos",
+    "displayName": "Лицензия"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "title": { "type": "string" },
+    "number": { "type": "string" },
+    "date": { "type": "string" },
+    "imageUrls": { "type": "json" }
+  }
+}

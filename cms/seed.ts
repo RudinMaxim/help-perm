@@ -68,6 +68,133 @@ const REQUISITES = {
   okopf: '20200 (Общественные организации)',
 };
 
+const PRIVACY_POLICY = {
+  pageTitle: 'Политика обработки персональных данных',
+  lead:
+    'Настоящая политика определяет порядок обработки и защиты персональных данных, предоставляемых пользователями сайта при обращении через формы обратной связи.',
+  operatorTitle: '1. Оператор персональных данных',
+  operatorText: 'Оператором персональных данных является ООО "Феникс".',
+  dataTitle: '2. Какие данные обрабатываются',
+  dataItems: [
+    'имя',
+    'номер телефона',
+    'содержание сообщения, направленного через форму',
+  ],
+  purposesTitle: '3. Цели обработки',
+  purposesItems: [
+    'обработка обращений пользователей',
+    'предоставление консультации и обратной связи',
+    'ведение внутреннего учета обращений',
+    'повышение качества работы сайта и коммуникации с пользователями',
+  ],
+  legalBasisTitle: '4. Правовые основания обработки',
+  legalBasisText:
+    'Обработка персональных данных осуществляется на основании согласия субъекта персональных данных, выраженного путем заполнения формы на сайте и установки отметки о согласии с настоящей политикой.',
+  actionsTitle: '5. Действия с персональными данными',
+  actionsText:
+    'Оператор вправе осуществлять сбор, запись, систематизацию, накопление, хранение, уточнение, использование, блокирование и удаление персональных данных в объеме, необходимом для достижения заявленных целей обработки.',
+  storageTitle: '6. Срок обработки и хранения',
+  storageText:
+    'Персональные данные обрабатываются и хранятся не дольше, чем этого требуют цели обработки, если иной срок не установлен законодательством Российской Федерации.',
+  rightsTitle: '7. Права субъекта персональных данных',
+  rightsText:
+    'Пользователь вправе запросить уточнение, блокирование, удаление своих персональных данных, а также отозвать ранее данное согласие на обработку персональных данных, направив обращение оператору по контактным данным, размещенным на сайте.',
+  securityTitle: '8. Защита персональных данных',
+  securityText:
+    'Оператор принимает необходимые организационные и технические меры для защиты персональных данных от неправомерного или случайного доступа, уничтожения, изменения, блокирования, копирования, распространения и иных неправомерных действий.',
+  finalTitle: '9. Заключительные положения',
+  finalText:
+    'Оператор вправе вносить изменения в настоящую политику. Актуальная версия политики всегда доступна на этой странице сайта.',
+};
+
+const UI_CONTENT = {
+  navAboutUsLabel: 'О нас',
+  navRequisitesLabel: 'Реквизиты',
+  navPrivacyPolicyLabel: 'Политика персональных данных',
+  headerNavAriaLabel: 'Основная навигация',
+  headerEmailLinkTitle: 'Написать нам',
+  burgerMenuOpenLabel: 'Открыть меню',
+  burgerMenuCloseLabel: 'Закрыть меню',
+  logoText: 'Путь Преодоления',
+  logoAriaLabel: 'Путь Преодоления, главная',
+  logoAlt: 'Логотип Путь Преодоления',
+  skipLinkText: 'Перейти к содержимому',
+  phoneLinkLabelPrefix: 'Позвонить по номеру',
+  footerCopyrightText: 'ООО "Феникс". Все права защищены.',
+  footerPrivacyPolicyText: 'Политика обработки персональных данных',
+  contactFormTitlePrefix: 'Запишитесь',
+  contactFormTitleMiddle: 'на',
+  contactFormTitleHighlight: 'бесплатную',
+  contactFormTitleSuffix: 'консультацию',
+  contactFormWorkingHoursText: 'Время работы: круглосуточно',
+  contactFormNameLabel: 'Имя',
+  contactFormPhoneLabel: 'Телефон',
+  contactFormMessageLabel: 'Сообщение',
+  contactFormNamePlaceholder: 'Как к вам обращаться?',
+  contactFormPhonePlaceholder: '9XXXXXXXXX',
+  contactFormMessagePlaceholder: 'Опишите вашу ситуацию',
+  contactFormConsentPrefix: 'Я даю согласие на обработку персональных данных и принимаю условия',
+  contactFormConsentLinkText: 'политики обработки персональных данных',
+  contactFormConsentSuffix: '.',
+  contactFormSubmitButtonText: 'Сделать первый шаг',
+  contactFormSubmittingButtonText: 'Отправка...',
+  contactFormSubmittingSrText: 'Отправка',
+  contactFormNameRequiredError: 'Имя обязательно',
+  contactFormPhoneFormatError: 'Неверный формат телефона',
+  contactFormMessageRequiredError: 'Сообщение обязательно',
+  contactFormConsentRequiredError: 'Нужно согласие на обработку персональных данных',
+  contactFormSendSuccessText: 'Сообщение успешно отправлено!',
+  contactFormSendFailureText: 'Не удалось отправить сообщение. Попробуйте еще раз.',
+  homeHeroMaxButtonText: 'Написать в MAX',
+  homeHeroTelegramButtonText: 'Написать в Telegram',
+  homeHeroCallButtonText: 'Заказать звонок',
+  sliderPrevSlideMessage: 'Предыдущий слайд',
+  sliderNextSlideMessage: 'Следующий слайд',
+  homeServicesTitle: 'Наши услуги',
+  homeServicesFootnote: '* Помощь предоставляется во время восстановления и адаптации',
+  homeMotivationalCallButtonText: 'Позвонить сейчас',
+  aboutHowWeWorkTitle: 'Как мы работаем?',
+  aboutValuesTitle: 'Наши ценности',
+  resultsPageTitle: 'Наши результаты',
+  resultsStoryAltPrefix: 'История',
+  requisitesPageTitle: 'Наши Реквизиты',
+  requisitesTableCaption: 'Реквизиты организации',
+  requisitesColumnNameLabel: 'Наименование',
+  requisitesColumnValueLabel: 'Значение',
+  requisitesOgrnLabel: 'ОГРН',
+  requisitesOgrnDatePrefix: 'от',
+  requisitesInnKppLabel: 'ИНН/КПП',
+  requisitesRegistrationDateLabel: 'Дата регистрации',
+  requisitesLegalAddressLabel: 'Юридический адрес',
+  requisitesActualAddressLabel: 'Фактический адрес',
+  requisitesHeadLabel: 'Руководитель',
+  requisitesMainActivityLabel: 'Основной вид деятельности',
+  requisitesTaxAuthorityLabel: 'Налоговый орган',
+  requisitesOkpoLabel: 'ОКПО',
+  requisitesOkatoLabel: 'ОКАТО',
+  requisitesOktmoLabel: 'ОКТМО',
+  requisitesOkfsLabel: 'ОКФС',
+  requisitesOkoguLabel: 'ОКОГУ',
+  requisitesOkopfLabel: 'ОКОПФ',
+  notFoundSubtitle: 'Страница не найдена',
+  notFoundText: 'Извините, запрашиваемая вами страница не существует.',
+  notFoundLinkText: 'Вернуться на главную',
+  notFoundLinkAriaLabel: 'Вернуться на главную',
+  licenseImageAltPrefix: 'Страница лицензии',
+};
+
+const LICENSE_INFO = {
+  title: 'Лицензия на медицинскую деятельность',
+  number: '№ ЛО-18-01-002479',
+  date: '03.07.2018',
+  imageUrls: [
+    '/license/1.jpeg',
+    '/license/2.jpeg',
+    '/license/3.jpeg',
+    '/license/4.jpeg',
+  ],
+};
+
 const SERVICES = [
   {
     title: 'Помощь наркозависимым',
@@ -276,6 +403,24 @@ async function main() {
       'api::requisites.requisites',
       REQUISITES,
       'Реквизиты'
+    );
+    await seedSingleType(
+      strapi,
+      'api::privacy-policy.privacy-policy',
+      PRIVACY_POLICY,
+      'Политика персональных данных'
+    );
+    await seedSingleType(
+      strapi,
+      'api::ui-content.ui-content',
+      UI_CONTENT,
+      'UI тексты'
+    );
+    await seedSingleType(
+      strapi,
+      'api::license-info.license-info',
+      LICENSE_INFO,
+      'Лицензия'
     );
 
     await seedCollection(strapi, 'api::service.service', SERVICES, 'Услуги');

@@ -19,15 +19,21 @@ export interface StoryItem {
 
 interface ResultsProps {
   stories: StoryItem[];
+  title: string;
+  storyAltPrefix: string;
 }
 
-export const Results: React.FC<ResultsProps> = ({ stories }) => {
+export const Results: React.FC<ResultsProps> = ({
+  stories,
+  title,
+  storyAltPrefix,
+}) => {
   const isSmallScreen = useMediaQuery("(max-width: 767px)");
   const prefersReducedMotion = useMediaQuery("(prefers-reduced-motion: reduce)");
 
   return (
     <section className={styles.beforeAfter}>
-      <h1 className={styles.title}>Наши результаты</h1>
+      <h2 className={styles.title}>{title}</h2>
       <Swiper
         spaceBetween={30}
         slidesPerView={isSmallScreen ? 1 : 2}
@@ -41,7 +47,7 @@ export const Results: React.FC<ResultsProps> = ({ stories }) => {
               {story.imageUrl && (
                 <Image
                   src={story.imageUrl}
-                  alt={`История ${story.id}`}
+                  alt={`${storyAltPrefix} ${story.id}`}
                   width={isSmallScreen ? 300 : 500}
                   height={isSmallScreen ? 300 : 500}
                   className={styles.beforeAfter__image}

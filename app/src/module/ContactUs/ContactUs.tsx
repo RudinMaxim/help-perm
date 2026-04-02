@@ -2,6 +2,8 @@
 import { useId } from 'react';
 import { useContactForm } from '@/hook/useContactForm';
 import Link from 'next/link';
+import { PATH_URL } from '@/constants/path';
+import type { UiContent } from '@/lib/cms';
 import styles from './ContactUs.module.scss';
 
 interface ContactUsProps {
@@ -9,6 +11,7 @@ interface ContactUsProps {
   mainEmail: string;
   mainPhoneNumber: string;
   secondPhoneNumber: string;
+  uiText: UiContent | null;
 }
 
 export function ContactUs({
@@ -16,9 +19,17 @@ export function ContactUs({
   mainEmail,
   mainPhoneNumber,
   secondPhoneNumber,
+  uiText,
 }: ContactUsProps) {
   const { messageData, handleChange, handleSubmit, isLoading, validationErrors, serverError } =
-    useContactForm();
+    useContactForm({
+      nameRequiredError: uiText?.contactFormNameRequiredError ?? '',
+      phoneFormatError: uiText?.contactFormPhoneFormatError ?? '',
+      messageRequiredError: uiText?.contactFormMessageRequiredError ?? '',
+      consentRequiredError: uiText?.contactFormConsentRequiredError ?? '',
+      sendSuccessText: uiText?.contactFormSendSuccessText ?? '',
+      sendFailureText: uiText?.contactFormSendFailureText ?? '',
+    });
   const headingId = useId();
   const TitleTag = isMainPage ? 'h1' : 'h2';
 
@@ -30,7 +41,9 @@ export function ContactUs({
     >
       <div className={styles.contact__us__info}>
         <TitleTag id={headingId} className={styles.title}>
-          Запишитесь <br /> на <b>бесплатную</b> <br /> консультацию
+          {uiText?.contactFormTitlePrefix ?? ''} <br /> {uiText?.contactFormTitleMiddle ?? ''}{' '}
+          <b>{uiText?.contactFormTitleHighlight ?? ''}</b> <br />{' '}
+          {uiText?.contactFormTitleSuffix ?? ''}
         </TitleTag>
 
         <div className={styles.contact__us__info__list}>
@@ -58,7 +71,7 @@ export function ContactUs({
           </ul>
           <ul className={styles.contact__us__info__social}>
             <li>
-              Время работы: <b>круглосуточно</b>
+              {uiText?.contactFormWorkingHoursText ?? ''}
             </li>
           </ul>
         </div>
@@ -77,13 +90,13 @@ export function ContactUs({
         ) : null}
         <div className={styles.contact__us__form__inputs}>
           <label htmlFor="name" className="visually-hidden">
-            Имя
+            {uiText?.contactFormNameLabel ?? ''}
           </label>
           <input
             type="text"
             id="name"
             name="name"
-            placeholder="Как к вам обращаться?"
+            placeholder={uiText?.contactFormNamePlaceholder ?? ''}
             value={messageData.name}
             onChange={handleChange}
             className={styles.input}
@@ -107,7 +120,7 @@ export function ContactUs({
               value={messageData.phone}
               onChange={handleChange}
               maxLength={10}
-              placeholder="9XXXXXXXXX"
+              placeholder={uiText?.contactFormPhonePlaceholder ?? ''}
               inputMode="numeric"
               autoComplete="tel"
               required
@@ -123,13 +136,14 @@ export function ContactUs({
           ) : null}
 
           <label htmlFor="message" className="visually-hidden">
-            Сообщение
+            {uiText?.contactFormMessageLabel ?? ''}
           </label>
           <textarea
             id="message"
             name="message"
             value={messageData.message}
             onChange={handleChange}
+            placeholder={uiText?.contactFormMessagePlaceholder ?? ''}
             required
             aria-required="true"
             aria-invalid={!!validationErrors?.message}
@@ -138,6 +152,29 @@ export function ContactUs({
           {validationErrors?.message ? (
             <div id="error-message" role="alert" className={styles.error}>
               {validationErrors.message}
+            </div>
+          ) : null}
+
+          <label className={styles.consent}>
+            <input
+              type="checkbox"
+              name="consentGiven"
+              checked={messageData.consentGiven}
+              onChange={handleChange}
+              required
+              aria-required="true"
+            />
+            <span>
+              {uiText?.contactFormConsentPrefix ?? ''}{' '}
+              <Link href={PATH_URL.privacyPolicy.url} target="_blank" rel="noopener noreferrer">
+                {uiText?.contactFormConsentLinkText ?? ''}
+              </Link>
+              {uiText?.contactFormConsentSuffix ?? ''}
+            </span>
+          </label>
+          {validationErrors?.consent ? (
+            <div role="alert" className={styles.error}>
+              {validationErrors.consent}
             </div>
           ) : null}
         </div>
@@ -151,11 +188,13 @@ export function ContactUs({
           {isLoading ? (
             <>
               <span className={styles.spinner} aria-hidden="true" />
-              <span className="visually-hidden">Отправка</span>
-              Отправка...
+              <span className="visually-hidden">
+                {uiText?.contactFormSubmittingSrText ?? ''}
+              </span>
+              {uiText?.contactFormSubmittingButtonText ?? ''}
             </>
           ) : (
-            'Сделать первый шаг'
+            uiText?.contactFormSubmitButtonText ?? ''
           )}
         </button>
       </form>

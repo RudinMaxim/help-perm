@@ -1,19 +1,11 @@
 export const PATH_URL = {
-  consultation: {
-    url: '/consultation',
-    name: 'Консультация',
-  },
-  results: {
-    url: '/results',
-    name: 'Результаты',
-  },
-  
   aboutus: {
     url: '/aboutus',
-    name: 'О нас',
   },
   requisites: {
-     url: "/requisites",
-     name: 'Реквизиты',
+    url: '/requisites',
+  },
+  privacyPolicy: {
+    url: '/privacy-policy',
   }
 };

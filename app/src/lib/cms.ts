@@ -104,6 +104,115 @@ export interface Requisites {
   okopf: string | null;
 }
 
+export interface PrivacyPolicy {
+  id: number;
+  pageTitle: string | null;
+  lead: string | null;
+  operatorTitle: string | null;
+  operatorText: string | null;
+  dataTitle: string | null;
+  dataItems: string[] | null;
+  purposesTitle: string | null;
+  purposesItems: string[] | null;
+  legalBasisTitle: string | null;
+  legalBasisText: string | null;
+  actionsTitle: string | null;
+  actionsText: string | null;
+  storageTitle: string | null;
+  storageText: string | null;
+  rightsTitle: string | null;
+  rightsText: string | null;
+  securityTitle: string | null;
+  securityText: string | null;
+  finalTitle: string | null;
+  finalText: string | null;
+}
+
+export interface UiContent {
+  id: number;
+  navAboutUsLabel: string | null;
+  navRequisitesLabel: string | null;
+  navPrivacyPolicyLabel: string | null;
+  headerNavAriaLabel: string | null;
+  headerEmailLinkTitle: string | null;
+  burgerMenuOpenLabel: string | null;
+  burgerMenuCloseLabel: string | null;
+  logoText: string | null;
+  logoAriaLabel: string | null;
+  logoAlt: string | null;
+  skipLinkText: string | null;
+  phoneLinkLabelPrefix: string | null;
+  footerCopyrightText: string | null;
+  footerPrivacyPolicyText: string | null;
+  contactFormTitlePrefix: string | null;
+  contactFormTitleMiddle: string | null;
+  contactFormTitleHighlight: string | null;
+  contactFormTitleSuffix: string | null;
+  contactFormWorkingHoursText: string | null;
+  contactFormNameLabel: string | null;
+  contactFormPhoneLabel: string | null;
+  contactFormMessageLabel: string | null;
+  contactFormNamePlaceholder: string | null;
+  contactFormPhonePlaceholder: string | null;
+  contactFormMessagePlaceholder: string | null;
+  contactFormConsentPrefix: string | null;
+  contactFormConsentLinkText: string | null;
+  contactFormConsentSuffix: string | null;
+  contactFormSubmitButtonText: string | null;
+  contactFormSubmittingButtonText: string | null;
+  contactFormSubmittingSrText: string | null;
+  contactFormNameRequiredError: string | null;
+  contactFormPhoneFormatError: string | null;
+  contactFormMessageRequiredError: string | null;
+  contactFormConsentRequiredError: string | null;
+  contactFormSendSuccessText: string | null;
+  contactFormSendFailureText: string | null;
+  homeHeroMaxButtonText: string | null;
+  homeHeroTelegramButtonText: string | null;
+  homeHeroCallButtonText: string | null;
+  sliderPrevSlideMessage: string | null;
+  sliderNextSlideMessage: string | null;
+  homeServicesTitle: string | null;
+  homeServicesFootnote: string | null;
+  homeMotivationalCallButtonText: string | null;
+  aboutHowWeWorkTitle: string | null;
+  aboutValuesTitle: string | null;
+  resultsPageTitle: string | null;
+  resultsStoryAltPrefix: string | null;
+  requisitesPageTitle: string | null;
+  requisitesTableCaption: string | null;
+  requisitesColumnNameLabel: string | null;
+  requisitesColumnValueLabel: string | null;
+  requisitesOgrnLabel: string | null;
+  requisitesOgrnDatePrefix: string | null;
+  requisitesInnKppLabel: string | null;
+  requisitesRegistrationDateLabel: string | null;
+  requisitesLegalAddressLabel: string | null;
+  requisitesActualAddressLabel: string | null;
+  requisitesHeadLabel: string | null;
+  requisitesMainActivityLabel: string | null;
+  requisitesTaxAuthorityLabel: string | null;
+  requisitesOkpoLabel: string | null;
+  requisitesOkatoLabel: string | null;
+  requisitesOktmoLabel: string | null;
+  requisitesOkfsLabel: string | null;
+  requisitesOkoguLabel: string | null;
+  requisitesOkopfLabel: string | null;
+  notFoundSubtitle: string | null;
+  notFoundText: string | null;
+  notFoundLinkText: string | null;
+  notFoundLinkAriaLabel: string | null;
+  licenseImageAltPrefix: string | null;
+}
+
+export interface LicenseInfo {
+  id: number;
+  title: string | null;
+  number: string | null;
+  date: string | null;
+  imageUrls: string[] | null;
+}
+
 // ─── Утилита запроса ─────────────────────────────────────────────────────────
 
 async function fetchCMS<T>(path: string): Promise<T | null> {
@@ -161,6 +270,21 @@ export async function getSiteContent(): Promise<SiteContent | null> {
 
 export async function getRequisites(): Promise<Requisites | null> {
   const res = await fetchCMS<CmsSingleResponse<Requisites>>('/requisites');
+  return res?.data ?? null;
+}
+
+export async function getPrivacyPolicy(): Promise<PrivacyPolicy | null> {
+  const res = await fetchCMS<CmsSingleResponse<PrivacyPolicy>>('/privacy-policy');
+  return res?.data ?? null;
+}
+
+export async function getUiContent(): Promise<UiContent | null> {
+  const res = await fetchCMS<CmsSingleResponse<UiContent>>('/ui-content');
+  return res?.data ?? null;
+}
+
+export async function getLicenseInfo(): Promise<LicenseInfo | null> {
+  const res = await fetchCMS<CmsSingleResponse<LicenseInfo>>('/license-info');
   return res?.data ?? null;
 }
 
