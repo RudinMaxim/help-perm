@@ -1,7 +1,8 @@
 /**
  * Seed-скрипт для Strapi.
  *
- * Запуск локально:
+ * Запуск после сборки:
+ *   npm run build
  *   npm run seed
  *
  * Запуск в production-контейнере:
@@ -12,6 +13,7 @@
  */
 
 import { createStrapi } from '@strapi/strapi';
+import path from 'node:path';
 
 const CONTACT_INFO = {
   mainPhone: '+79229228004',
@@ -402,7 +404,9 @@ async function seedCollection(
 }
 
 async function main() {
-  const strapi = createStrapi();
+  const appDir = process.cwd();
+  const distDir = path.join(appDir, 'dist');
+  const strapi = createStrapi({ appDir, distDir });
 
   try {
     console.log('🌱 Seed CMS...\n');

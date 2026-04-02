@@ -12,7 +12,7 @@
     "develop": "strapi develop",
     "start": "strapi start",
     "strapi": "strapi",
-    "seed": "npm run build && node dist/seed.js",
+    "seed": "node dist/seed.js",
     "seed:prod": "node dist/seed.js",
     "upgrade": "npx @strapi/upgrade latest",
     "upgrade:dry": "npx @strapi/upgrade latest --dry",

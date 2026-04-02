@@ -107,6 +107,7 @@ curl http://localhost:1337/api/contact-info
 
 ```bash
 cd infrastructure
+docker compose build cms web
 docker compose up -d --build
 docker compose ps
 docker compose logs --tail 100 cms
@@ -135,6 +136,26 @@ docker compose exec -T cms npm run seed:prod
 docker compose exec -T cms node -e "fetch('http://127.0.0.1:1337/api/contact-info').then(r=>r.text()).then(console.log)"
 docker compose exec -T cms node -e "fetch('http://web:3000').then(r=>{console.log(r.status);return r.text()}).then(t=>console.log(t.slice(0,300)))"
 ```
+
+### Что важно знать про CMS-образ
+
+- CMS использует `sqlite` через `better-sqlite3`
+- для сборки native-модуля в [cms/Dockerfile](cms/Dockerfile) уже установлены `python3`, `make`, `g++`
+- если падает именно шаг `npm ci` внутри сборки CMS-образа, это обычно не проблема `sqlite`, а проблема сети или registry
+
+Проверка только сборки образов:
+
+```bash
+cd infrastructure
+docker compose build cms web
+```
+
+Если `web` собирается, а `cms` падает на `RUN npm ci`, сначала смотрите на:
+
+- доступ сервера до `registry.npmjs.org`
+- proxy/firewall
+- временные сетевые сбои `ECONNRESET` / `ETIMEDOUT`
+- ограничения CI runner на исходящие подключения
 
 ## Деплой на Ubuntu VPS
 
@@ -295,6 +316,7 @@ nano /opt/help-perm/infrastructure/user_conf.d/cms.conf
 
 ```bash
 cd /opt/help-perm/infrastructure
+docker compose build cms web
 docker compose up -d --build
 ```
 
@@ -384,6 +406,93 @@ docker compose down
 - домен в `.env` не совпадает с доменом в `user_conf.d/*.conf`
 - сертификаты Let's Encrypt не могут выпуститься, потому что домен не смотрит на VPS
 - Strapi поднят, но не заполнен данными
+
+### 14. Диагностика Docker build и CI
+
+#### Ошибка `C:\\Users\\<user>\\.docker\\buildx\\.lock: Access is denied`
+
+Это не ошибка проекта и не проблема Dockerfile.
+
+Обычно это значит:
+
+- Docker build запускается из среды без доступа к домашней папке пользователя
+- runner запущен от другого пользователя
+- нет прав на запись в `%USERPROFILE%\\.docker\\buildx`
+
+На локальной Windows-машине или self-hosted runner это исправляется так:
+
+- запускать сборку от того же пользователя, под которым настроен Docker Desktop
+- убедиться, что пользователь входит в группу `docker-users`
+- при необходимости задать отдельный `DOCKER_CONFIG`, чтобы buildx не писал в домашний профиль
+
+Пример для PowerShell:
+
+```powershell
+$env:DOCKER_CONFIG="$PWD\\.docker-config"
+docker compose build cms web
+```
+
+Пример для Linux runner:
+
+```bash
+export DOCKER_CONFIG="$PWD/.docker-config"
+docker compose build cms web
+```
+
+Это особенно полезно для CI и self-hosted runner, где несколько сборок могут делить один Docker profile.
+
+#### Ошибка `npm ci` / `ECONNRESET` внутри `cms`-сборки
+
+Если сборка падает на шаге `RUN npm ci` в `cms`, но не падает на `apt-get install python3 make g++`, проблема почти наверняка в сети, а не в `sqlite`.
+
+Что проверить на сервере:
+
+- доступ до `https://registry.npmjs.org`
+- DNS-резолвинг
+- proxy / corporate firewall
+- нестабильность исходящего канала
+
+Полезные команды:
+
+```bash
+curl -I https://registry.npmjs.org
+docker compose build cms
+docker compose logs --tail 100 cms
+```
+
+Если это происходит в CI эпизодически, типовой вывод такой:
+
+- повторный запуск job
+- использование npm registry mirror
+- настройка retry для npm
+- отдельный кэш зависимостей на уровне CI
+
+#### Проверка, что проблема не в `sqlite`
+
+Если хотите проверить именно native-зависимость для `sqlite`, достаточно успешной сборки CMS-образа:
+
+```bash
+cd /opt/help-perm/infrastructure
+docker compose build cms
+```
+
+Если этот шаг проходит, значит:
+
+- `python3` доступен на build stage
+- `better-sqlite3` собрался корректно
+- Dockerfile пригоден для серверного запуска
+
+#### Проверка после запуска стека
+
+После `docker compose up -d --build`:
+
+```bash
+docker compose ps
+docker compose logs --tail 200 cms
+docker compose exec -T cms node -e "fetch('http://127.0.0.1:1337/api/contact-info').then(r=>{console.log(r.status);return r.text()}).then(console.log)"
+```
+
+Если последний запрос возвращает `200`, CMS внутри контейнера поднята и API отвечает.
 
 ## Примечания по текущему проекту
 
