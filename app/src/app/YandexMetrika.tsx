@@ -20,6 +20,8 @@ export default function YandexMetrika() {
                      </Script>
                      <noscript>
                             <div>
+                                   {/* Tracking pixel requires a raw img tag inside noscript. */}
+                                   {/* eslint-disable-next-line @next/next/no-img-element */}
                                    <img src="https://mc.yandex.ru/watch/97610015" style={{ position: 'absolute', left: '-9999px' }} alt="" />
                             </div>
                      </noscript>

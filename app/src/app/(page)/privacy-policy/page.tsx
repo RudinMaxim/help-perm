@@ -3,6 +3,18 @@ import { getMetadata } from '@/utils/getMetadata';
 import type { Metadata } from 'next';
 import styles from './PrivacyPolicy.module.scss';
 
+type PolicySection =
+  | {
+      title: string | null;
+      text: string | null;
+      items?: undefined;
+    }
+  | {
+      title: string | null;
+      text?: undefined;
+      items: string[];
+    };
+
 export const metadata: Metadata = getMetadata({
   title: 'Политика обработки персональных данных',
   description:
@@ -13,42 +25,42 @@ export const metadata: Metadata = getMetadata({
 export default async function PrivacyPolicyPage() {
   const policy = await getPrivacyPolicy();
 
-  const sections = [
+  const sections: PolicySection[] = [
     {
-      title: policy?.operatorTitle,
-      text: policy?.operatorText,
+      title: policy?.operatorTitle ?? null,
+      text: policy?.operatorText ?? null,
     },
     {
-      title: policy?.dataTitle,
+      title: policy?.dataTitle ?? null,
       items: policy?.dataItems ?? [],
     },
     {
-      title: policy?.purposesTitle,
+      title: policy?.purposesTitle ?? null,
       items: policy?.purposesItems ?? [],
     },
     {
-      title: policy?.legalBasisTitle,
-      text: policy?.legalBasisText,
+      title: policy?.legalBasisTitle ?? null,
+      text: policy?.legalBasisText ?? null,
     },
     {
-      title: policy?.actionsTitle,
-      text: policy?.actionsText,
+      title: policy?.actionsTitle ?? null,
+      text: policy?.actionsText ?? null,
     },
     {
-      title: policy?.storageTitle,
-      text: policy?.storageText,
+      title: policy?.storageTitle ?? null,
+      text: policy?.storageText ?? null,
     },
     {
-      title: policy?.rightsTitle,
-      text: policy?.rightsText,
+      title: policy?.rightsTitle ?? null,
+      text: policy?.rightsText ?? null,
     },
     {
-      title: policy?.securityTitle,
-      text: policy?.securityText,
+      title: policy?.securityTitle ?? null,
+      text: policy?.securityText ?? null,
     },
     {
-      title: policy?.finalTitle,
-      text: policy?.finalText,
+      title: policy?.finalTitle ?? null,
+      text: policy?.finalText ?? null,
     },
   ];
 
@@ -61,7 +73,7 @@ export default async function PrivacyPolicyPage() {
       {sections.map((section) => {
         if (!section.title) return null;
 
-        if ('items' in section) {
+        if (Array.isArray(section.items)) {
           if (section.items.length === 0) return null;
 
           return (

@@ -2,7 +2,7 @@ import { Footer, Header } from '@/components';
 import { getContactInfo, getUiContent } from '@/lib/cms';
 import { PATH_URL } from '@/constants/path';
 import { getMetadata, getOrganizationJsonLd } from '@/utils/getMetadata';
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
 import { Toaster } from 'sonner';
 import './globals.scss';
@@ -14,6 +14,15 @@ export const metadata: Metadata = getMetadata({
   title: 'Помощь рядом',
   description: 'Жизнь порой преподносит неожиданные испытания, и порой может показаться, что вы остались один на один со своими проблемами. Но это не так – мы, готовы оказать вам профессиональную помощь и поддержку. Независимо от того, какие трудности вы переживаете, мы поможем найти решение и пройти этот путь вместе с вами.',
 });
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: 'white' },
+    { media: '(prefers-color-scheme: dark)', color: 'black' },
+  ],
+};
 
 declare global {
   interface Window {

@@ -93,14 +93,6 @@ export const getMetadata = (props: IMetadata): Metadata => {
       `Психологическая помощь, юридическая консультация, семейное и финансовое консультирование, помощь людям с ограниченными возможностями, бездомным, наркозависимым и алкоголезависимым в городах: ${cityDescription}. Звоните: ☎️${MAIN_PHONE_NUMBER}, ☎️${SECOND_PHONE_NUMBER} или пишите: ${MAIN_EMAIL}`,
     keywords: metadataKeywords,
     authors: [{ name: 'Благотворительная организация' }],
-    viewport: {
-      width: 'device-width',
-      initialScale: 1,
-    },
-    themeColor: [
-      { media: '(prefers-color-scheme: light)', color: 'white' },
-      { media: '(prefers-color-scheme: dark)', color: 'black' },
-    ],
     robots: {
       index: true,
       follow: true,
