@@ -1,4 +1,4 @@
-FROM node:22-bookworm-slim AS builder
+FROM node:22.22.2-bookworm-slim AS builder
 WORKDIR /my-space
 
 COPY package.json package-lock.json ./
@@ -6,7 +6,7 @@ RUN npm ci
 COPY . .
 RUN npm run build
 
-FROM node:22-bookworm-slim AS runner
+FROM node:22.22.2-bookworm-slim AS runner
 WORKDIR /my-space
 COPY --from=builder /my-space/package.json .
 COPY --from=builder /my-space/package-lock.json .
