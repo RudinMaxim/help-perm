@@ -3,19 +3,35 @@ import { FaTelegram } from 'react-icons/fa';
 import styles from '../Home.module.scss';
 
 interface SocialChannelsProps {
+  eyebrow: string;
+  title: string;
   mainPhone: string;
+  callButtonText: string;
+  callButtonDescription: string;
+  formButtonText: string;
+  formButtonDescription: string;
   maxMessengerLink: string;
   secondTelegramLink: string;
   maxButtonText: string;
+  maxButtonDescription: string;
   telegramButtonText: string;
+  telegramButtonDescription: string;
 }
 
 export function SocialChannels({
+  eyebrow,
+  title,
   mainPhone,
+  callButtonText,
+  callButtonDescription,
+  formButtonText,
+  formButtonDescription,
   maxMessengerLink,
   secondTelegramLink,
   maxButtonText,
+  maxButtonDescription,
   telegramButtonText,
+  telegramButtonDescription,
 }: SocialChannelsProps) {
   if (!mainPhone && !maxMessengerLink && !secondTelegramLink) {
     return null;
@@ -24,10 +40,12 @@ export function SocialChannels({
   return (
     <section className={styles.socialChannels} aria-labelledby="social-channels-title" data-motion-section>
       <div className={styles.socialChannels__header}>
-        <p className={styles.sectionEyebrow}>На связи</p>
-        <h2 id="social-channels-title" className={styles.socialChannels__title}>
-          Выберите удобный способ связаться с нами
-        </h2>
+        {eyebrow?.trim() ? <p className={styles.sectionEyebrow}>{eyebrow}</p> : null}
+        {title?.trim() ? (
+          <h2 id="social-channels-title" className={styles.socialChannels__title}>
+            {title}
+          </h2>
+        ) : null}
       </div>
 
       <div className={styles.socialChannels__list} data-motion-stagger>
@@ -41,8 +59,8 @@ export function SocialChannels({
               <span className={styles.socialChannels__phoneIcon} aria-hidden="true">+</span>
             </span>
             <span className={styles.socialChannels__content}>
-              <strong>Позвонить</strong>
-              <span>Связь сразу по телефону</span>
+              <strong>{callButtonText}</strong>
+              <span>{callButtonDescription}</span>
             </span>
           </a>
         ) : null}
@@ -56,8 +74,8 @@ export function SocialChannels({
             <span className={styles.socialChannels__formIcon} aria-hidden="true">•••</span>
           </span>
           <span className={styles.socialChannels__content}>
-            <strong>Оставить заявку</strong>
-            <span>Заполнить короткую форму</span>
+            <strong>{formButtonText}</strong>
+            <span>{formButtonDescription}</span>
           </span>
         </a>
 
@@ -80,7 +98,7 @@ export function SocialChannels({
             </span>
             <span className={styles.socialChannels__content}>
               <strong>{maxButtonText}</strong>
-              <span>Быстрый ответ в Max</span>
+              <span>{maxButtonDescription}</span>
             </span>
           </a>
         ) : null}
@@ -98,7 +116,7 @@ export function SocialChannels({
             </span>
             <span className={styles.socialChannels__content}>
               <strong>{telegramButtonText}</strong>
-              <span>Написать в Telegram</span>
+              <span>{telegramButtonDescription}</span>
             </span>
           </a>
         ) : null}

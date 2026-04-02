@@ -12,30 +12,37 @@
   "attributes": {
     "name": {
       "type": "string",
-      "required": true
+      "required": true,
+      "label": "Имя"
     },
     "phone": {
       "type": "string",
-      "required": true
+      "required": true,
+      "label": "Телефон"
     },
     "message": {
       "type": "text",
-      "required": true
+      "required": true,
+      "label": "Сообщение"
     },
     "status": {
       "type": "enumeration",
       "enum": ["new", "in_progress", "done"],
-      "default": "new"
+      "default": "new",
+      "label": "Статус"
     },
     "source": {
-      "type": "string"
+      "type": "string",
+      "label": "Источник"
     },
     "consentGiven": {
       "type": "boolean",
-      "default": false
+      "default": false,
+      "label": "Согласие получено"
     },
     "consentAt": {
-      "type": "datetime"
+      "type": "datetime",
+      "label": "Дата согласия"
     }
   }
 }

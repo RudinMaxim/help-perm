@@ -11,40 +11,52 @@
   },
   "attributes": {
     "homeHeroTitle": {
-      "type": "string"
+      "type": "string",
+      "label": "Заголовок hero на главной"
     },
     "homeHeroDescription": {
-      "type": "text"
+      "type": "text",
+      "label": "Описание hero на главной"
     },
     "socialGoalTitle": {
-      "type": "string"
+      "type": "string",
+      "label": "Заголовок блока миссии"
     },
     "socialGoalText": {
-      "type": "text"
+      "type": "text",
+      "label": "Текст блока миссии"
     },
     "motivationalBannerTitle": {
-      "type": "string"
+      "type": "string",
+      "label": "Заголовок мотивационного блока"
     },
     "motivationalBannerDescription": {
-      "type": "text"
+      "type": "text",
+      "label": "Описание мотивационного блока"
     },
     "aboutHeroTitle": {
-      "type": "string"
+      "type": "string",
+      "label": "Заголовок блока о нас"
     },
     "aboutHeroSubtitle": {
-      "type": "string"
+      "type": "string",
+      "label": "Подзаголовок блока о нас"
     },
     "aboutHeroDescription": {
-      "type": "text"
+      "type": "text",
+      "label": "Описание блока о нас"
     },
     "aboutHeroButtonText": {
-      "type": "string"
+      "type": "string",
+      "label": "Текст кнопки блока о нас"
     },
     "teamTitle": {
-      "type": "string"
+      "type": "string",
+      "label": "Заголовок блока команды"
     },
     "teamDescription": {
-      "type": "text"
+      "type": "text",
+      "label": "Описание блока команды"
     }
   }
 }

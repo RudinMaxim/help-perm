@@ -1,6 +1,7 @@
 import style from '../Home.module.scss';
 
 interface HeroProps {
+  eyebrow: string;
   title: string;
   description: string;
   howWeWorkTitle: string;
@@ -12,6 +13,7 @@ interface HeroProps {
 }
 
 export function Hero({
+  eyebrow,
   title,
   description,
   howWeWorkTitle,
@@ -23,9 +25,11 @@ export function Hero({
     <section className={style.hero} aria-labelledby="home-hero-title" data-motion-section>
       <div className={style.hero__grid} data-motion-hero>
         <div className={style.hero__content}>
-          <p className={style.hero__eyebrow} data-motion-item>
-            Бесплатная и конфиденциальная поддержка
-          </p>
+          {eyebrow?.trim() ? (
+            <p className={style.hero__eyebrow} data-motion-item>
+              {eyebrow}
+            </p>
+          ) : null}
           <h1 id="home-hero-title" className={style.hero__title} data-motion-item>{title}</h1>
           <p className={style.hero__description} data-motion-item>{description}</p>
         </div>

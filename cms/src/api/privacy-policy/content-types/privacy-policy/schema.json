@@ -11,64 +11,84 @@
   },
   "attributes": {
     "pageTitle": {
-      "type": "string"
+      "type": "string",
+      "label": "Заголовок страницы"
     },
     "lead": {
-      "type": "text"
+      "type": "text",
+      "label": "Вступление"
     },
     "operatorTitle": {
-      "type": "string"
+      "type": "string",
+      "label": "Заголовок блока оператора"
     },
     "operatorText": {
-      "type": "text"
+      "type": "text",
+      "label": "Текст блока оператора"
     },
     "dataTitle": {
-      "type": "string"
+      "type": "string",
+      "label": "Заголовок блока данных"
     },
     "dataItems": {
-      "type": "json"
+      "type": "json",
+      "label": "Список данных"
     },
     "purposesTitle": {
-      "type": "string"
+      "type": "string",
+      "label": "Заголовок блока целей"
     },
     "purposesItems": {
-      "type": "json"
+      "type": "json",
+      "label": "Список целей"
     },
     "legalBasisTitle": {
-      "type": "string"
+      "type": "string",
+      "label": "Заголовок правовых оснований"
     },
     "legalBasisText": {
-      "type": "text"
+      "type": "text",
+      "label": "Текст правовых оснований"
     },
     "actionsTitle": {
-      "type": "string"
+      "type": "string",
+      "label": "Заголовок действий с данными"
     },
     "actionsText": {
-      "type": "text"
+      "type": "text",
+      "label": "Текст действий с данными"
     },
     "storageTitle": {
-      "type": "string"
+      "type": "string",
+      "label": "Заголовок хранения"
     },
     "storageText": {
-      "type": "text"
+      "type": "text",
+      "label": "Текст хранения"
     },
     "rightsTitle": {
-      "type": "string"
+      "type": "string",
+      "label": "Заголовок прав субъекта"
     },
     "rightsText": {
-      "type": "text"
+      "type": "text",
+      "label": "Текст прав субъекта"
     },
     "securityTitle": {
-      "type": "string"
+      "type": "string",
+      "label": "Заголовок безопасности"
     },
     "securityText": {
-      "type": "text"
+      "type": "text",
+      "label": "Текст безопасности"
     },
     "finalTitle": {
-      "type": "string"
+      "type": "string",
+      "label": "Финальный заголовок"
     },
     "finalText": {
-      "type": "text"
+      "type": "text",
+      "label": "Финальный текст"
     }
   }
 }

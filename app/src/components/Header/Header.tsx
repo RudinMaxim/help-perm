@@ -5,12 +5,18 @@ interface HeaderProps {
   logoText: string;
   logoAriaLabel: string;
   logoAlt: string;
+  contactButtonText: string;
+  contactButtonAriaLabel: string;
+  contactButtonTitle: string;
 }
 
 export function Header({
   logoText,
   logoAriaLabel,
   logoAlt,
+  contactButtonText,
+  contactButtonAriaLabel,
+  contactButtonTitle,
 }: HeaderProps) {
   return (
     <header data-motion-header className={style.header}>
@@ -19,10 +25,10 @@ export function Header({
         <a
           href="#contactUs"
           className={style.contactButton}
-          aria-label="Перейти к форме обращения"
-          title="Перейти к форме обращения"
+          aria-label={contactButtonAriaLabel}
+          title={contactButtonTitle}
         >
-          <span aria-hidden="true">SOS</span>
+          <span aria-hidden="true">{contactButtonText}</span>
         </a>
       </div>
     </header>

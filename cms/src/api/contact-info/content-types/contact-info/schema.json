@@ -12,23 +12,29 @@
   "attributes": {
     "mainPhone": {
       "type": "string",
-      "required": true
+      "required": true,
+      "label": "Основной телефон"
     },
     "secondPhone": {
-      "type": "string"
+      "type": "string",
+      "label": "Дополнительный телефон"
     },
     "mainEmail": {
       "type": "email",
-      "required": true
+      "required": true,
+      "label": "Основной email"
     },
     "mainTelegramLink": {
-      "type": "string"
+      "type": "string",
+      "label": "Основная ссылка Telegram"
     },
     "secondTelegramLink": {
-      "type": "string"
+      "type": "string",
+      "label": "Дополнительная ссылка Telegram"
     },
     "maxMessengerLink": {
-      "type": "string"
+      "type": "string",
+      "label": "Ссылка Max"
     }
   }
 }

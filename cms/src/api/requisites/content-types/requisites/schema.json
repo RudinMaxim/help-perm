@@ -11,52 +11,68 @@
   },
   "attributes": {
     "ogrn": {
-      "type": "string"
+      "type": "string",
+      "label": "ОГРН"
     },
     "ogrnDate": {
-      "type": "string"
+      "type": "string",
+      "label": "Дата ОГРН"
     },
     "inn": {
-      "type": "string"
+      "type": "string",
+      "label": "ИНН"
     },
     "kpp": {
-      "type": "string"
+      "type": "string",
+      "label": "КПП"
     },
     "registrationDate": {
-      "type": "string"
+      "type": "string",
+      "label": "Дата регистрации"
     },
     "legalAddress": {
-      "type": "string"
+      "type": "string",
+      "label": "Юридический адрес"
     },
     "actualAddresses": {
-      "type": "json"
+      "type": "json",
+      "label": "Фактические адреса"
     },
     "head": {
-      "type": "string"
+      "type": "string",
+      "label": "Руководитель"
     },
     "mainActivity": {
-      "type": "text"
+      "type": "text",
+      "label": "Основной вид деятельности"
     },
     "taxAuthority": {
-      "type": "string"
+      "type": "string",
+      "label": "Налоговый орган"
     },
     "okpo": {
-      "type": "string"
+      "type": "string",
+      "label": "ОКПО"
     },
     "okato": {
-      "type": "string"
+      "type": "string",
+      "label": "ОКАТО"
     },
     "oktmo": {
-      "type": "string"
+      "type": "string",
+      "label": "ОКТМО"
     },
     "okfs": {
-      "type": "string"
+      "type": "string",
+      "label": "ОКФС"
     },
     "okogu": {
-      "type": "string"
+      "type": "string",
+      "label": "ОКОГУ"
     },
     "okopf": {
-      "type": "string"
+      "type": "string",
+      "label": "ОКОПФ"
     }
   }
 }

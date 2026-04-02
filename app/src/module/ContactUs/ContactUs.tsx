@@ -42,20 +42,26 @@ export function ContactUs({
     >
       <div className={styles.contactFrame}>
         <div className={styles.contactInfo}>
-          <p className={styles.contactEyebrow}>Связаться с нами</p>
+          {(uiText?.contactSectionEyebrow ?? 'Связаться с нами') ? (
+            <p className={styles.contactEyebrow}>
+              {uiText?.contactSectionEyebrow ?? 'Связаться с нами'}
+            </p>
+          ) : null}
           <TitleTag id={headingId} className={styles.title}>
             {uiText?.contactFormTitlePrefix ?? ''} {uiText?.contactFormTitleMiddle ?? ''}{' '}
             <b>{uiText?.contactFormTitleHighlight ?? ''}</b>{' '}
             {uiText?.contactFormTitleSuffix ?? ''}
           </TitleTag>
           <p className={styles.contactLead}>
-            Расскажите коротко о ситуации, и мы подскажем понятный следующий шаг без давления и
-            лишних формальностей.
+            {uiText?.contactSectionLead ??
+              'Расскажите коротко о ситуации, и мы подскажем понятный следующий шаг без давления и лишних формальностей.'}
           </p>
 
           <div className={styles.contactDetails} data-motion-stagger>
             <div className={styles.contactDetail} data-motion-card>
-              <p className={styles.contactDetailLabel}>Телефон</p>
+              <p className={styles.contactDetailLabel}>
+                {uiText?.contactDetailsPhoneLabel ?? 'Телефон'}
+              </p>
               {mainPhoneNumber ? (
                 <Link href={`tel:${mainPhoneNumber}`}>
                   {mainPhoneNumber}
@@ -69,7 +75,9 @@ export function ContactUs({
             </div>
 
             <div className={styles.contactDetail} data-motion-card>
-              <p className={styles.contactDetailLabel}>Электронная почта</p>
+              <p className={styles.contactDetailLabel}>
+                {uiText?.contactDetailsEmailLabel ?? 'Электронная почта'}
+              </p>
               {mainEmail ? (
                 <Link href={`mailto:${mainEmail}`}>
                   {mainEmail}
@@ -78,7 +86,9 @@ export function ContactUs({
             </div>
 
             <div className={styles.contactDetail} data-motion-card>
-              <p className={styles.contactDetailLabel}>Режим связи</p>
+              <p className={styles.contactDetailLabel}>
+                {uiText?.contactDetailsHoursLabel ?? 'Режим связи'}
+              </p>
               <p>{uiText?.contactFormWorkingHoursText ?? ''}</p>
             </div>
           </div>
@@ -93,9 +103,10 @@ export function ContactUs({
           data-motion-card
         >
           <div className={styles.formHeader}>
-            <h3 className={styles.formTitle}>Форма обращения</h3>
+            <h3 className={styles.formTitle}>{uiText?.contactFormCardTitle ?? 'Форма обращения'}</h3>
             <p className={styles.formCaption}>
-              Ответим конфиденциально и подберём удобный формат дальнейшего общения.
+              {uiText?.contactFormCardDescription ??
+                'Ответим конфиденциально и подберём удобный формат дальнейшего общения.'}
             </p>
           </div>
 

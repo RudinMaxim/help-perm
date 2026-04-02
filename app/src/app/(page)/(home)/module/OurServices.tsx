@@ -15,19 +15,21 @@ export interface ServiceItem {
 
 interface OurServicesProps {
   services: ServiceItem[];
+  eyebrow: string;
   title: string;
   footnote: string;
 }
 
 export function OurServices({
   services,
+  eyebrow,
   title,
   footnote,
 }: OurServicesProps) {
   return (
     <section className={styles.ourServices} aria-labelledby="services-title" data-motion-section>
       <div className={styles.sectionHeader}>
-        <p className={styles.sectionEyebrow}>Направления помощи</p>
+        {eyebrow?.trim() ? <p className={styles.sectionEyebrow}>{eyebrow}</p> : null}
         <h2 id="services-title" className={styles.sectionTitle}>{title}</h2>
         {footnote?.trim() ? <p className={styles.sectionLead}>{footnote}</p> : null}
       </div>

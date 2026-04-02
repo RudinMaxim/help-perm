@@ -12,17 +12,21 @@
   "attributes": {
     "title": {
       "type": "string",
-      "required": true
+      "required": true,
+      "label": "Заголовок"
     },
     "description": {
-      "type": "text"
+      "type": "text",
+      "label": "Описание"
     },
     "icon": {
-      "type": "string"
+      "type": "string",
+      "label": "Иконка"
     },
     "order": {
       "type": "integer",
-      "default": 0
+      "default": 0,
+      "label": "Порядок"
     }
   }
 }

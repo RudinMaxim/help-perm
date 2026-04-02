@@ -5,8 +5,10 @@ interface SocialGoalProps {
   eyebrow: string;
   title: string;
   description: string;
+  missionKicker: string;
   missionTitle: string;
   missionText: string;
+  teamKicker: string;
   teamTitle: string;
   teamDescription: string;
 }
@@ -15,8 +17,10 @@ export function SocialGoal({
   eyebrow,
   title,
   description,
+  missionKicker,
   missionTitle,
   missionText,
+  teamKicker,
   teamTitle,
   teamDescription,
 }: SocialGoalProps) {
@@ -34,13 +38,13 @@ export function SocialGoal({
 
       <div className={styles.aboutGrid} data-motion-stagger>
         <article className={styles.missionCard} data-motion-card>
-          <p className={styles.cardKicker}>О нас</p>
+          {missionKicker?.trim() ? <p className={styles.cardKicker}>{missionKicker}</p> : null}
           <h3>{missionTitle}</h3>
           <p>{missionText}</p>
         </article>
 
         <article className={styles.teamCard} data-motion-card>
-          <p className={styles.cardKicker}>Команда</p>
+          {teamKicker?.trim() ? <p className={styles.cardKicker}>{teamKicker}</p> : null}
           <h3>{teamTitle}</h3>
           <p>{teamDescription}</p>
         </article>

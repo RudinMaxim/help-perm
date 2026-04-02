@@ -10,9 +10,9 @@
     "draftAndPublish": false
   },
   "attributes": {
-    "title": { "type": "string" },
-    "number": { "type": "string" },
-    "date": { "type": "string" },
-    "imageUrls": { "type": "json" }
+    "title": { "type": "string", "label": "Заголовок" },
+    "number": { "type": "string", "label": "Номер лицензии" },
+    "date": { "type": "string", "label": "Дата лицензии" },
+    "imageUrls": { "type": "json", "label": "Изображения лицензии" }
   }
 }

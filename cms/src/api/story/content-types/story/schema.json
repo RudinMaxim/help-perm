@@ -12,17 +12,20 @@
   "attributes": {
     "description": {
       "type": "text",
-      "required": true
+      "required": true,
+      "label": "Описание"
     },
     "image": {
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": ["images"]
+      "allowedTypes": ["images"],
+      "label": "Изображение"
     },
     "order": {
       "type": "integer",
-      "default": 0
+      "default": 0,
+      "label": "Порядок"
     }
   }
 }

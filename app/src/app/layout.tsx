@@ -62,6 +62,9 @@ export default async function RootLayout({
           logoText={ui?.logoText ?? ''}
           logoAriaLabel={ui?.logoAriaLabel ?? ''}
           logoAlt={ui?.logoAlt ?? ''}
+          contactButtonText={ui?.headerContactButtonText ?? 'SOS'}
+          contactButtonAriaLabel={ui?.headerContactButtonAriaLabel ?? 'Перейти к форме обращения'}
+          contactButtonTitle={ui?.headerContactButtonTitle ?? 'Перейти к форме обращения'}
         />
         <SiteMotion />
         {children}
