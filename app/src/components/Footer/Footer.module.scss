@@ -1,25 +1,41 @@
 .footer {
-  background-color: #333;
-  color: #fff;
-  padding: 1rem;
+  margin-top: 1rem;
+  padding: 1.25rem var(--container-padding) 1.75rem;
+  background: linear-gradient(180deg, transparent, rgba(20, 32, 51, 0.06));
+  color: var(--muted-color);
 }
 
 .inner {
+  width: min(100%, var(--max-width));
+  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
+  gap: 1.25rem;
   flex-wrap: wrap;
+  padding: 1rem 1.25rem;
+  border: 1px solid rgba(20, 32, 51, 0.08);
+  border-radius: 1.5rem;
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(16px);
+  box-shadow: var(--shadow-sm);
 }
 
 .copyright {
   text-align: center;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
 }
 
 .link {
-  color: #fff;
-  font-size: 0.9rem;
-  text-decoration: underline;
-  text-underline-offset: 0.15rem;
+  color: var(--primary-color-strong);
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-decoration: none;
+
+  @media (hover: hover) {
+    &:hover {
+      text-decoration: underline;
+      text-underline-offset: 0.2rem;
+    }
+  }
 }

@@ -13,11 +13,11 @@ interface HowWeWorkProps {
 
 export function HowWeWork({ title, steps }: HowWeWorkProps) {
   return (
-    <section className={styles['how-we-work']} aria-labelledby="how-we-work-title">
+    <section className={styles['how-we-work']} aria-labelledby="how-we-work-title" data-motion-section>
       <h2 id="how-we-work-title" className={styles['how-we-work__title']}>{title}</h2>
-      <ol className={styles['how-we-work__steps']}>
+      <ol className={styles['how-we-work__steps']} data-motion-stagger>
         {steps.map((step, index) => (
-          <li key={`HowWeWork__${step.id}`} className={styles['how-we-work__step']}>
+          <li key={`HowWeWork__${step.id}`} className={styles['how-we-work__step']} data-motion-card>
             <h3 className={styles['how-we-work__step-title']}>
               <span className={styles['how-we-work__step-icon']}>
                 {index + 1}

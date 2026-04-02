@@ -1,11 +1,4 @@
-'use client';
-import React from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
 import styles from '../Home.module.scss';
-import { A11y, Keyboard, Pagination } from 'swiper/modules';
 import { CmsIcon } from '@/lib/icons';
 
 export interface ServiceItem {
@@ -19,62 +12,32 @@ interface OurServicesProps {
   services: ServiceItem[];
   title: string;
   footnote: string;
-  prevSlideMessage: string;
-  nextSlideMessage: string;
 }
 
 export function OurServices({
   services,
   title,
   footnote,
-  prevSlideMessage,
-  nextSlideMessage,
 }: OurServicesProps) {
   return (
-    <section className={styles.ourServices}>
-      <h2 className={styles.title}>{title}</h2>
+    <section className={styles.ourServices} aria-labelledby="services-title" data-motion-section>
+      <div className={styles.sectionHeader}>
+        <p className={styles.sectionEyebrow}>Направления помощи</p>
+        <h2 id="services-title" className={styles.sectionTitle}>{title}</h2>
+        {footnote?.trim() ? <p className={styles.sectionLead}>{footnote}</p> : null}
+      </div>
 
-      <Swiper
-        modules={[Pagination, A11y, Keyboard]}
-        slidesPerView={1}
-        pagination={{
-          clickable: true,
-          dynamicBullets: true,
-          el: '.custom-pagination',
-          type: 'bullets',
-        }}
-        keyboard={{
-          enabled: true,
-          onlyInViewport: false,
-        }}
-        a11y={{
-          prevSlideMessage,
-          nextSlideMessage,
-        }}
-        breakpoints={{
-          480: { slidesPerView: 2, spaceBetween: 20 },
-          768: { slidesPerView: 3, spaceBetween: 30 },
-          1024: { slidesPerView: 4, spaceBetween: 30 },
-          1440: { slidesPerView: 5, spaceBetween: 40 },
-        }}
-        className={styles.servicesSwiper}
-      >
+      <div className={styles.servicesGrid} data-motion-stagger>
         {services.map((service) => (
-          <SwiperSlide key={`OurServices__${service.id}`}>
-            <div className={styles.service}>
-              <div className={styles.serviceIcon}>
-                <CmsIcon name={service.icon} size={32} />
-              </div>
-              <h3 className={styles.serviceTitle}>{service.title}</h3>
-              <p className={styles.serviceDescription}>{service.description}</p>
+          <article key={`OurServices__${service.id}`} className={styles.service} data-motion-card>
+            <div className={styles.serviceIcon}>
+              <CmsIcon name={service.icon} size={32} />
             </div>
-          </SwiperSlide>
+            <h3 className={styles.serviceTitle}>{service.title}</h3>
+            <p className={styles.serviceDescription}>{service.description}</p>
+          </article>
         ))}
-      </Swiper>
-
-      <p className={`${styles.description} ${styles.serviceSubtitle}`}>
-        {footnote}
-      </p>
+      </div>
     </section>
   );
 }

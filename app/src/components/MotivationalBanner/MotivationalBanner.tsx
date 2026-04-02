@@ -15,11 +15,11 @@ export function MotivationalBanner({
   buttonText,
 }: MotivationalBannerProps) {
   return (
-    <article className={styles.banner}>
+    <article className={styles.banner} data-motion-section>
       <div className={styles.content}>
         <h2 className={styles.title}>{title}</h2>
         <p className={styles.description}>{description}</p>
-        <ButtonLink href={`tel:${mainPhone}`}>
+        <ButtonLink href={`tel:${mainPhone}`} data-motion-cta>
           {buttonText}
         </ButtonLink>
       </div>

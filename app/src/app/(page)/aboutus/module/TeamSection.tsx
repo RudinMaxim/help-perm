@@ -9,7 +9,7 @@ interface TeamSectionProps {
 
 export function TeamSection({ title, description }: TeamSectionProps) {
     return (
-        <section className={styles.teamSection} aria-labelledby="team-section-title">
+        <section className={styles.teamSection} aria-labelledby="team-section-title" data-motion-section>
             <div className={styles.teamContent}>
                 <h2 id="team-section-title" className={styles.teamTitle}>{title}</h2>
                 <p className={styles.teamDescription}>{description}</p>

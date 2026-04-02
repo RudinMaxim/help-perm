@@ -23,7 +23,7 @@ export function LicenseDisplay({ data, imageAltPrefix }: LicenseDisplayProps) {
   }
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} data-motion-section>
       <div className={styles.header}>
         <h2>{data?.title ?? ''}</h2>
         <div className={styles.details}>
@@ -36,6 +36,7 @@ export function LicenseDisplay({ data, imageAltPrefix }: LicenseDisplayProps) {
         modules={[Navigation, Pagination, Zoom]}
         spaceBetween={10}
         slidesPerView={1}
+        watchOverflow
         navigation
         pagination={{ clickable: true }}
         zoom
@@ -49,13 +50,12 @@ export function LicenseDisplay({ data, imageAltPrefix }: LicenseDisplayProps) {
       >
         {images.map((src, index) => (
           <SwiperSlide key={index} className={styles.swiperSlide}>
-            <div className="swiper-zoom-container">
+            <div className={`swiper-zoom-container ${styles.zoomFrame}`}>
               <Image
                 src={src}
                 alt={`${imageAltPrefix} ${index + 1}`}
                 width={540}
                 height={810}
-                objectFit="contain"
                 className={styles.image}
               />
             </div>

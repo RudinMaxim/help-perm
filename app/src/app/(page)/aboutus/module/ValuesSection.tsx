@@ -15,12 +15,12 @@ interface ValuesSectionProps {
 
 export function ValuesSection({ title, values }: ValuesSectionProps) {
   return (
-    <section className={styles.valuesSection} aria-labelledby="values-section-title">
+    <section className={styles.valuesSection} aria-labelledby="values-section-title" data-motion-section>
       <div className={styles.valuesContent}>
         <h2 id="values-section-title" className={styles.valuesTitle}>{title}</h2>
-        <ul className={styles.valuesList}>
+        <ul className={styles.valuesList} data-motion-stagger>
           {values.map((value) => (
-            <li key={`ValuesSection__${value.id}`} className={styles.valuesItem}>
+            <li key={`ValuesSection__${value.id}`} className={styles.valuesItem} data-motion-card>
               <div className={styles.valuesIcon}>
                 <CmsIcon name={value.icon} size={48} />
               </div>

@@ -39,7 +39,7 @@ function Row({ label, value }: { label: string; value: string | null | undefined
 
 export function RequisitesPage({ data, labels }: RequisitesPageProps) {
   return (
-    <section className={styles.requisites} aria-labelledby="requisites-title">
+    <section className={styles.requisites} aria-labelledby="requisites-title" data-motion-section>
       <h1 id="requisites-title" className={styles.title}>{labels.pageTitle}</h1>
       <table className={styles.requisitesTable}>
         <caption className={styles.visuallyHidden}>{labels.tableCaption}</caption>

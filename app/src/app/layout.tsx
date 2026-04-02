@@ -1,14 +1,23 @@
-import { Footer, Header } from '@/components';
-import { getContactInfo, getUiContent } from '@/lib/cms';
-import { PATH_URL } from '@/constants/path';
+import { Footer, Header, SiteMotion } from '@/components';
+import { getUiContent } from '@/lib/cms';
 import { getMetadata, getOrganizationJsonLd } from '@/utils/getMetadata';
 import type { Metadata, Viewport } from 'next';
-import { Inter } from 'next/font/google';
+import { IBM_Plex_Sans, Source_Sans_3 } from 'next/font/google';
 import { Toaster } from 'sonner';
 import './globals.scss';
 import YandexMetrika from './YandexMetrika';
 
-const poppins = Inter({ subsets: ['latin'], weight: '400' });
+const bodyFont = Source_Sans_3({
+  subsets: ['latin', 'cyrillic'],
+  variable: '--font-body',
+  weight: ['400', '500', '600', '700'],
+});
+
+const headingFont = IBM_Plex_Sans({
+  subsets: ['latin', 'cyrillic'],
+  variable: '--font-heading',
+  weight: ['500', '600', '700'],
+});
 
 export const metadata: Metadata = getMetadata({
   title: 'Помощь рядом',
@@ -41,36 +50,25 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const organizationJsonLd = getOrganizationJsonLd();
-  const [contactInfo, ui] = await Promise.all([getContactInfo(), getUiContent()]);
-  const navItems = [
-    { url: PATH_URL.aboutus.url, name: ui?.navAboutUsLabel ?? '' },
-    { url: PATH_URL.requisites.url, name: ui?.navRequisitesLabel ?? '' },
-  ].filter((item) => item.name.trim().length > 0);
+  const ui = await getUiContent();
 
   return (
     <html lang="ru">
-      <body className={poppins.className}>
+      <body className={`${bodyFont.variable} ${headingFont.variable}`}>
         <a className="skip-link" href="#main-content">
           {ui?.skipLinkText ?? ''}
         </a>
         <Header
-          mainPhone={contactInfo?.mainPhone ?? ''}
-          mainEmail={contactInfo?.mainEmail ?? ''}
           logoText={ui?.logoText ?? ''}
           logoAriaLabel={ui?.logoAriaLabel ?? ''}
           logoAlt={ui?.logoAlt ?? ''}
-          navAriaLabel={ui?.headerNavAriaLabel ?? ''}
-          navItems={navItems}
-          burgerOpenLabel={ui?.burgerMenuOpenLabel ?? ''}
-          burgerCloseLabel={ui?.burgerMenuCloseLabel ?? ''}
-          emailLinkTitle={ui?.headerEmailLinkTitle ?? ''}
-          phoneLinkLabelPrefix={ui?.phoneLinkLabelPrefix ?? ''}
         />
+        <SiteMotion />
         {children}
         <Footer
           copyrightText={ui?.footerCopyrightText ?? ''}
           privacyPolicyText={ui?.footerPrivacyPolicyText ?? ''}
-          privacyPolicyUrl={PATH_URL.privacyPolicy.url}
+          privacyPolicyUrl="/privacy-policy"
         />
         <Toaster position="top-right" expand={false} richColors />
         <YandexMetrika />

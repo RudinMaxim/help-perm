@@ -1,43 +1,66 @@
 .baseButton {
-  display: inline-block;
-  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
-  background-color: var(--bg-color);
-  color: var(--primary-color);
-  padding: 1rem 2rem;
-  font-size: 1.25rem;
-  border-radius: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  min-height: 3.5rem;
+  padding: 0.85rem 1.4rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.1;
   cursor: pointer;
+  transition:
+    transform var(--transition),
+    background-color var(--transition),
+    border-color var(--transition),
+    box-shadow var(--transition),
+    color var(--transition);
 
   &:focus-visible {
-    outline: 3px solid var(--secondary-color);
+    outline: 3px solid rgba(255, 255, 255, 0.24);
     outline-offset: 3px;
   }
-  @media (hover) {
+
+  @media (hover: hover) {
     &:hover {
-      transform: translateY(-0.5rem);
+      transform: translateY(-2px);
     }
-  }
-  &:active {
-    color: var(--primary-color);
   }
 }
 
 .primaryButton {
-  background-color: var(--bg-color);
-  color: var(--primary-color);
+  background: linear-gradient(135deg, var(--cta-color), var(--cta-color-strong));
+  color: #fff;
+  box-shadow: 0 16px 32px rgba(249, 115, 22, 0.26);
+
+  @media (hover: hover) {
+    &:hover {
+      box-shadow: 0 20px 38px rgba(249, 115, 22, 0.34);
+    }
+  }
 }
 
 .secondaryButton {
-  background-color: var(--primary-color);
-  color: var(--bg-color);
+  background-color: rgba(255, 255, 255, 0.94);
+  border-color: rgba(255, 255, 255, 0.54);
+  color: var(--text-color);
+  box-shadow: var(--shadow-sm);
 
-  &:hover {
-    opacity: 0.8;
+  @media (hover: hover) {
+    &:hover {
+      background-color: #fff;
+      border-color: rgba(37, 99, 235, 0.24);
+    }
   }
 }
+
 @media (max-width: 767px) {
   .baseButton {
-    padding: 0.5rem 1rem;
+    width: 100%;
+    min-height: 3.25rem;
+    padding: 0.8rem 1.1rem;
     font-size: 1rem;
   }
 }

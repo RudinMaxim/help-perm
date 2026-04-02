@@ -1,4 +1,4 @@
-import { Container, MotivationalBanner } from '@/components';
+import { Container } from '@/components';
 import { ContactUs } from '@/module';
 import {
   cmsMediaUrl,
@@ -6,12 +6,16 @@ import {
   getLicenseInfo,
   getServices,
   getSiteContent,
+  getSteps,
   getStories,
   getUiContent,
+  getValues,
 } from '@/lib/cms';
 import { getMetadata } from '@/utils/getMetadata';
 import { Metadata } from 'next/types';
+import styles from './Home.module.scss';
 import { Hero, OurServices, SocialGoal } from './module';
+import { ValuesSection } from '../aboutus/module';
 import { LicenseDisplay } from '../requisites/module/LicensesSection';
 import { Results } from '../results/module';
 
@@ -22,13 +26,15 @@ export const metadata: Metadata = getMetadata({
 });
 
 export default async function Home() {
-  const [contactInfo, services, siteContent, uiContent, licenseInfo, stories] = await Promise.all([
+  const [contactInfo, services, siteContent, uiContent, licenseInfo, stories, steps, values] = await Promise.all([
     getContactInfo(),
     getServices(),
     getSiteContent(),
     getUiContent(),
     getLicenseInfo(),
     getStories(),
+    getSteps(),
+    getValues(),
   ]);
 
   const mainPhone = contactInfo?.mainPhone ?? '';
@@ -45,11 +51,13 @@ export default async function Home() {
     .filter((story) => story.imageUrl);
 
   return (
-    <main id="main-content">
-      <Container>
+    <main id="main-content" className={styles.homeMain}>
+      <Container className={styles.pageShell}>
         <Hero
           title={siteContent?.homeHeroTitle ?? ''}
           description={siteContent?.homeHeroDescription ?? ''}
+          steps={steps}
+          howWeWorkTitle={uiContent?.aboutHowWeWorkTitle ?? ''}
           mainPhone={mainPhone}
           secondTelegramLink={secondTelegramLink}
           maxMessengerLink={maxMessengerLink}
@@ -58,26 +66,23 @@ export default async function Home() {
           callButtonText={uiContent?.homeHeroCallButtonText ?? ''}
         />
         <SocialGoal
-          title={siteContent?.socialGoalTitle ?? ''}
-          text={siteContent?.socialGoalText ?? ''}
+          eyebrow={siteContent?.aboutHeroSubtitle ?? ''}
+          title={siteContent?.aboutHeroTitle ?? ''}
+          description={siteContent?.aboutHeroDescription ?? ''}
+          missionTitle={siteContent?.socialGoalTitle ?? ''}
+          missionText={siteContent?.socialGoalText ?? ''}
+          teamTitle={siteContent?.teamTitle ?? ''}
+          teamDescription={siteContent?.teamDescription ?? ''}
         />
         <OurServices
           title={uiContent?.homeServicesTitle ?? ''}
           services={services}
           footnote={uiContent?.homeServicesFootnote ?? ''}
-          prevSlideMessage={uiContent?.sliderPrevSlideMessage ?? ''}
-          nextSlideMessage={uiContent?.sliderNextSlideMessage ?? ''}
         />
         <Results
           stories={storyItems}
           title={uiContent?.resultsPageTitle ?? ''}
           storyAltPrefix={uiContent?.resultsStoryAltPrefix ?? ''}
-        />
-        <MotivationalBanner
-          title={siteContent?.motivationalBannerTitle ?? ''}
-          description={siteContent?.motivationalBannerDescription ?? ''}
-          mainPhone={mainPhone}
-          buttonText={uiContent?.homeMotivationalCallButtonText ?? ''}
         />
         <LicenseDisplay
           data={licenseInfo}

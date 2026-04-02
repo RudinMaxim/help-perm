@@ -1,74 +1,122 @@
 .beforeAfter {
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: 50px 0;
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: var(--border-radius-black);
+  background: var(--surface-color);
+  backdrop-filter: blur(16px);
+  box-shadow: var(--shadow-sm);
+
+  .header {
+    max-width: 42rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 0.9rem;
+    padding: 0.45rem 0.9rem;
+    border-radius: 999px;
+    background: rgba(37, 99, 235, 0.08);
+    color: var(--primary-color-strong);
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
 
   .title {
-    font-size: 3rem;
-    margin-bottom: 1.5rem;
-    text-align: center;
+    margin-bottom: 0;
+    font-size: clamp(2rem, 4vw, 3rem);
+  }
+
+  .swiper {
+    padding-bottom: 2.25rem;
+
+    :global(.swiper-wrapper) {
+      align-items: stretch;
+    }
+
+    :global(.swiper-slide) {
+      height: auto;
+    }
+
+    :global(.swiper-pagination) {
+      bottom: 0 !important;
+    }
+  }
+
+  .slide {
+    display: flex;
+    justify-content: center;
+    height: auto;
   }
 
   &__imageContainer {
     position: relative;
+    aspect-ratio: 4 / 5;
     overflow: hidden;
-
-    &:hover .beforeAfter__overlay,
-    &:focus-within .beforeAfter__overlay {
-      opacity: 1;
-    }
+    border-radius: 1.6rem 1.6rem 0 0;
+    background: linear-gradient(135deg, #e7effc, #f8fbff);
   }
 
   &__image {
-    width: 100%;
-    min-height: 500px;
-
-    height: auto;
-    border-radius: var(--border-radius-black);
-  }
-
-  &__overlay {
-    position: absolute;
-    cursor: grab;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    opacity: 0;
-    transition: opacity 0.5s ease;
-    border-radius: var(--border-radius-black);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    object-fit: cover;
   }
 
   &__description {
-    color: #fff;
-    font-size: 1.5rem;
-    text-align: center;
-    padding: 20px;
-    line-height: 1.2;
-    transform: translateY(20px);
-    user-select: none;
-    opacity: 0;
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+}
 
-    .beforeAfter__imageContainer:hover &,
-    .beforeAfter__imageContainer:focus-within & {
-      opacity: 1;
-      transform: translateY(0);
-    }
+.storyCard {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  height: 100%;
+  width: min(100%, 29rem);
+  overflow: hidden;
+  border: 1px solid var(--line-color);
+  border-radius: 1.6rem;
+  background: var(--surface-strong);
+  box-shadow: var(--shadow-sm);
+}
+
+.storyCardBody {
+  display: flex;
+  align-items: flex-start;
+  padding: 1.25rem 1.25rem 1.35rem;
+}
+
+@media (max-width: 767px) {
+  .beforeAfter {
+    padding: 1.25rem;
   }
 
-  @media (max-width: 1020px) {
-    .title {
-      font-size: 2rem;
-    }
+  .storyCard {
+    width: 100%;
+  }
 
-    &__description {
-      font-size: 1rem;
-      padding: 10px;
-    }
+  .storyCardBody {
+    padding: 1rem;
+  }
+}
+
+@media (min-width: 1600px) {
+  .beforeAfter {
+    padding: 2.75rem;
+  }
+
+  .storyCardBody {
+    padding: 1.5rem 1.5rem 1.65rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .beforeAfter {
+    padding: 1rem;
+  }
+
+  .beforeAfter__description {
+    font-size: 0.95rem;
   }
 }

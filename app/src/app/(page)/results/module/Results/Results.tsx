@@ -1,15 +1,11 @@
-"use client"
-import { useMediaQuery } from "@/hook/useMediaQuery";
-import Image from "next/image";
-import SwiperCore from 'swiper';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import { Autoplay, Keyboard } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
-import styles from './Results.module.scss';
+'use client';
 
-SwiperCore.use([Autoplay, Keyboard]);
+import Image from 'next/image';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { A11y, Keyboard, Pagination } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import styles from './Results.module.scss';
 
 export interface StoryItem {
   id: number;
@@ -23,42 +19,49 @@ interface ResultsProps {
   storyAltPrefix: string;
 }
 
-export const Results: React.FC<ResultsProps> = ({
+export const Results = ({
   stories,
   title,
   storyAltPrefix,
-}) => {
-  const isSmallScreen = useMediaQuery("(max-width: 767px)");
-  const prefersReducedMotion = useMediaQuery("(prefers-reduced-motion: reduce)");
-
+}: ResultsProps) => {
   return (
-    <section className={styles.beforeAfter}>
-      <h2 className={styles.title}>{title}</h2>
+    <section className={styles.beforeAfter} aria-labelledby="results-title" data-motion-section>
+      <div className={styles.header}>
+        <p className={styles.eyebrow}>Истории и результаты</p>
+        <h2 id="results-title" className={styles.title}>{title}</h2>
+      </div>
+
       <Swiper
-        spaceBetween={30}
-        slidesPerView={isSmallScreen ? 1 : 2}
-        keyboard={{ enabled: true }}
-        loop={true}
-        autoplay={prefersReducedMotion ? false : { delay: 3500, disableOnInteraction: false }}
+        modules={[Pagination, A11y, Keyboard]}
+        slidesPerView={1}
+        spaceBetween={20}
+        keyboard={{ enabled: true, onlyInViewport: false }}
+        pagination={{ clickable: true }}
+        breakpoints={{
+          768: { slidesPerView: 2, spaceBetween: 20 },
+        }}
+        className={styles.swiper}
       >
         {stories?.map((story) => (
-          <SwiperSlide key={`Results__${story.id}`}>
-            <div className={styles.beforeAfter__imageContainer}>
-              {story.imageUrl && (
-                <Image
-                  src={story.imageUrl}
-                  alt={`${storyAltPrefix} ${story.id}`}
-                  width={isSmallScreen ? 300 : 500}
-                  height={isSmallScreen ? 300 : 500}
-                  className={styles.beforeAfter__image}
-                />
-              )}
-              <div className={styles.beforeAfter__overlay}>
+          <SwiperSlide key={`Results__${story.id}`} className={styles.slide}>
+            <article className={styles.storyCard} data-motion-card>
+              <div className={styles.beforeAfter__imageContainer}>
+                {story.imageUrl && (
+                  <Image
+                    src={story.imageUrl}
+                    alt={`${storyAltPrefix} ${story.id}`}
+                    fill
+                    sizes="(max-width: 767px) 100vw, (max-width: 1200px) 50vw, 520px"
+                    className={styles.beforeAfter__image}
+                  />
+                )}
+              </div>
+              <div className={styles.storyCardBody}>
                 <p className={styles.beforeAfter__description}>
                   {story.description}
                 </p>
               </div>
-            </div>
+            </article>
           </SwiperSlide>
         ))}
       </Swiper>

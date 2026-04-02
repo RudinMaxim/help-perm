@@ -12,12 +12,12 @@ interface HeroProps {
 export function AboutHero({ title, subtitle, description, buttonText }: HeroProps) {
     return (
         <section className={styles.hero} aria-labelledby="about-hero-title">
-            <div className={styles.heroContent}>
-                <h1 id="about-hero-title" className={styles.heroTitle}>{title}</h1>
-                <h2 className={styles.heroSubtitle}>{subtitle}</h2>
-                <p className={styles.heroDescription}>{description}</p>
+            <div className={styles.heroContent} data-motion-hero>
+                <h1 id="about-hero-title" className={styles.heroTitle} data-motion-item>{title}</h1>
+                <h2 className={styles.heroSubtitle} data-motion-item>{subtitle}</h2>
+                <p className={styles.heroDescription} data-motion-item>{description}</p>
                 <div className={styles.heroButtonContainer}>
-                    <ButtonLink href="#contactUs">
+                    <ButtonLink href="#contactUs" data-motion-item>
                         {buttonText}
                     </ButtonLink>
                 </div>

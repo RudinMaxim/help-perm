@@ -1,25 +1,78 @@
 @import '~swiper/css';
 
 :root {
-  --max-width: 100%;
-  --border-radius: 15px;
-
-  --transition: 0.3s ease-in-out;
+  --max-width: 2560px;
+  --container-padding: 1.5rem;
+  --section-space: clamp(3.5rem, 7vw, 6rem);
+  --section-space-tight: clamp(1.5rem, 3vw, 2.5rem);
+  --border-radius: 1rem;
   --border-radius-black: 2rem;
+  --transition: 180ms ease;
 
-  --primary-color: #538af7;
-  --secondary-color: #F0F1F3;
-  --bg-color: #ffffff;
-  --text-color: #000000;
+  --primary-color: #2563eb;
+  --primary-color-strong: #1d4ed8;
+  --primary-color-soft: #e8f0ff;
+  --cta-color: #f97316;
+  --cta-color-strong: #ea580c;
+  --secondary-color: #edf3fb;
+  --bg-color: #f4f8fc;
+  --surface-color: rgba(255, 255, 255, 0.88);
+  --surface-strong: #ffffff;
+  --surface-muted: #eef4fb;
+  --surface-contrast: #142033;
+  --line-color: #d7e2f0;
+  --text-color: #142033;
+  --muted-color: #4c5b75;
+  --shadow-sm: 0 14px 34px rgba(20, 32, 51, 0.08);
+  --shadow-md: 0 20px 48px rgba(20, 32, 51, 0.12);
+  --shadow-lg: 0 28px 70px rgba(20, 32, 51, 0.16);
+}
 
+@media (min-width: 1600px) {
+  :root {
+    --max-width: 1600px;
+    --container-padding: 2rem;
+  }
+}
+
+@media (min-width: 2200px) {
+  :root {
+    --max-width: 2560px;
+    --container-padding: 2.5rem;
+    --border-radius-black: 2.25rem;
+  }
+}
+
+@media (max-width: 1280px) {
+  :root {
+    --max-width: 1040px;
+    --container-padding: 1.25rem;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --container-padding: 1rem;
+    --border-radius-black: 1.5rem;
+    --shadow-sm: 0 10px 24px rgba(20, 32, 51, 0.08);
+    --shadow-md: 0 16px 32px rgba(20, 32, 51, 0.1);
+    --shadow-lg: 0 20px 42px rgba(20, 32, 51, 0.12);
+  }
+}
+
+@media (max-width: 375px) {
+  :root {
+    --container-padding: 0.875rem;
+  }
 }
 
 body,
 html {
   position: relative;
+  font-family: var(--font-body), sans-serif;
   font-size: 16px;
   font-weight: 400;
-  line-height: 1.5;
+  line-height: 1.6;
   color: var(--text-color);
   background: var(--bg-color);
   scroll-behavior: smooth;
@@ -28,14 +81,37 @@ html {
   flex-direction: column;
 }
 
+body {
+  background:
+    radial-gradient(circle at top left, rgba(37, 99, 235, 0.12), transparent 26rem),
+    radial-gradient(circle at top right, rgba(249, 115, 22, 0.08), transparent 24rem),
+    linear-gradient(180deg, #edf4ff 0%, #f6f9fe 28%, #ffffff 100%);
+}
+
 main {
   flex: 1;
+  padding: 1.25rem 0 var(--section-space);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading), sans-serif;
+  color: var(--text-color);
+  letter-spacing: -0.03em;
+  line-height: 1.08;
+}
+
+p {
+  color: var(--muted-color);
 }
 
 section[id] {
-  scroll-margin-top: 6rem;
+  scroll-margin-top: 7rem;
 }
-
 
 * {
   box-sizing: border-box;
@@ -49,7 +125,8 @@ section[id] {
 }
 
 :where(a, button, input, textarea, select, summary):focus-visible {
-  outline: 3px solid var(--primary-color);
+  outline: 3px solid rgba(37, 99, 235, 0.3);
+  box-shadow: 0 0 0 6px rgba(37, 99, 235, 0.14);
 }
 
 .skip-link {
@@ -83,29 +160,73 @@ a {
   text-decoration: none;
 }
 
+img {
+  max-width: 100%;
+  height: auto;
+}
+
 li {
   list-style: none;
 }
 
 .container {
-  max-width: var(--max-width);
-  width: 100%;
-  margin: 1rem auto;
-  padding: 0px 1rem;
-  background-color: var(--bg-color);
+  width: min(100%, calc(var(--max-width) + (var(--container-padding) * 2)));
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
 
-  @media (max-width: 768px) {
-    padding: 0px 0.5rem;
-  }
+input,
+textarea,
+select,
+button {
+  font: inherit;
 }
 
 input {
   border: none;
 }
 
+::selection {
+  background: rgba(37, 99, 235, 0.18);
+}
+
+[data-motion-header],
+[data-motion-hero] [data-motion-item],
+[data-motion-section],
+[data-motion-card],
+[data-motion-cta] {
+  will-change: transform, opacity;
+}
+
+@media (max-width: 768px) {
+  body {
+    background:
+      linear-gradient(180deg, #eef5ff 0%, #f8fbff 28%, #ffffff 100%);
+  }
+
+  section[id] {
+    scroll-margin-top: 6rem;
+  }
+}
+
+@media (max-width: 375px) {
+  html,
+  body {
+    font-size: 15px;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html:focus-within {
     scroll-behavior: auto;
+  }
+
+  [data-motion-header],
+  [data-motion-hero] [data-motion-item],
+  [data-motion-section],
+  [data-motion-card],
+  [data-motion-cta] {
+    will-change: auto;
   }
 
   *,
