@@ -70,6 +70,7 @@ services:
       - "443:443"
     volumes:
       - ./user_conf.d:/etc/nginx/user_conf.d:ro
+      - ./include.d:/etc/nginx/include.d:ro
       - letsencrypt:/etc/letsencrypt
     depends_on:
       - web
