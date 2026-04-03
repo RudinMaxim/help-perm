@@ -330,7 +330,7 @@ docker compose up -d --build
 
 ```bash
 cd /opt/help-perm/infrastructure
-docker compose ps
+docker compose 
 docker compose logs --tail 100 cms
 docker compose logs --tail 100 web
 docker compose logs --tail 100 nginx
