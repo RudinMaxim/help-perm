@@ -288,6 +288,8 @@ nano .env
 - `POSTGRES_PASSWORD`
 - при необходимости `POSTGRES_DB` и `POSTGRES_USER`
 
+`cms` использует те же `POSTGRES_DB`, `POSTGRES_USER`, `POSTGRES_PASSWORD`, что и контейнер `postgres`, поэтому в `.env` пароль и реквизиты базы задаются один раз.
+
 Сгенерировать секреты можно так:
 
 ```bash
@@ -297,9 +299,14 @@ for i in 1 2 3 4 5 6; do openssl rand -hex 32; done
 Если домен отличается от текущего, обновите в `.env`:
 
 ```env
+NODE_ENV=production
+CMS_INTERNAL_URL=http://cms:1337
 NEXT_PUBLIC_CMS_URL=https://cms.YOUR-DOMAIN
 STRAPI_PUBLIC_URL=https://cms.YOUR-DOMAIN
 CERTBOT_EMAIL=you@example.com
+POSTGRES_DB=help_perm
+POSTGRES_USER=help_perm
+POSTGRES_PASSWORD=change_me_strong_password
 ```
 
 ### 7. При необходимости поправить Nginx-конфиги
