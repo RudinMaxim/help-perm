@@ -56,6 +56,7 @@ export default async function Home() {
           eyebrow={uiContent?.homeHeroEyebrow ?? 'Бесплатная и конфиденциальная поддержка'}
           title={siteContent?.homeHeroTitle ?? ''}
           description={siteContent?.homeHeroDescription ?? ''}
+          imageUrl={cmsMediaUrl(siteContent?.homeHeroImage ?? null)}
           steps={steps}
           howWeWorkTitle={uiContent?.aboutHowWeWorkTitle ?? 'Как мы работаем'}
         />

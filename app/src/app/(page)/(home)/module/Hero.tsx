@@ -1,9 +1,11 @@
+import type { CSSProperties } from 'react';
 import style from '../Home.module.scss';
 
 interface HeroProps {
   eyebrow: string;
   title: string;
   description: string;
+  imageUrl: string | null;
   howWeWorkTitle: string;
   steps: Array<{
     id: number;
@@ -16,13 +18,23 @@ export function Hero({
   eyebrow,
   title,
   description,
+  imageUrl,
   howWeWorkTitle,
   steps,
 }: HeroProps) {
   const heroSteps = steps.slice(0, 3);
 
   return (
-    <section className={style.hero} aria-labelledby="home-hero-title" data-motion-section>
+    <section
+      className={style.hero}
+      aria-labelledby="home-hero-title"
+      data-motion-section
+      style={
+        imageUrl
+          ? ({ '--hero-background-image': `url("${imageUrl}")` } as CSSProperties)
+          : undefined
+      }
+    >
       <div className={style.hero__grid} data-motion-hero>
         <div className={style.hero__content}>
           {eyebrow?.trim() ? (

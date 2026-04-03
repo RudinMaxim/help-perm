@@ -18,6 +18,13 @@
       "type": "text",
       "label": "Описание hero на главной"
     },
+    "homeHeroImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"],
+      "label": "Главная: фото hero"
+    },
     "socialGoalTitle": {
       "type": "string",
       "label": "Заголовок блока миссии"

@@ -39,7 +39,7 @@
   border-radius: var(--border-radius-black);
   background:
     linear-gradient(120deg, rgba(20, 32, 51, 0.9), rgba(20, 32, 51, 0.52)),
-    url('/hero_1.webp') center/cover no-repeat;
+    var(--hero-background-image, url('/hero_1.webp')) center/cover no-repeat;
   overflow: hidden;
   box-shadow: var(--shadow-lg);
 

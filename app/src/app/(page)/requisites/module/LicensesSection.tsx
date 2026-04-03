@@ -1,8 +1,7 @@
 'use client';
-import React from 'react';
 import Image from 'next/image';
 import styles from '../Requisites.module.scss';
-import type { LicenseInfo } from '@/lib/cms';
+import { cmsMediaUrl, type LicenseInfo } from '@/lib/cms';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
@@ -15,7 +14,20 @@ interface LicenseDisplayProps {
 }
 
 export function LicenseDisplay({ data, imageAltPrefix }: LicenseDisplayProps) {
-  const images = data?.imageUrls ?? [];
+  const images =
+    data?.images?.length
+      ? data.images
+          .map((image) => ({
+            src: cmsMediaUrl(image),
+            width: image.width ?? 540,
+            height: image.height ?? 810,
+          }))
+          .filter((image): image is { src: string; width: number; height: number } => Boolean(image.src))
+      : (data?.imageUrls ?? []).map((src) => ({
+          src,
+          width: 540,
+          height: 810,
+        }));
 
   if (!data?.title && images.length === 0) {
     return null;
@@ -40,14 +52,14 @@ export function LicenseDisplay({ data, imageAltPrefix }: LicenseDisplayProps) {
         pagination={{ clickable: true }}
         className={styles.swiper}
       >
-        {images.map((src, index) => (
+        {images.map((image, index) => (
           <SwiperSlide key={index} className={styles.swiperSlide}>
             <div className={styles.zoomFrame}>
               <Image
-                src={src}
+                src={image.src}
                 alt={`${imageAltPrefix} ${index + 1}`}
-                width={540}
-                height={810}
+                width={image.width}
+                height={image.height}
                 className={styles.image}
               />
             </div>

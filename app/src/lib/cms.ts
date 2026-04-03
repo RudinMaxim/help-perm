@@ -72,6 +72,7 @@ export interface SiteContent {
   id: number;
   homeHeroTitle: string | null;
   homeHeroDescription: string | null;
+  homeHeroImage: CmsMedia | null;
   socialGoalTitle: string | null;
   socialGoalText: string | null;
   motivationalBannerTitle: string | null;
@@ -231,6 +232,7 @@ export interface LicenseInfo {
   title: string | null;
   number: string | null;
   date: string | null;
+  images: CmsMedia[] | null;
   imageUrls: string[] | null;
 }
 
@@ -285,7 +287,7 @@ export async function getStories(): Promise<Story[]> {
 }
 
 export async function getSiteContent(): Promise<SiteContent | null> {
-  const res = await fetchCMS<CmsSingleResponse<SiteContent>>('/site-content');
+  const res = await fetchCMS<CmsSingleResponse<SiteContent>>('/site-content?populate=homeHeroImage');
   return res?.data ?? null;
 }
 
@@ -305,7 +307,7 @@ export async function getUiContent(): Promise<UiContent | null> {
 }
 
 export async function getLicenseInfo(): Promise<LicenseInfo | null> {
-  const res = await fetchCMS<CmsSingleResponse<LicenseInfo>>('/license-info');
+  const res = await fetchCMS<CmsSingleResponse<LicenseInfo>>('/license-info?populate=images');
   return res?.data ?? null;
 }
 

@@ -31,7 +31,8 @@ const ruTranslations = {
     title: 'Название лицензии',
     number: 'Номер лицензии',
     date: 'Дата лицензии',
-    imageUrls: 'Изображения лицензии',
+    imageUrls: 'Старые пути изображений лицензии',
+    images: 'Изображения лицензии',
   }),
   ...buildContentTypeTranslations('api::privacy-policy.privacy-policy', {
     pageTitle: 'Заголовок страницы',
@@ -82,6 +83,7 @@ const ruTranslations = {
   ...buildContentTypeTranslations('api::site-content.site-content', {
     homeHeroTitle: 'Главная: заголовок hero',
     homeHeroDescription: 'Главная: описание hero',
+    homeHeroImage: 'Главная: фото hero',
     socialGoalTitle: 'Главная: заголовок блока "Наша цель"',
     socialGoalText: 'Главная: текст блока "Наша цель"',
     motivationalBannerTitle: 'Главная: заголовок мотивационного баннера',
