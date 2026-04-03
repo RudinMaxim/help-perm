@@ -137,11 +137,13 @@ docker compose exec -T cms node -e "fetch('http://127.0.0.1:1337/api/contact-inf
 docker compose exec -T cms node -e "fetch('http://web:3000').then(r=>{console.log(r.status);return r.text()}).then(t=>console.log(t.slice(0,300)))"
 ```
 
+`docker-compose.yml` уже содержит дефолтные значения для контейнеров `postgres`, `cms` и `web`, поэтому стек может стартовать даже без полного заполнения `.env`. Для production всё равно нужно переопределить секреты, домены и пароли.
+
 ### Что важно знать про CMS-образ
 
-- CMS использует `sqlite` через `better-sqlite3`
-- для сборки native-модуля в [cms/Dockerfile](cms/Dockerfile) уже установлены `python3`, `make`, `g++`
-- если падает именно шаг `npm ci` внутри сборки CMS-образа, это обычно не проблема `sqlite`, а проблема сети или registry
+- CMS использует `PostgreSQL`
+- отдельный контейнер `postgres` поднимается в `docker compose`
+- если падает шаг `npm ci` внутри сборки CMS-образа, это уже не проблема `sqlite`, а проблема сети или registry
 
 Проверка только сборки образов:
 
@@ -283,6 +285,8 @@ nano .env
 - `TRANSFER_TOKEN_SALT`
 - `ENCRYPTION_KEY`
 - `JWT_SECRET`
+- `POSTGRES_PASSWORD`
+- при необходимости `POSTGRES_DB` и `POSTGRES_USER`
 
 Сгенерировать секреты можно так:
 
@@ -443,7 +447,7 @@ docker compose build cms web
 
 #### Ошибка `npm ci` / `ECONNRESET` внутри `cms`-сборки
 
-Если сборка падает на шаге `RUN npm ci` в `cms`, но не падает на `apt-get install python3 make g++`, проблема почти наверняка в сети, а не в `sqlite`.
+Если сборка падает на шаге `RUN npm ci` в `cms`, проблема почти наверняка в сети, а не в `PostgreSQL`.
 
 Что проверить на сервере:
 
@@ -467,19 +471,21 @@ docker compose logs --tail 100 cms
 - настройка retry для npm
 - отдельный кэш зависимостей на уровне CI
 
-#### Проверка, что проблема не в `sqlite`
+#### Проверка, что проблема не в `PostgreSQL`
 
-Если хотите проверить именно native-зависимость для `sqlite`, достаточно успешной сборки CMS-образа:
+Если хотите проверить именно инфраструктурную часть базы, сначала убедитесь, что собирается CMS-образ, а затем что поднимается сервис `postgres`:
 
 ```bash
 cd /opt/help-perm/infrastructure
 docker compose build cms
+docker compose up -d postgres
+docker compose logs --tail 100 postgres
 ```
 
-Если этот шаг проходит, значит:
+Если это проходит, значит:
 
-- `python3` доступен на build stage
-- `better-sqlite3` собрался корректно
+- CMS-образ не зависит от `better-sqlite3`
+- `postgres` запускается отдельно и доступен внутри docker-сети
 - Dockerfile пригоден для серверного запуска
 
 #### Проверка после запуска стека
@@ -488,15 +494,17 @@ docker compose build cms
 
 ```bash
 docker compose ps
+docker compose logs --tail 100 postgres
 docker compose logs --tail 200 cms
 docker compose exec -T cms node -e "fetch('http://127.0.0.1:1337/api/contact-info').then(r=>{console.log(r.status);return r.text()}).then(console.log)"
 ```
 
-Если последний запрос возвращает `200`, CMS внутри контейнера поднята и API отвечает.
+Если `postgres` healthy, а последний запрос возвращает `200`, CMS внутри контейнера поднята и API отвечает.
 
 ## Примечания по текущему проекту
 
 - `infrastructure/.env` является единым источником переменных для `web`, `cms`, `nginx`
-- CMS использует `sqlite`
+- CMS использует `PostgreSQL`
+- база данных поднимается отдельным сервисом `postgres`
 - frontend внутри docker-сети ходит в CMS по адресу `http://cms:1337`
 - публичный URL CMS задаётся через `STRAPI_PUBLIC_URL`

@@ -5,8 +5,6 @@ ENV NODE_ENV=${NODE_ENV}
 FROM base AS build
 WORKDIR /opt/app
 
-RUN apk add python3 make g++
-
 COPY package*.json ./
 RUN npm ci
 COPY . .
