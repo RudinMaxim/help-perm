@@ -1,15 +1,15 @@
-FROM node:22-alpine3.21 AS base
+FROM node:20-alpine AS base
 ARG NODE_ENV=production
 ENV NODE_ENV=${NODE_ENV}
 
-FROM base as build
+FROM base AS build
 WORKDIR /opt/app
 COPY package*.json ./
 RUN npm ci
 COPY . .
 RUN npm run build
 
-FROM base as run
+FROM base AS run
 WORKDIR /opt/app
 RUN chown node:node /opt/app
 COPY --from=build --chown=node /opt/app ./
