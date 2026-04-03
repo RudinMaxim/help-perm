@@ -1,9 +1,12 @@
-FROM node:20-alpine AS base
+FROM node:22-alpine3.21 AS base
 ARG NODE_ENV=production
 ENV NODE_ENV=${NODE_ENV}
 
 FROM base AS build
 WORKDIR /opt/app
+
+RUN apk add python3 make g++
+
 COPY package*.json ./
 RUN npm ci
 COPY . .
